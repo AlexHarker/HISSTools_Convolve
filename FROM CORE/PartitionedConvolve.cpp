@@ -132,12 +132,12 @@ HISSTools::PartitionedConvolve::PartitionedConvolve(uintptr_t maxFFTSize, uintpt
 	mPartitionTemp.realp = mAccumBuffer.imagp + (maxFFTSizeOver4 * 2);
 	mPartitionTemp.imagp = mPartitionTemp.realp + (maxFFTSizeOver4 * 2);
 		
-	mFFTSetup = hisstools_create_setup_f(mMaxFFTSizeLog2);
+    hisstools_create_setup(&mFFTSetup, mMaxFFTSizeLog2);
 }
 
 HISSTools::PartitionedConvolve::~PartitionedConvolve()
 {
-    hisstools_destroy_setup_f(mFFTSetup);
+    hisstools_destroy_setup(mFFTSetup);
     
     // FIX - try to do better here...
     
@@ -258,8 +258,8 @@ t_convolve_error HISSTools::PartitionedConvolve::set(const float *input, uintptr
 			
 		// Do fft straight into position
 		
-		hisstools_unzip_f(bufferTemp1, &bufferTemp2, mFFTSizeLog2);
-		hisstools_rfft_f(mFFTSetup, &bufferTemp2, mFFTSizeLog2);
+		hisstools_unzip(bufferTemp1, &bufferTemp2, mFFTSizeLog2);
+		hisstools_rfft(mFFTSetup, &bufferTemp2, mFFTSizeLog2);
 		DSP_SPLIT_COMPLEX_POINTER_CALC(bufferTemp2, bufferTemp2, FFTSizeHalved);
 	}
 
@@ -414,8 +414,8 @@ bool HISSTools::PartitionedConvolve::process(const float *in, float *out, uintpt
 						
 			// Do the fft and put into the input buffer
 			
-			hisstools_unzip_f((float *) tempVPointer, &buffer_temp, FFTSizeLog2);
-			hisstools_rfft_f(mFFTSetup, &buffer_temp, FFTSizeLog2);
+			hisstools_unzip((float *) tempVPointer, &buffer_temp, FFTSizeLog2);
+			hisstools_rfft(mFFTSetup, &buffer_temp, FFTSizeLog2);
 			
 			// Process first partition here and accumulate the output (we need it now!)
 			
@@ -423,8 +423,8 @@ bool HISSTools::PartitionedConvolve::process(const float *in, float *out, uintpt
 			
 			// Processing done - do inverse fft on the accumulation buffer
 			
-			hisstools_rifft_f(mFFTSetup, &mAccumBuffer, FFTSizeLog2);
-			hisstools_zip_f(&mAccumBuffer, (float *) mFFTBuffers[2], FFTSizeLog2);
+			hisstools_rifft(mFFTSetup, &mAccumBuffer, FFTSizeLog2);
+			hisstools_zip(&mAccumBuffer, (float *) mFFTBuffers[2], FFTSizeLog2);
 			
 			// Calculate temporary output pointer
 			

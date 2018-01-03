@@ -91,13 +91,13 @@ class FileScheme
 	////////////////////////////////////////////////// Enums ///////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	typedef enum Keyword {
+	enum Keyword {
 		kKeywordNone, kKeywordEmpty,
 		kKeywordTop, kKeywordFolder, kKeywordList, kKeywordScheme, kKeywordSlot, kKeywordChannels, 
 		kKeywordName, kKeywordID, kKeywordIncludeList, kKeywordIncludeScheme, kKeywordSynonym
 	};
 
-	typedef enum ParseErrorCode {	
+    enum ParseErrorCode {
 		kErrNone,
 		kErrFolderHasName, kErrListHasName, kErrUnexpectedName, kErrNameNoValue,
 		kErrListHasID, kErrSchemeHasID, kErrUnexpectedID, kErrListIDExists, kErrSchemeIDExists, kErrIDNoValue,
@@ -478,7 +478,7 @@ private:
 		if (**separatorBeg == '-')
 		{
 			if (**separatorEnd == '>' && strlen(*separatorBeg) > 2)
-				*separatorEnd++;
+				separatorEnd++;
 			else 
 				if (**separatorEnd == 't' && strlen(*separatorBeg) > 4 && *(*(separatorEnd) + 1) == 'o' && *(*(separatorEnd) + 2) == '-')
 					*separatorEnd += 3;

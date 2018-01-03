@@ -41,12 +41,12 @@ public:
 	
 	void LoadIRs();
 	
-	void OnParamChange(int paramIdx, ParamChangeSource source);	
+  void OnParamChange(int paramIdx);//, ParamChangeSource source);	
 	
 	void ProcessDoubleReplacing(double** inputs, double** outputs, int nFrames);
 	
-	bool SerializeState(ByteChunk* pChunk);
-	int UnserializeState(ByteChunk* pChunk, int startPos);
+	bool SerializeState(ByteChunk& pChunk);
+	int UnserializeState(ByteChunk& pChunk, int startPos);
 	
 	
 private:

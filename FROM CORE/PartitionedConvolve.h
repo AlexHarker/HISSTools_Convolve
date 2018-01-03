@@ -6,7 +6,7 @@
 #include "convolve_errors.h"
 
 #include "AH_VectorOps.h"
-#include "../HISSTools_FFT/HISSTools_FFT.h"
+#include "HISSTools_FFT.h"
 
 #include <stdint.h>
 

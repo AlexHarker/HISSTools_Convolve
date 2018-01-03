@@ -6,7 +6,7 @@
 // the basename of the vst, vst3, app, component, dpm, aaxplugin
 BINARY_NAME = AHConvN
 
-ADDITIONAL_INCLUDES = $(SRCROOT)/../HISSTools_Plugin_Common/ $(SRCROOT)/../../WDL/lice
+ADDITIONAL_INCLUDES = $(SRCROOT)/../HISSTools_Plugin_Common/ $(SRCROOT)/../../WDL/lice $(IGRAPHICS_PATH) $(PKG_MAN_PATH)/include $(LICE_PATH)
 //ADDITIONAL_LIBRARY_PATHS = //
 
 // for jack headers
@@ -19,7 +19,7 @@ GCC_CFLAGS = -Wno-write-strings
 // Preprocessor definitions
 
 // Preprocessor definitions for all VST builds
-VST_DEFS = VST_API VST_FORCE_DEPRECATED
+//VST_DEFS = VST_API VST_FORCE_DEPRECATED
 
 VST3_DEFS = VST3_API
 
@@ -44,7 +44,16 @@ TRACER_DEFS = TRACER_BUILD NDEBUG
 
 // Preprocessor definitions for cocoa uniqueness (all builds)
 // If you want to use swell inside of iplug, you need to make SWELL_APP_PREFIX unique too
-COCOA_DEFS = COCOA_PREFIX=vAHConvN SWELL_APP_PREFIX=Swell_vAHConvN
+//COCOA_DEFS = COCOA_PREFIX=vAHConvN SWELL_APP_PREFIX=Swell_vAHConvN
+
+PKG_MAN_PATH = /usr/local/
+
+ADDITIONAL_LIBRARY_PATHS = $(PKG_MAN_PATH)/lib
+
+OTHER_LDFLAGS = $(PKG_MAN_PATH)/lib/libcairo.a $(PKG_MAN_PATH)/lib/libfreetype.a $(PKG_MAN_PATH)/lib/libpixman-1.a $(PKG_MAN_PATH)/lib/libpng.a $(PKG_MAN_PATH)/lib/libfontconfig.a /usr/local/opt/zlib/lib/libz.a /usr/local/opt/bzip2/lib/libbz2.a /usr/local/opt/expat/lib/libexpat.a
+
+
+EXTRA_ALL_DEFS = COCOA_PREFIX=vIPlugEffectCairo SWELL_APP_PREFIX=Swell_vIPlugEffectCairo IGRAPHICS_CAIRO GRAPHICS_SCALING
 
 //------------------------------
 // Release build options

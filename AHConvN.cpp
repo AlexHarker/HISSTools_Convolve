@@ -3,7 +3,7 @@
 #include "IAudioFile.h"
 #include "IPlug_include_in_plug_src.h"
 #include "IControl.h"
-#include "resource.h"
+#include "config.h"
 #include <math.h>
 
 
@@ -58,13 +58,17 @@ AHConvN::AHConvN(IPlugInstanceInfo instanceInfo)
     
 	// Allocate Memory
 	
-	IGraphics* pGraphics = MakeGraphics(this, GUI_WIDTH, GUI_HEIGHT);
+	IGraphics* pGraphics = MakeGraphics(*this, GUI_WIDTH, GUI_HEIGHT);
     
 	IColor bgrb = IColor(255, 185, 195, 205);
 	//IColor bgrb = IColor(255, 135, 135, 135);
 	//IColor bgrb = IColor(255, 55, 75, 85);
 	
-	mVecDraw = new HISSTools_LICE_Vec_Lib(pGraphics->GetDrawBitmap());
+	cairo_t *draw_mechanism = (cairo_t *)pGraphics->GetData();
+	mVecDraw = new HISSTools_LICE_Vec_Lib(draw_mechanism);//pGraphics->GetDrawBitmap());
+	
+	mVecDraw->setSize(GUI_WIDTH, GUI_HEIGHT);
+	
 	
 	mFileDialog = new HISSTools_FileSelector(this, kFileSelect, mVecDraw, 110, 205, 150, 0, kFileOpen, "", "wav aif aiff aifc caf flac ogg oga", "label");
 	mFileName = new HISSTools_TextBlock(this, mVecDraw, 75, 250, 150, 20, "", kHAlignLeft, kVAlignCenter, "small");
@@ -103,10 +107,10 @@ AHConvN::AHConvN(IPlugInstanceInfo instanceInfo)
 	//pGraphics->AttachControl(new HISSTools_Button(this, -1, 360, 60, 100, 30, -1, TRUE));
 	pGraphics->AttachControl(mMatrix);
 	
-	pGraphics->AttachPanelBackground(&bgrb);
+	pGraphics->AttachPanelBackground(bgrb);
 	pGraphics->HandleMouseOver(TRUE);
 	
-	pGraphics->SetAllowRetina(false);
+	//pGraphics->SetAllowRetina(false);
 	
 	AttachGraphics(pGraphics);
 	
@@ -154,7 +158,7 @@ AHConvN::~AHConvN()
 void AHConvN::Reset()
 {
 	TRACE;
-	IMutexLock lock(this);
+	//IMutexLock lock(this);
 	
 	// FIX - Need to empty buffers here.....
 }
@@ -285,7 +289,7 @@ void AHConvN::LoadIRs()
 				file.readChannel(audio, file.getFrames(), chan);
 				mConvolver.set(inChan, outChan, audio, file.getFrames(), true);
 				mFiles.setInfo(inChan, outChan, file.getFrames(), file.getSamplingRate(), file.getChannels());
-				delete audio;
+				delete[] audio;
 				
 				result = 1;
 			}
@@ -298,7 +302,7 @@ void AHConvN::LoadIRs()
 			mConvolver.clear(inChan, outChan, false);
 		}
 		
-		IMutexLock lock(this);
+		//IMutexLock lock(this);
 		mMatrix->SetState(inChan, outChan, channelActive ? result + 1 : 0);
 	}
 	
@@ -308,9 +312,9 @@ void AHConvN::LoadIRs()
 	UpdateFileDisplay();
 }
 
-void AHConvN::OnParamChange(int paramIdx, ParamChangeSource source)
+void AHConvN::OnParamChange(int paramIdx)//, ParamChangeSource source)
 {
-	IMutexLock lock(this);
+	//IMutexLock lock(this);
 	
 	WDL_String path, tempStr;
 	
@@ -404,7 +408,7 @@ void AHConvN::OnParamChange(int paramIdx, ParamChangeSource source)
 						
 						unsigned char currentState = mMatrix->GetState(mXPos, mYPos);
 						mMatrix->SetState(mXPos, mYPos, 1);
-						GetGUI()->PromptForFile(&path, kFileOpen, &tempStr,  "wav aif aiff aifc caf flac ogg oga");
+						GetGUI()->PromptForFile(path, kFileOpen, &tempStr,  "wav aif aiff aifc caf flac ogg oga");
 						
 						if (path.GetLength())
 						{
@@ -492,9 +496,9 @@ void AHConvN::ProcessDoubleReplacing(double** inputs, double** outputs, int nFra
 		mOLEDs->SetState(0, i, mOBallistics.getledVUState(i));
 }
 
-bool AHConvN::SerializeState(ByteChunk* pChunk)
+bool AHConvN::SerializeState(ByteChunk& pChunk)
 {
-	IMutexLock lock(this);
+	//IMutexLock lock(this);
 	
 	const char *filePath;
 	bool mute;
@@ -503,29 +507,29 @@ bool AHConvN::SerializeState(ByteChunk* pChunk)
     // Store the number of the preset system (allows backward compatibility for presets
 	
 	int presetVersion = 1;
-	if (pChunk->PutStr("HISSTools_Convolver_Preset") <= 0) 
+	if (pChunk.PutStr("HISSTools_Convolver_Preset") <= 0)
 		return FALSE;
-	if (pChunk->Put(&presetVersion) <= 0) 
+	if (pChunk.Put(&presetVersion) <= 0)
 		return FALSE;
 	
 	for (FileList::iterator it = mFiles.begin(); it != mFiles.end(); it++)
 	{ 
 		it.getFile(&filePath, &chan, &mute);
 		
-		if (pChunk->PutBool(mute) <= 0) 
+		if (pChunk.PutBool(mute) <= 0)
 			return FALSE;
-		if (pChunk->Put(&chan) <= 0) 
+		if (pChunk.Put(&chan) <= 0)
 			return FALSE;
-		if (pChunk->PutStr(filePath) <= 0) 
+		if (pChunk.PutStr(filePath) <= 0)
 			return FALSE;
 	}
 	
 	return SerializeParams(pChunk);
 }
 
-int AHConvN::UnserializeState(ByteChunk* pChunk, int startPos)
+int AHConvN::UnserializeState(ByteChunk& pChunk, int startPos)
 {
-	IMutexLock lock(this);
+	//IMutexLock lock(this);
 	
 	FileScheme scheme;
 	
@@ -536,10 +540,10 @@ int AHConvN::UnserializeState(ByteChunk* pChunk, int startPos)
 	int chan;
 	
 	WDL_String pStr;
-	startPos = pChunk->GetStr(&pStr, startPos);
+	startPos = pChunk.GetStr(&pStr, startPos);
 	
 	if (strcmp(pStr.Get(), "HISSTools_Convolver_Preset") == 0)
-		startPos = pChunk->Get(&presetVersion, startPos);
+		startPos = pChunk.Get(&presetVersion, startPos);
 	
 	CheckConnections();
 	
@@ -550,13 +554,13 @@ int AHConvN::UnserializeState(ByteChunk* pChunk, int startPos)
 			// Fixed Structure for Previous Presets
 			
 			mFileDialog->SetLastSelectedFileFromPlug(pStr.Get());
-			startPos = pChunk->Get(&v, startPos);
+			startPos = pChunk.Get(&v, startPos);
 			GetParam(kDryGain)->Set(v);
-			startPos = pChunk->Get(&v, startPos);
+			startPos = pChunk.Get(&v, startPos);
 			GetParam(kWetGain)->Set(v);
-			startPos = pChunk->Get(&v, startPos);
+			startPos = pChunk.Get(&v, startPos);
 			GetParam(kOutputSelect)->Set(v);
-			startPos = pChunk->Get(&v, startPos);
+			startPos = pChunk.Get(&v, startPos);
 			
 			// N.B. File Selector value is meaningless so we don't restore the final value
 			
@@ -565,16 +569,16 @@ int AHConvN::UnserializeState(ByteChunk* pChunk, int startPos)
 			scheme.loadWithScheme(&pStr, &mFiles, mCurrentIChans, mCurrentOChans);
 			LoadIRs();
 			
-			OnParamReset(kPresetRecall);
+			OnParamReset();//kPresetRecall);
 			break;
 			
 		case 1:
 			
 			for (FileList::iterator it = mFiles.begin(); it != mFiles.end(); it++)
 			{ 
-				startPos = pChunk->GetBool(&mute, startPos);
-				startPos = pChunk->Get(&chan, startPos);
-				stringEndPos = pChunk->GetStr(&pStr, startPos);
+				startPos = pChunk.GetBool(&mute, startPos);
+				startPos = pChunk.Get(&chan, startPos);
+				stringEndPos = pChunk.GetStr(&pStr, startPos);
 				
 				// Check For Empty String (pStr is not updated correctly in this case)
 				
