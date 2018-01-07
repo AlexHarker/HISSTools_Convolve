@@ -59,13 +59,15 @@ AHConvN::AHConvN(IPlugInstanceInfo instanceInfo)
 	// Allocate Memory
 	
 	IGraphics* pGraphics = MakeGraphics(*this, GUI_WIDTH, GUI_HEIGHT);
-    
+	
+	pGraphics->SetStrictDrawing(false);
+	
 	IColor bgrb = IColor(255, 185, 195, 205);
 	//IColor bgrb = IColor(255, 135, 135, 135);
 	//IColor bgrb = IColor(255, 55, 75, 85);
 	
 	cairo_t *draw_mechanism = (cairo_t *)pGraphics->GetData();
-	mVecDraw = new HISSTools_LICE_Vec_Lib(draw_mechanism);//pGraphics->GetDrawBitmap());
+	mVecDraw = new HISSTools_VecLib(draw_mechanism);//pGraphics->GetDrawBitmap());
 	
 	mVecDraw->setSize(GUI_WIDTH, GUI_HEIGHT);
 	

@@ -67,7 +67,7 @@ private:
 	HISSTools_Matrix *mMatrix;
 	HISSTools_Matrix *mILEDs;
 	HISSTools_Matrix *mOLEDs;
-	HISSTools_LICE_Vec_Lib *mVecDraw;
+	HISSTools_VecLib *mVecDraw;
 	
 	HISSTools_VU_Ballistics mIBallistics;
 	HISSTools_VU_Ballistics mOBallistics;
