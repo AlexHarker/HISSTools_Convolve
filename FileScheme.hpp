@@ -1235,13 +1235,16 @@ private:
 					// Items to ignore
 					
 				case kKeywordNone:
-					
+                
 					err = kErrUnexpectedNonKeyword;
 					
 				case kKeywordSynonym:
 					
 					while (getNonKeyword());
 					break;
+                    
+                case kKeywordEmpty:
+                    break;
 			}
 			
 			parseError(err);
