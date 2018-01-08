@@ -410,7 +410,7 @@ void AHConvN::OnParamChange(int paramIdx)//, ParamChangeSource source)
 						
 						unsigned char currentState = mMatrix->GetState(mXPos, mYPos);
 						mMatrix->SetState(mXPos, mYPos, 1);
-						GetGUI()->PromptForFile(path, kFileOpen, &tempStr,  "wav aif aiff aifc caf flac ogg oga");
+						GetGUI()->PromptForFile(tempStr, path, kFileOpen,  "wav aif aiff aifc caf flac ogg oga");
 						
 						if (path.GetLength())
 						{
