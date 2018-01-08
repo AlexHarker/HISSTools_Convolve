@@ -372,9 +372,9 @@
 		B860352C1FFC66A200281518 /* swell-misc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D3F13B635A0001D0217 /* swell-misc.mm */; };
 		B860352D1FFC66A400281518 /* swell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D4313B635B2001D0217 /* swell.cpp */; };
 		B860352E1FFC66B100281518 /* swell-dlg.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D0413B634AA001D0217 /* swell-dlg.mm */; };
-		B86035321FFCF68900281518 /* HISSTools_LICE_Bounds.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B86035311FFCF68900281518 /* HISSTools_LICE_Bounds.hpp */; };
-		B88F5D6D1CCCE4E400244917 /* HISSTools_LICE_Vec_Lib_Cairo.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B88F5D6C1CCCE4E400244917 /* HISSTools_LICE_Vec_Lib_Cairo.hpp */; };
-		B88F5D6E1CCCE4E400244917 /* HISSTools_LICE_Vec_Lib_Cairo.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B88F5D6C1CCCE4E400244917 /* HISSTools_LICE_Vec_Lib_Cairo.hpp */; };
+		B86035321FFCF68900281518 /* HISSTools_Bounds.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B86035311FFCF68900281518 /* HISSTools_Bounds.hpp */; };
+		B88F5D6D1CCCE4E400244917 /* HISSTools_VecLib.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B88F5D6C1CCCE4E400244917 /* HISSTools_VecLib.hpp */; };
+		B88F5D6E1CCCE4E400244917 /* HISSTools_VecLib.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B88F5D6C1CCCE4E400244917 /* HISSTools_VecLib.hpp */; };
 		B895DA1E17AA6E5F00FE4559 /* FileList.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B895DA1C17AA6E5F00FE4559 /* FileList.hpp */; };
 		B895DA1F17AA6E5F00FE4559 /* FileScheme.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B895DA1D17AA6E5F00FE4559 /* FileScheme.hpp */; };
 		B895DA2017AA6E5F00FE4559 /* FileList.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B895DA1C17AA6E5F00FE4559 /* FileList.hpp */; };
@@ -765,9 +765,8 @@
 		B8064CEC1FFBCEC800253CCD /* IPlugVST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPlugVST.h; path = ../../IPlug/IPlugVST.h; sourceTree = "<group>"; };
 		B8064CED1FFBCEC800253CCD /* IPlugVST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IPlugVST.cpp; path = ../../IPlug/IPlugVST.cpp; sourceTree = "<group>"; };
 		B81EAC0817A97E6300632F71 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
-		B82A7DAA1CCCF5EF00BB239B /* HISSTools_LICE_Raster_Cairo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_LICE_Raster_Cairo.hpp; sourceTree = "<group>"; };
-		B86035311FFCF68900281518 /* HISSTools_LICE_Bounds.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_LICE_Bounds.hpp; sourceTree = "<group>"; };
-		B88F5D6C1CCCE4E400244917 /* HISSTools_LICE_Vec_Lib_Cairo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_LICE_Vec_Lib_Cairo.hpp; sourceTree = "<group>"; };
+		B86035311FFCF68900281518 /* HISSTools_Bounds.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_Bounds.hpp; sourceTree = "<group>"; };
+		B88F5D6C1CCCE4E400244917 /* HISSTools_VecLib.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_VecLib.hpp; sourceTree = "<group>"; };
 		B895DA1C17AA6E5F00FE4559 /* FileList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileList.hpp; sourceTree = "<group>"; };
 		B895DA1D17AA6E5F00FE4559 /* FileScheme.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileScheme.hpp; sourceTree = "<group>"; };
 		B8AE24FE17A9C52600757A60 /* HIRT_Frame_Stats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIRT_Frame_Stats.c; sourceTree = "<group>"; };
@@ -784,14 +783,14 @@
 		B8AE252917A9C52600757A60 /* HISSTools_Spectral_Peaks.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_Spectral_Peaks.hpp; sourceTree = "<group>"; };
 		B8AE252A17A9C52600757A60 /* HISSTools_VU_Ballistics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_VU_Ballistics.hpp; sourceTree = "<group>"; };
 		B8AE252B17A9C52600757A60 /* HISSTools_Windows.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_Windows.hpp; sourceTree = "<group>"; };
-		B8AE253617A9C52600757A60 /* HISSTools_LICE_Shadow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_LICE_Shadow.hpp; sourceTree = "<group>"; };
+		B8AE253617A9C52600757A60 /* HISSTools_Shadow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_Shadow.hpp; sourceTree = "<group>"; };
 		B8AE253717A9C52600757A60 /* HISSTools_LICE_Text.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_LICE_Text.hpp; sourceTree = "<group>"; };
 		B8AE253B17A9C52600757A60 /* HISSTools_Controls.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_Controls.hpp; sourceTree = "<group>"; };
 		B8AE253C17A9C52600757A60 /* HISSTools_Design_Scheme.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_Design_Scheme.hpp; sourceTree = "<group>"; };
 		B8AE253F17A9C52600757A60 /* HISSTools_Atomic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_Atomic.hpp; sourceTree = "<group>"; };
 		B8AE254017A9C52600757A60 /* HISSTools_Pointers.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_Pointers.hpp; sourceTree = "<group>"; };
 		B8AE254117A9C52600757A60 /* HISSTools_ThreadSafety.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_ThreadSafety.hpp; sourceTree = "<group>"; };
-		B8B2B8F91CD21FCA0029B1C2 /* HISSTools_LICE_Color_Cairo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_LICE_Color_Cairo.hpp; sourceTree = "<group>"; };
+		B8B2B8F91CD21FCA0029B1C2 /* HISSTools_Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_Color.hpp; sourceTree = "<group>"; };
 		D2F7E65807B2D6F200F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -1546,12 +1545,11 @@
 		B8AE252C17A9C52600757A60 /* HISSTools_Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				B86035311FFCF68900281518 /* HISSTools_LICE_Bounds.hpp */,
-				B8AE253617A9C52600757A60 /* HISSTools_LICE_Shadow.hpp */,
 				B8AE253717A9C52600757A60 /* HISSTools_LICE_Text.hpp */,
-				B82A7DAA1CCCF5EF00BB239B /* HISSTools_LICE_Raster_Cairo.hpp */,
-				B88F5D6C1CCCE4E400244917 /* HISSTools_LICE_Vec_Lib_Cairo.hpp */,
-				B8B2B8F91CD21FCA0029B1C2 /* HISSTools_LICE_Color_Cairo.hpp */,
+				B86035311FFCF68900281518 /* HISSTools_Bounds.hpp */,
+				B8B2B8F91CD21FCA0029B1C2 /* HISSTools_Color.hpp */,
+				B8AE253617A9C52600757A60 /* HISSTools_Shadow.hpp */,
+				B88F5D6C1CCCE4E400244917 /* HISSTools_VecLib.hpp */,
 			);
 			path = HISSTools_Graphics;
 			sourceTree = "<group>";
@@ -1612,7 +1610,7 @@
 				B8064CE91FFBCEB700253CCD /* IPlugBase.h in Headers */,
 				B8064BFB1FFBCDF100253CCD /* Convolver.h in Headers */,
 				B8064BFF1FFBCDF100253CCD /* IAudioFile.h in Headers */,
-				B88F5D6E1CCCE4E400244917 /* HISSTools_LICE_Vec_Lib_Cairo.hpp in Headers */,
+				B88F5D6E1CCCE4E400244917 /* HISSTools_VecLib.hpp in Headers */,
 				B8064C591FFBCE9900253CCD /* IGraphicsStructs.h in Headers */,
 				B8064C311FFBCDF100253CCD /* PartitionedConvolve.h in Headers */,
 				B8064C991FFBCE9900253CCD /* IKeyboardControl.h in Headers */,
@@ -1676,7 +1674,7 @@
 				4F78DA9013B640050032E0F3 /* swell-functions.h in Headers */,
 				4F78DA9113B640050032E0F3 /* swell-internal.h in Headers */,
 				4F78DA9213B640050032E0F3 /* swell-types.h in Headers */,
-				B86035321FFCF68900281518 /* HISSTools_LICE_Bounds.hpp in Headers */,
+				B86035321FFCF68900281518 /* HISSTools_Bounds.hpp in Headers */,
 				4F78DA9313B640050032E0F3 /* aeffect.h in Headers */,
 				4F78DA9413B640050032E0F3 /* aeffectx.h in Headers */,
 				B8064CC01FFBCEB600253CCD /* IPlug_include_in_plug_src.h in Headers */,
@@ -1685,7 +1683,7 @@
 				B8064BFA1FFBCDF100253CCD /* Convolver.h in Headers */,
 				B8064C321FFBCDF100253CCD /* sse_mathfun.h in Headers */,
 				B8064C1E1FFBCDF100253CCD /* TimeDomainConvolve.h in Headers */,
-				B88F5D6D1CCCE4E400244917 /* HISSTools_LICE_Vec_Lib_Cairo.hpp in Headers */,
+				B88F5D6D1CCCE4E400244917 /* HISSTools_VecLib.hpp in Headers */,
 				B8064C901FFBCE9900253CCD /* IGraphicsUtilites.h in Headers */,
 				B8064C981FFBCE9900253CCD /* IKeyboardControl.h in Headers */,
 				B8064C661FFBCE9900253CCD /* IGraphicsConstants.h in Headers */,
