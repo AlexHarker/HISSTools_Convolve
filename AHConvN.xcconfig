@@ -18,29 +18,14 @@ GCC_CFLAGS = -Wno-write-strings
 //------------------------------
 // Preprocessor definitions
 
-// Preprocessor definitions for all VST builds
-//VST_DEFS = VST_API VST_FORCE_DEPRECATED
-
-VST3_DEFS = VST3_API
-
-// Preprocessor definitions for all AU builds
-AU_DEFS = AU_API
-
-RTAS_DEFS = RTAS_API
-
-AAX_DEFS = AAX_API
-
-APP_DEFS = SA_API __MACOSX_CORE__ //__UNIX_JACK__
-
-IOS_DEFS = SA_API
 // Preprocessor definitions for all Debug builds
-DEBUG_DEFS = _DEBUG
+DEBUG_DEFS = _DEBUG $(ALL_DEFS)
 
 // Preprocessor definitions for all Release builds
-RELEASE_DEFS = NDEBUG //DEMO_VERSION
+RELEASE_DEFS = NDEBUG $(ALL_DEFS)//DEMO_VERSION
 
 // Preprocessor definitions for all Tracer builds
-TRACER_DEFS = TRACER_BUILD NDEBUG
+TRACER_DEFS = TRACER_BUILD NDEBUG $(ALL_DEFS)
 
 // Preprocessor definitions for cocoa uniqueness (all builds)
 // If you want to use swell inside of iplug, you need to make SWELL_APP_PREFIX unique too
@@ -53,7 +38,7 @@ ADDITIONAL_LIBRARY_PATHS = $(PKG_MAN_PATH)/lib
 OTHER_LDFLAGS = $(PKG_MAN_PATH)/lib/libcairo.a $(PKG_MAN_PATH)/lib/libfreetype.a $(PKG_MAN_PATH)/lib/libpixman-1.a $(PKG_MAN_PATH)/lib/libpng.a $(PKG_MAN_PATH)/lib/libfontconfig.a /usr/local/opt/zlib/lib/libz.a /usr/local/opt/bzip2/lib/libbz2.a /usr/local/opt/expat/lib/libexpat.a
 
 
-EXTRA_ALL_DEFS = COCOA_PREFIX=vIPlugEffectCairo SWELL_APP_PREFIX=Swell_vIPlugEffectCairo IGRAPHICS_CAIRO GRAPHICS_SCALING
+EXTRA_ALL_DEFS = COCOA_PREFIX=vIPlugEffectCairo SWELL_APP_PREFIX=Swell_vIPlugEffectCairo IGRAPHICS_CAIRO GRAPHICS_SCALING NO_FREETYPE
 
 //------------------------------
 // Release build options
@@ -63,9 +48,7 @@ PROFILE = NO //NO, YES - enable this if you want to use shark to profile a plugi
 
 // GCC optimization level -
 // None: [-O0] Fast: [-O, -O1] Faster:[-O2] Fastest: [-O3] Fastest, smallest: Optimize for size. [-Os]
-RELEASE_OPTIMIZE = 3 //0,1,2,3,s
 
-//------------------------------
-// Debug build options
+RELEASE_OPTIMIZE = 3 //0,1,2,3,s
 DEBUG_OPTIMIZE = 0 //0,1,2,3,s
 

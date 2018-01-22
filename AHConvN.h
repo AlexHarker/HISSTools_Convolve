@@ -32,7 +32,7 @@ public:
 	
 	// Implement these if your audio or GUI logic requires doing something, when params change or when audio processing stops / starts.
 	
-	void Reset();
+	void OnReset();
 	
 	void CheckConnections(double** inputs = NULL, double** outputs = NULL);
 	
@@ -43,10 +43,10 @@ public:
 	
   void OnParamChange(int paramIdx);//, ParamChangeSource source);	
 	
-	void ProcessDoubleReplacing(double** inputs, double** outputs, int nFrames);
+	void ProcessBlock(double** inputs, double** outputs, int nFrames);
 	
-	bool SerializeState(ByteChunk& pChunk);
-	int UnserializeState(ByteChunk& pChunk, int startPos);
+	bool SerializeState(IByteChunk& pChunk);
+	int UnserializeState(IByteChunk& pChunk, int startPos);
 	
 	
 private:

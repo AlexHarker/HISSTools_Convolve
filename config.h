@@ -3,6 +3,7 @@
 
 #define PLUG_CLASS_NAME AHConvN
 
+#define BUNDLE_DOMAIN "com"
 #define BUNDLE_MFR "AHarker"
 #define BUNDLE_NAME "AHConvN"
 
@@ -16,7 +17,7 @@
 #define VIEW_CLASS_STR "AHConvN_View"
 
 // Format        0xMAJR.MN.BG - in HEX! so version 10.1.5 would be 0x000A0105
-#define PLUG_VER 0x00010000
+#define PLUG_VERSION_HEX 0x00010000
 #define VST3_VER_STR "1.0.0"
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
@@ -34,7 +35,7 @@
 #define MAX_CHANNELS 8
 #define PLUG_CHANNEL_IO "1-1 2-2 3-3 4-4 5-5 6-6 7-7 8-8"
 #define PLUG_LATENCY 0
-#define PLUG_IS_INST 0
+#define PLUG_IS_INSTRUMENT 0
 
 // if this is 0 RTAS can't get tempo info
 #define PLUG_DOES_MIDI 0

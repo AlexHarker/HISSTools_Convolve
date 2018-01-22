@@ -132,7 +132,7 @@ AHConvN::AHConvN(IPlugInstanceInfo instanceInfo)
 	mLoadEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
 	
 	EnsureDefaultPreset();
-	Reset();
+	OnReset();
 }
 
 AHConvN::~AHConvN() 
@@ -157,7 +157,7 @@ AHConvN::~AHConvN()
 	
 }
 
-void AHConvN::Reset()
+void AHConvN::OnReset()
 {
 	TRACE;
 	//IMutexLock lock(this);
@@ -448,7 +448,7 @@ void AHConvN::OnParamChange(int paramIdx)//, ParamChangeSource source)
 	}
 }
 
-void AHConvN::ProcessDoubleReplacing(double** inputs, double** outputs, int nFrames)
+void AHConvN::ProcessBlock(double** inputs, double** outputs, int nFrames)
 {
 	double targetDryGain = mOutputSelect != 2 ? mTargetDryGain : 0;
 	double targetWetGain = mOutputSelect != 0 ? mTargetWetGain : 0;
@@ -498,7 +498,7 @@ void AHConvN::ProcessDoubleReplacing(double** inputs, double** outputs, int nFra
 		mOLEDs->SetState(0, i, mOBallistics.getledVUState(i));
 }
 
-bool AHConvN::SerializeState(ByteChunk& pChunk)
+bool AHConvN::SerializeState(IByteChunk& pChunk)
 {
 	//IMutexLock lock(this);
 	
@@ -529,7 +529,7 @@ bool AHConvN::SerializeState(ByteChunk& pChunk)
 	return SerializeParams(pChunk);
 }
 
-int AHConvN::UnserializeState(ByteChunk& pChunk, int startPos)
+int AHConvN::UnserializeState(IByteChunk& pChunk, int startPos)
 {
 	//IMutexLock lock(this);
 	
