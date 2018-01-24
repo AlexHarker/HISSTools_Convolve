@@ -542,7 +542,7 @@ int AHConvN::UnserializeState(IByteChunk& pChunk, int startPos)
 	int chan;
 	
 	WDL_String pStr;
-	startPos = pChunk.GetStr(&pStr, startPos);
+	startPos = pChunk.GetStr(pStr, startPos);
 	
 	if (strcmp(pStr.Get(), "HISSTools_Convolver_Preset") == 0)
 		startPos = pChunk.Get(&presetVersion, startPos);
@@ -580,7 +580,7 @@ int AHConvN::UnserializeState(IByteChunk& pChunk, int startPos)
 			{ 
 				startPos = pChunk.GetBool(&mute, startPos);
 				startPos = pChunk.Get(&chan, startPos);
-				stringEndPos = pChunk.GetStr(&pStr, startPos);
+				stringEndPos = pChunk.GetStr(pStr, startPos);
 				
 				// Check For Empty String (pStr is not updated correctly in this case)
 				
