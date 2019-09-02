@@ -8,9 +8,6 @@
 #include "HISSTools_VU_Ballistics.hpp"
 #include "FileScheme.hpp"
 
-#define GUI_WIDTH   340
-#define GUI_HEIGHT	480
-
 // An enumerated list for all the parameters of the plugin
 
 enum EParams 
@@ -48,6 +45,8 @@ public:
 	bool SerializeState(IByteChunk& pChunk);
 	int UnserializeState(IByteChunk& pChunk, int startPos);
 	
+  bool IsInChannelConnected(int idx) { return IsChannelConnected(kInput, idx); }
+  bool IsOutChannelConnected(int idx) { return IsChannelConnected(kOutput, idx); }
 	
 private:
 	
@@ -67,7 +66,7 @@ private:
 	HISSTools_Matrix *mMatrix;
 	HISSTools_Matrix *mILEDs;
 	HISSTools_Matrix *mOLEDs;
-	HISSTools_VecLib *mVecDraw;
+	HISSTools_VecLib mVecDraw;
 	
 	HISSTools_VU_Ballistics mIBallistics;
 	HISSTools_VU_Ballistics mOBallistics;

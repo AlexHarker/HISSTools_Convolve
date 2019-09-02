@@ -50,15 +50,12 @@ AHConvN::AHConvN(IPlugInstanceInfo instanceInfo)
 	GetParam(kWetGain)->InitDouble("Wet Gain", 0, -60, 20, 0.1, "dB");
 	GetParam(kOutputSelect)->InitEnum("Output Select", 2 , 3);
 	
-	GetParam(kFileSelect)->InitBool("Load Multiple", false, "");
-	GetParam(kMatrixControl)->InitBool("Matrix Control", false, "");
-	
-	GetParam(kFileSelect)->SetCanAutomate(false);
-	GetParam(kMatrixControl)->SetCanAutomate(false);
+	GetParam(kFileSelect)->InitBool("Load Multiple", false, "", IParam::kFlagCannotAutomate);
+	GetParam(kMatrixControl)->InitBool("Matrix Control", false, "", IParam::kFlagCannotAutomate);
     
 	// Allocate Memory
 	
-	IGraphics* pGraphics = MakeGraphics(*this, GUI_WIDTH, GUI_HEIGHT);
+	IGraphics* pGraphics = MakeGraphics(*this, PLUG_WIDTH, PLUG_HEIGHT);
 	
 	pGraphics->SetStrictDrawing(false);
 	
@@ -66,36 +63,30 @@ AHConvN::AHConvN(IPlugInstanceInfo instanceInfo)
 	//IColor bgrb = IColor(255, 135, 135, 135);
 	//IColor bgrb = IColor(255, 55, 75, 85);
 	
-	cairo_t *draw_mechanism = (cairo_t *)pGraphics->GetData();
-	mVecDraw = new HISSTools_VecLib(draw_mechanism);//pGraphics->GetDrawBitmap());
+	mFileDialog = new HISSTools_FileSelector(*this, kFileSelect, &mVecDraw, 110, 205, 150, 0, kFileOpen, "", "wav aif aiff aifc caf flac ogg oga", "label");
+	mFileName = new HISSTools_TextBlock(*this, &mVecDraw, 75, 250, 150, 20, "", kHAlignLeft, kVAlignCenter, "small");
+	mFileChan = new HISSTools_TextBlock(*this, &mVecDraw, 75, 270, 50, 20, "", kHAlignLeft, kVAlignCenter, "small");
 	
-	mVecDraw->setSize(GUI_WIDTH, GUI_HEIGHT);
+	pGraphics->AttachControl(new HISSTools_Panel(*this, &mVecDraw, 65, 10, 210, 170));
+	pGraphics->AttachControl(new HISSTools_Panel(*this, &mVecDraw, 65, 190, 210, 280, "tight"));
+	pGraphics->AttachControl(new HISSTools_Panel(*this, &mVecDraw, 70, 195, 200, 94, "tight grey"));
 	
-	
-	mFileDialog = new HISSTools_FileSelector(this, kFileSelect, mVecDraw, 110, 205, 150, 0, kFileOpen, "", "wav aif aiff aifc caf flac ogg oga", "label");
-	mFileName = new HISSTools_TextBlock(this, mVecDraw, 75, 250, 150, 20, "", kHAlignLeft, kVAlignCenter, "small");
-	mFileChan = new HISSTools_TextBlock(this, mVecDraw, 75, 270, 50, 20, "", kHAlignLeft, kVAlignCenter, "small");
-	
-	pGraphics->AttachControl(new HISSTools_Panel(this, mVecDraw, 65, 10, 210, 170));
-	pGraphics->AttachControl(new HISSTools_Panel(this, mVecDraw, 65, 190, 210, 280, "tight"));
-	pGraphics->AttachControl(new HISSTools_Panel(this, mVecDraw, 70, 195, 200, 94, "tight grey"));
-	
-	mDryGainDial = new HISSTools_Dial(this, kDryGain, mVecDraw, 75, 50, "red");
-	mWetGainDial = new HISSTools_Dial(this, kWetGain, mVecDraw, 175, 50, "green");
+	mDryGainDial = new HISSTools_Dial(*this, kDryGain, &mVecDraw, 75, 50, "red");
+	mWetGainDial = new HISSTools_Dial(*this, kWetGain, &mVecDraw, 175, 50, "green");
 	
 	pGraphics->AttachControl(mDryGainDial);
 	pGraphics->AttachControl(mWetGainDial);
 	
-	mIMeter = new HISSTools_MeterTest(this, mVecDraw, 15, 10, 40, 460);
-	mOMeter = new HISSTools_MeterTest(this, mVecDraw, 285, 10, 40, 460, TRUE);
+	mIMeter = new HISSTools_MeterTest(*this, &mVecDraw, 15, 10, 40, 460);
+	mOMeter = new HISSTools_MeterTest(*this, &mVecDraw, 285, 10, 40, 460, TRUE);
 	
-	//mIMeter = new HISSTools_MeterTest(this, mVecDraw, 230, 130, 400, 40);
-	//mOMeter = new HISSTools_MeterTest(this, mVecDraw, 230, 190, 400, 40);
+	//mIMeter = new HISSTools_MeterTest(*this, &mVecDraw, 230, 130, 400, 40);
+	//mOMeter = new HISSTools_MeterTest(*this, &mVecDraw, 230, 190, 400, 40);
 	
-	mMatrix = new HISSTools_Matrix(this, kMatrixControl, mVecDraw, 90, 315, 8, 8);
-	mILEDs = new HISSTools_Matrix(this, -1, mVecDraw, 91.5, 298, 8, 1, "round VU_Leds");
-	mOLEDs = new HISSTools_Matrix(this, -1, mVecDraw, 236, 316.5, 1, 8, "round VU_Leds");
-	//mOLEDs = new HISSTools_Matrix(this, -1, mVecDraw, 28, 226.5, 1, 8, "round VU_Leds");
+	mMatrix = new HISSTools_Matrix(*this, kMatrixControl, &mVecDraw, 90, 315, 8, 8);
+	mILEDs = new HISSTools_Matrix(*this, -1, &mVecDraw, 91.5, 298, 8, 1, "round VU_Leds");
+	mOLEDs = new HISSTools_Matrix(*this, -1, &mVecDraw, 236, 316.5, 1, 8, "round VU_Leds");
+	//mOLEDs = new HISSTools_Matrix(*this, -1, &mVecDraw, 28, 226.5, 1, 8, "round VU_Leds");
 	pGraphics->AttachControl(mILEDs);
 	pGraphics->AttachControl(mOLEDs);
 	
@@ -105,7 +96,7 @@ AHConvN::AHConvN(IPlugInstanceInfo instanceInfo)
 	pGraphics->AttachControl(mIMeter);
 	pGraphics->AttachControl(mOMeter);
 	
-	pGraphics->AttachControl(new HISSTools_Switch(this, kOutputSelect, mVecDraw, 140, 20, 50, 20, 3));
+	pGraphics->AttachControl(new HISSTools_Switch(*this, kOutputSelect, &mVecDraw, 140, 20, 50, 20, 3));
 	//pGraphics->AttachControl(new HISSTools_Button(this, -1, 360, 60, 100, 30, -1, TRUE));
 	pGraphics->AttachControl(mMatrix);
 	
@@ -150,11 +141,6 @@ AHConvN::~AHConvN()
 	
 	CloseHandle(mLoadEvent);
 	CloseHandle(mLoadThread);
-	
-	// Delete memory that will not otherwise be freed
-	
-	delete mVecDraw;
-	
 }
 
 void AHConvN::OnReset()
@@ -410,7 +396,7 @@ void AHConvN::OnParamChange(int paramIdx)//, ParamChangeSource source)
 						
 						unsigned char currentState = mMatrix->GetState(mXPos, mYPos);
 						mMatrix->SetState(mXPos, mYPos, 1);
-						GetGUI()->PromptForFile(tempStr, path, kFileOpen,  "wav aif aiff aifc caf flac ogg oga");
+						GetUI()->PromptForFile(tempStr, path, kFileOpen,  "wav aif aiff aifc caf flac ogg oga");
 						
 						if (path.GetLength())
 						{
@@ -518,7 +504,7 @@ bool AHConvN::SerializeState(IByteChunk& pChunk)
 	{ 
 		it.getFile(&filePath, &chan, &mute);
 		
-		if (pChunk.PutBool(mute) <= 0)
+		if (pChunk.Put(&mute) <= 0)
 			return FALSE;
 		if (pChunk.Put(&chan) <= 0)
 			return FALSE;
@@ -571,14 +557,14 @@ int AHConvN::UnserializeState(IByteChunk& pChunk, int startPos)
 			scheme.loadWithScheme(&pStr, &mFiles, mCurrentIChans, mCurrentOChans);
 			LoadIRs();
 			
-			OnParamReset();//kPresetRecall);
+			OnParamReset(kPresetRecall);
 			break;
 			
 		case 1:
 			
 			for (FileList::iterator it = mFiles.begin(); it != mFiles.end(); it++)
 			{ 
-				startPos = pChunk.GetBool(&mute, startPos);
+				startPos = pChunk.Get(&mute, startPos);
 				startPos = pChunk.Get(&chan, startPos);
 				stringEndPos = pChunk.GetStr(pStr, startPos);
 				

@@ -7,6 +7,9 @@
 #define BUNDLE_MFR "AHarker"
 #define BUNDLE_NAME "AHConvN"
 
+#define PLUG_WIDTH   340
+#define PLUG_HEIGHT  480
+
 #define PLUG_ENTRY AHConvN_Entry
 #define PLUG_VIEW_ENTRY AHConvN_ViewEntry
 
@@ -36,6 +39,7 @@
 #define PLUG_CHANNEL_IO "1-1 2-2 3-3 4-4 5-5 6-6 7-7 8-8"
 #define PLUG_LATENCY 0
 #define PLUG_IS_INSTRUMENT 0
+#define PLUG_HAS_UI 1
 
 // if this is 0 RTAS can't get tempo info
 #define PLUG_DOES_MIDI 0

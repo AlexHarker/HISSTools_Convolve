@@ -6,7 +6,12 @@
 // the basename of the vst, vst3, app, component, dpm, aaxplugin
 BINARY_NAME = AHConvN
 
-ADDITIONAL_INCLUDES = $(SRCROOT)/../HISSTools_Plugin_Common/ $(SRCROOT)/../../WDL/lice $(IGRAPHICS_PATH) $(PKG_MAN_PATH)/include $(LICE_PATH)
+EXTRA_INC_PATHS = $(EXTRAS_INC_PATHS) $(IGRAPHICS_INC_PATHS)
+EXTRA_LIB_PATHS = $(IGRAPHICS_LIB_PATHS)
+EXTRA_LNK_FLAGS = $(IGRAPHICS_LNK_FLAGS) $(ALL_FRAMEWORKS)
+
+ADDITIONAL_INCLUDES = $(SRCROOT)/../HISSTools_PluginLib/ $(IGRAPHICS_PATH) $(EXTRA_INC_PATHS)
+
 //ADDITIONAL_LIBRARY_PATHS = //
 
 // for jack headers
@@ -33,12 +38,13 @@ TRACER_DEFS = TRACER_BUILD NDEBUG $(ALL_DEFS)
 
 PKG_MAN_PATH = /usr/local/
 
-ADDITIONAL_LIBRARY_PATHS = $(PKG_MAN_PATH)/lib
+ADDITIONAL_LIBRARY_PATHS = $(EXTRA_LIB_PATHS)
 
-OTHER_LDFLAGS = $(PKG_MAN_PATH)/lib/libcairo.a $(PKG_MAN_PATH)/lib/libfreetype.a $(PKG_MAN_PATH)/lib/libpixman-1.a $(PKG_MAN_PATH)/lib/libpng.a $(PKG_MAN_PATH)/lib/libfontconfig.a /usr/local/opt/zlib/lib/libz.a /usr/local/opt/bzip2/lib/libbz2.a /usr/local/opt/expat/lib/libexpat.a
+OTHER_LDFLAGS = $(EXTRA_LNK_FLAGS)
 
 
 EXTRA_ALL_DEFS = COCOA_PREFIX=vIPlugEffectCairo SWELL_APP_PREFIX=Swell_vIPlugEffectCairo IGRAPHICS_CAIRO GRAPHICS_SCALING NO_FREETYPE
+
 
 //------------------------------
 // Release build options
