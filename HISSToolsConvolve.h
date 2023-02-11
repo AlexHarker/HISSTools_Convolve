@@ -1,8 +1,8 @@
 
-#ifndef __AHCONVN_H__
-#define __AHCONVN_H__
+#pragma once
 
 #include "IPlug_include_in_plug_hdr.h"
+
 #include "Convolver.h"
 #include "HISSTools_Controls.hpp"
 #include "HISSTools_VU_Ballistics.hpp"
@@ -20,12 +20,12 @@ enum EParams
 	kNumParams,       // the last element is used to store the total number of parameters
 };
 
-class AHConvN : public IPlug
+class HISSToolsConvolve : public IPlug
 {
 public:
 	
-	AHConvN(IPlugInstanceInfo instanceInfo);
-	~AHConvN();
+  HISSToolsConvolve(IPlugInstanceInfo instanceInfo);
+	~HISSToolsConvolve();
 	
 	// Implement these if your audio or GUI logic requires doing something, when params change or when audio processing stops / starts.
 	
@@ -100,12 +100,3 @@ public:
 	
 	bool mThreadExiting;
 };
-
-////////////////////////////////////////
-
-#endif
-
-
-
-
-

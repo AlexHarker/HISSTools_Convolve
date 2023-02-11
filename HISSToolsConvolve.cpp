@@ -1,5 +1,5 @@
 
-#include "AHConvN.h"
+#include "HISSToolsConvolve.h"
 #include "IAudioFile.h"
 #include "IPlug_include_in_plug_src.h"
 #include "IControl.h"
@@ -13,7 +13,7 @@
 
 DWORD LoadingThread(LPVOID ConvPlugParam)
 {
-	AHConvN *ConvPlug = (AHConvN *) ConvPlugParam;
+  HISSToolsConvolve *ConvPlug = (HISSToolsConvolve *) ConvPlugParam;
 	
 	while (TRUE)
 	{
@@ -39,7 +39,7 @@ DWORD LoadingThread(LPVOID ConvPlugParam)
 
 const int kNumPrograms = 1;
 
-AHConvN::AHConvN(IPlugInstanceInfo instanceInfo)
+HISSToolsConvolve::HISSToolsConvolve(IPlugInstanceInfo instanceInfo)
 :	IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), mConvolver(8, 8, HISSTools::Convolver::kLatencyZero)
 {
 	TRACE;
@@ -126,7 +126,7 @@ AHConvN::AHConvN(IPlugInstanceInfo instanceInfo)
 	OnReset();
 }
 
-AHConvN::~AHConvN() 
+HISSToolsConvolve::~HISSToolsConvolve()
 {	
 	// Dispose of thread stuff.
 	
@@ -143,7 +143,7 @@ AHConvN::~AHConvN()
 	CloseHandle(mLoadThread);
 }
 
-void AHConvN::OnReset()
+void HISSToolsConvolve::OnReset()
 {
 	TRACE;
 	//IMutexLock lock(this);
@@ -151,7 +151,7 @@ void AHConvN::OnReset()
 	// FIX - Need to empty buffers here.....
 }
 
-void AHConvN::CheckConnections(double** inputs, double** outputs)
+void HISSToolsConvolve::CheckConnections(double** inputs, double** outputs)
 {
 	int i;
 	
@@ -178,7 +178,7 @@ void AHConvN::CheckConnections(double** inputs, double** outputs)
 	//	LoadIRs();
 }
 
-void AHConvN::UpdateBaseName()
+void HISSToolsConvolve::UpdateBaseName()
 {
 	WDL_String currentBaseName("");
 	WDL_String baseName("");
@@ -205,7 +205,7 @@ void AHConvN::UpdateBaseName()
 }
 
 
-void AHConvN::UpdateFileDisplay()
+void HISSToolsConvolve::UpdateFileDisplay()
 {
 	WDL_String filePath("");
 	WDL_String fileName("");
@@ -241,7 +241,7 @@ void AHConvN::UpdateFileDisplay()
 	mFileChan->setText(chanInfo);
 }
 
-void AHConvN::LoadIRs()
+void HISSToolsConvolve::LoadIRs()
 {	
 	const char *filePath;
 	bool mute;
@@ -300,7 +300,7 @@ void AHConvN::LoadIRs()
 	UpdateFileDisplay();
 }
 
-void AHConvN::OnParamChange(int paramIdx)//, ParamChangeSource source)
+void HISSToolsConvolve::OnParamChange(int paramIdx)//, ParamChangeSource source)
 {
 	//IMutexLock lock(this);
 	
@@ -434,7 +434,7 @@ void AHConvN::OnParamChange(int paramIdx)//, ParamChangeSource source)
 	}
 }
 
-void AHConvN::ProcessBlock(double** inputs, double** outputs, int nFrames)
+void HISSToolsConvolve::ProcessBlock(double** inputs, double** outputs, int nFrames)
 {
 	double targetDryGain = mOutputSelect != 2 ? mTargetDryGain : 0;
 	double targetWetGain = mOutputSelect != 0 ? mTargetWetGain : 0;
@@ -484,7 +484,7 @@ void AHConvN::ProcessBlock(double** inputs, double** outputs, int nFrames)
 		mOLEDs->SetState(0, i, mOBallistics.getledVUState(i));
 }
 
-bool AHConvN::SerializeState(IByteChunk& pChunk)
+bool HISSToolsConvolve::SerializeState(IByteChunk& pChunk)
 {
 	//IMutexLock lock(this);
 	
@@ -515,7 +515,7 @@ bool AHConvN::SerializeState(IByteChunk& pChunk)
 	return SerializeParams(pChunk);
 }
 
-int AHConvN::UnserializeState(IByteChunk& pChunk, int startPos)
+int HISSToolsConvolve::UnserializeState(IByteChunk& pChunk, int startPos)
 {
 	//IMutexLock lock(this);
 	
