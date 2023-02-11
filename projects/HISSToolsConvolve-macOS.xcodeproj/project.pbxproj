@@ -278,42 +278,12 @@
 		4FFBB93020863B0E00DDD0E7 /* fbuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8158C1205D50EB00393585 /* fbuffer.cpp */; };
 		4FFBB93420863B0E00DDD0E7 /* coreiids.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8158E0205D50EB00393585 /* coreiids.cpp */; };
 		4FFBB93520863B0E00DDD0E7 /* vstnoteexpressiontypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F81588E205D50EB00393585 /* vstnoteexpressiontypes.cpp */; };
-		B8199B74278C7362001F43E8 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B60278C7307001F43E8 /* BaseAudioFile.cpp */; };
-		B8199B75278C7366001F43E8 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B65278C7307001F43E8 /* IAudioFile.cpp */; };
-		B8199B76278C7369001F43E8 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B60278C7307001F43E8 /* BaseAudioFile.cpp */; };
-		B8199B77278C736C001F43E8 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B65278C7307001F43E8 /* IAudioFile.cpp */; };
-		B8199B78278C736F001F43E8 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B60278C7307001F43E8 /* BaseAudioFile.cpp */; };
-		B8199B79278C7373001F43E8 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B65278C7307001F43E8 /* IAudioFile.cpp */; };
-		B8199B7A278C7379001F43E8 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B60278C7307001F43E8 /* BaseAudioFile.cpp */; };
-		B8199B7B278C737E001F43E8 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B65278C7307001F43E8 /* IAudioFile.cpp */; };
-		B8199B7C278C7381001F43E8 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B60278C7307001F43E8 /* BaseAudioFile.cpp */; };
-		B8199B7D278C7385001F43E8 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B65278C7307001F43E8 /* IAudioFile.cpp */; };
-		B8199B7E278C738C001F43E8 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B60278C7307001F43E8 /* BaseAudioFile.cpp */; };
-		B8199B7F278C738F001F43E8 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B65278C7307001F43E8 /* IAudioFile.cpp */; };
-		B8199B80278C7393001F43E8 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B60278C7307001F43E8 /* BaseAudioFile.cpp */; };
-		B8199B81278C7395001F43E8 /* OAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8199B64278C7307001F43E8 /* OAudioFile.cpp */; };
-		B81BF0AA21F3A4C7002C1DA6 /* Buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = B81BF09121F3A4C7002C1DA6 /* Buffer.h */; };
-		B81BF0B421F3A4C7002C1DA6 /* Convolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09421F3A4C7002C1DA6 /* Convolve.cpp */; };
-		B81BF0B521F3A4C7002C1DA6 /* Convolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09421F3A4C7002C1DA6 /* Convolve.cpp */; };
-		B81BF0B621F3A4C7002C1DA6 /* Convolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09421F3A4C7002C1DA6 /* Convolve.cpp */; };
-		B81BF0B721F3A4C7002C1DA6 /* Convolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09421F3A4C7002C1DA6 /* Convolve.cpp */; };
-		B81BF0B821F3A4C7002C1DA6 /* Convolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09421F3A4C7002C1DA6 /* Convolve.cpp */; };
-		B81BF0B921F3A4C7002C1DA6 /* Convolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09421F3A4C7002C1DA6 /* Convolve.cpp */; };
-		B81BF0BA21F3A4C7002C1DA6 /* Convolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09421F3A4C7002C1DA6 /* Convolve.cpp */; };
-		B81BF0BB21F3A4C7002C1DA6 /* Convolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09421F3A4C7002C1DA6 /* Convolve.cpp */; };
-		B81BF0BC21F3A4C7002C1DA6 /* Convolve.h in Headers */ = {isa = PBXBuildFile; fileRef = B81BF09521F3A4C7002C1DA6 /* Convolve.h */; };
-		B81BF0C721F3A4C7002C1DA6 /* List.h in Headers */ = {isa = PBXBuildFile; fileRef = B81BF09921F3A4C7002C1DA6 /* List.h */; };
-		B81BF0C821F3A4C7002C1DA6 /* Nonlinear.h in Headers */ = {isa = PBXBuildFile; fileRef = B81BF09A21F3A4C7002C1DA6 /* Nonlinear.h */; };
-		B81BF0C921F3A4C7002C1DA6 /* SallenAndKey.h in Headers */ = {isa = PBXBuildFile; fileRef = B81BF09B21F3A4C7002C1DA6 /* SallenAndKey.h */; };
-		B81BF0CC21F3A4C7002C1DA6 /* Waveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09E21F3A4C7002C1DA6 /* Waveform.cpp */; };
-		B81BF0CD21F3A4C7002C1DA6 /* Waveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09E21F3A4C7002C1DA6 /* Waveform.cpp */; };
-		B81BF0CE21F3A4C7002C1DA6 /* Waveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09E21F3A4C7002C1DA6 /* Waveform.cpp */; };
-		B81BF0CF21F3A4C7002C1DA6 /* Waveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09E21F3A4C7002C1DA6 /* Waveform.cpp */; };
-		B81BF0D021F3A4C7002C1DA6 /* Waveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09E21F3A4C7002C1DA6 /* Waveform.cpp */; };
-		B81BF0D121F3A4C7002C1DA6 /* Waveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09E21F3A4C7002C1DA6 /* Waveform.cpp */; };
-		B81BF0D221F3A4C7002C1DA6 /* Waveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09E21F3A4C7002C1DA6 /* Waveform.cpp */; };
-		B81BF0D321F3A4C7002C1DA6 /* Waveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B81BF09E21F3A4C7002C1DA6 /* Waveform.cpp */; };
-		B81BF0D421F3A4C7002C1DA6 /* Waveform.h in Headers */ = {isa = PBXBuildFile; fileRef = B81BF09F21F3A4C7002C1DA6 /* Waveform.h */; };
+		B8C013B12998580D00E4C164 /* oversampling.c in Sources */ = {isa = PBXBuildFile; fileRef = B8C013AF299857FC00E4C164 /* oversampling.c */; };
+		B8C013B22998581200E4C164 /* oversampling.c in Sources */ = {isa = PBXBuildFile; fileRef = B8C013AF299857FC00E4C164 /* oversampling.c */; };
+		B8C013B32998581600E4C164 /* oversampling.c in Sources */ = {isa = PBXBuildFile; fileRef = B8C013AF299857FC00E4C164 /* oversampling.c */; };
+		B8C013B42998581D00E4C164 /* oversampling.c in Sources */ = {isa = PBXBuildFile; fileRef = B8C013AF299857FC00E4C164 /* oversampling.c */; };
+		B8C013B52998582400E4C164 /* oversampling.c in Sources */ = {isa = PBXBuildFile; fileRef = B8C013AF299857FC00E4C164 /* oversampling.c */; };
+		B8C013B62998582700E4C164 /* oversampling.c in Sources */ = {isa = PBXBuildFile; fileRef = B8C013AF299857FC00E4C164 /* oversampling.c */; };
 		B8D0830A231DA78500913E5B /* IPlugProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */; };
 		B8D0830B231DA78900913E5B /* IPlugProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */; };
 		B8D0830C231DA79700913E5B /* IPlugProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */; };
@@ -806,26 +776,6 @@
 		4FFBB94120863E9300DDD0E7 /* IPlugVST3_Parameter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IPlugVST3_Parameter.h; path = ../../../IPlug/VST3/IPlugVST3_Parameter.h; sourceTree = "<group>"; };
 		4FFF72B8214BB71400839091 /* main.rc */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.rc; path = ../resources/main.rc; sourceTree = "<group>"; };
 		52FBBED30D0CF143001C8B8A /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../config.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
-		B8199B2D278C7307001F43E8 /* SIMDSupport.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SIMDSupport.hpp; sourceTree = "<group>"; };
-		B8199B2E278C7307001F43E8 /* WindowFunctions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WindowFunctions.hpp; sourceTree = "<group>"; };
-		B8199B31278C7307001F43E8 /* Interpolation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Interpolation.hpp; sourceTree = "<group>"; };
-		B8199B32278C7307001F43E8 /* Allocator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Allocator.hpp; sourceTree = "<group>"; };
-		B8199B60278C7307001F43E8 /* BaseAudioFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BaseAudioFile.cpp; sourceTree = "<group>"; };
-		B8199B61278C7307001F43E8 /* BaseAudioFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseAudioFile.h; sourceTree = "<group>"; };
-		B8199B62278C7307001F43E8 /* OAudioFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAudioFile.h; sourceTree = "<group>"; };
-		B8199B63278C7307001F43E8 /* IAudioFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IAudioFile.h; sourceTree = "<group>"; };
-		B8199B64278C7307001F43E8 /* OAudioFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OAudioFile.cpp; sourceTree = "<group>"; };
-		B8199B65278C7307001F43E8 /* IAudioFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IAudioFile.cpp; sourceTree = "<group>"; };
-		B8199B66278C7307001F43E8 /* TableReader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TableReader.hpp; sourceTree = "<group>"; };
-		B8199B82278C74D6001F43E8 /* RandomGenerator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RandomGenerator.hpp; sourceTree = "<group>"; };
-		B81BF09121F3A4C7002C1DA6 /* Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer.h; sourceTree = "<group>"; };
-		B81BF09421F3A4C7002C1DA6 /* Convolve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Convolve.cpp; sourceTree = "<group>"; };
-		B81BF09521F3A4C7002C1DA6 /* Convolve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Convolve.h; sourceTree = "<group>"; };
-		B81BF09921F3A4C7002C1DA6 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
-		B81BF09A21F3A4C7002C1DA6 /* Nonlinear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nonlinear.h; sourceTree = "<group>"; };
-		B81BF09B21F3A4C7002C1DA6 /* SallenAndKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SallenAndKey.h; sourceTree = "<group>"; };
-		B81BF09E21F3A4C7002C1DA6 /* Waveform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Waveform.cpp; sourceTree = "<group>"; };
-		B81BF09F21F3A4C7002C1DA6 /* Waveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Waveform.h; sourceTree = "<group>"; };
 		B81BF0DA21F3A588002C1DA6 /* AH_Rand_Seed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AH_Rand_Seed.h; sourceTree = "<group>"; };
 		B81BF0DB21F3A588002C1DA6 /* AH_Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AH_Types.h; sourceTree = "<group>"; };
 		B81BF0DC21F3A588002C1DA6 /* AH_Win_Complex_Math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AH_Win_Complex_Math.h; sourceTree = "<group>"; };
@@ -856,6 +806,10 @@
 		B81BF0FA21F3A588002C1DA6 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		B83F9A2E27962307002D1873 /* IGraphicsSkia.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IGraphicsSkia.cpp; sourceTree = "<group>"; };
 		B83F9A2F27962307002D1873 /* IGraphicsSkia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGraphicsSkia.h; sourceTree = "<group>"; };
+		B8C013AD299857FC00E4C164 /* FileScheme.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FileScheme.hpp; sourceTree = "<group>"; };
+		B8C013AE299857FC00E4C164 /* FileList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FileList.hpp; sourceTree = "<group>"; };
+		B8C013AF299857FC00E4C164 /* oversampling.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = oversampling.c; sourceTree = "<group>"; };
+		B8C013B0299857FC00E4C164 /* oversampling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = oversampling.h; sourceTree = "<group>"; };
 		B8F3700923D11B3E00291018 /* pluginfactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pluginfactory.cpp; sourceTree = "<group>"; };
 		B8F3700B23D11B5700291018 /* commoniids.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = commoniids.cpp; sourceTree = "<group>"; };
 		B8F3700D23D11B7500291018 /* IPlugVST3_ControllerBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IPlugVST3_ControllerBase.h; path = ../../../IPlug/VST3/IPlugVST3_ControllerBase.h; sourceTree = "<group>"; };
@@ -1678,45 +1632,13 @@
 			name = WDL;
 			sourceTree = "<group>";
 		};
-		B81999FF278C7306001F43E8 /* HISSTools_Library */ = {
-			isa = PBXGroup;
-			children = (
-				B8199B5F278C7307001F43E8 /* AudioFile */,
-				B8199B32278C7307001F43E8 /* Allocator.hpp */,
-				B8199B31278C7307001F43E8 /* Interpolation.hpp */,
-				B8199B82278C74D6001F43E8 /* RandomGenerator.hpp */,
-				B8199B2D278C7307001F43E8 /* SIMDSupport.hpp */,
-				B8199B66278C7307001F43E8 /* TableReader.hpp */,
-				B8199B2E278C7307001F43E8 /* WindowFunctions.hpp */,
-			);
-			path = HISSTools_Library;
-			sourceTree = "<group>";
-		};
-		B8199B5F278C7307001F43E8 /* AudioFile */ = {
-			isa = PBXGroup;
-			children = (
-				B8199B61278C7307001F43E8 /* BaseAudioFile.h */,
-				B8199B60278C7307001F43E8 /* BaseAudioFile.cpp */,
-				B8199B63278C7307001F43E8 /* IAudioFile.h */,
-				B8199B65278C7307001F43E8 /* IAudioFile.cpp */,
-				B8199B62278C7307001F43E8 /* OAudioFile.h */,
-				B8199B64278C7307001F43E8 /* OAudioFile.cpp */,
-			);
-			path = AudioFile;
-			sourceTree = "<group>";
-		};
 		B81BF08E21F3A4C6002C1DA6 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				B81999FF278C7306001F43E8 /* HISSTools_Library */,
-				B81BF09121F3A4C7002C1DA6 /* Buffer.h */,
-				B81BF09921F3A4C7002C1DA6 /* List.h */,
-				B81BF09A21F3A4C7002C1DA6 /* Nonlinear.h */,
-				B81BF09B21F3A4C7002C1DA6 /* SallenAndKey.h */,
-				B81BF09F21F3A4C7002C1DA6 /* Waveform.h */,
-				B81BF09E21F3A4C7002C1DA6 /* Waveform.cpp */,
-				B81BF09521F3A4C7002C1DA6 /* Convolve.h */,
-				B81BF09421F3A4C7002C1DA6 /* Convolve.cpp */,
+				B8C013AE299857FC00E4C164 /* FileList.hpp */,
+				B8C013AD299857FC00E4C164 /* FileScheme.hpp */,
+				B8C013AF299857FC00E4C164 /* oversampling.c */,
+				B8C013B0299857FC00E4C164 /* oversampling.h */,
 			);
 			name = source;
 			path = ../source;
@@ -1813,7 +1735,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B81BF0C721F3A4C7002C1DA6 /* List.h in Headers */,
 				4FC3EFF02086CE5700BD11FA /* eventlist.h in Headers */,
 				4FC3EFF42086CE5700BD11FA /* module.h in Headers */,
 				4F03A58C20A4621100EBDFFB /* IGraphicsNanoVG.h in Headers */,
@@ -1822,22 +1743,17 @@
 				4FC3EFF82086CE5700BD11FA /* optional.h in Headers */,
 				4FC3F0012086CE5700BD11FA /* uid.h in Headers */,
 				4F03A5B620A4621100EBDFFB /* IGraphics_select.h in Headers */,
-				B81BF0D421F3A4C7002C1DA6 /* Waveform.h in Headers */,
 				4F03A5AB20A4621100EBDFFB /* IGraphics_include_in_plug_hdr.h in Headers */,
 				4FC3EFF22086CE5700BD11FA /* hostclasses.h in Headers */,
 				4FCE29D621D6ED70004BCBA1 /* ITextEntryControl.h in Headers */,
 				4F03A5D420A4621100EBDFFB /* IGraphicsUtilities.h in Headers */,
-				B81BF0BC21F3A4C7002C1DA6 /* Convolve.h in Headers */,
-				B81BF0C821F3A4C7002C1DA6 /* Nonlinear.h in Headers */,
 				4F03A5AA20A4621100EBDFFB /* IGraphicsLiveEdit.h in Headers */,
 				4F6369EA20A466470022C370 /* IControl.h in Headers */,
 				4F63696520A463090022C370 /* IVKeyboardControl.h in Headers */,
 				4F03A5D520A4621100EBDFFB /* IGraphicsConstants.h in Headers */,
 				4FF3205820B2BFAB00269268 /* IPlugPaths.h in Headers */,
 				4F03A5B720A4621100EBDFFB /* IGraphics.h in Headers */,
-				B81BF0AA21F3A4C7002C1DA6 /* Buffer.h in Headers */,
 				B8F5C9FF228825F000BAA6F8 /* IGraphicsCoreText.h in Headers */,
-				B81BF0C921F3A4C7002C1DA6 /* SallenAndKey.h in Headers */,
 				4F03A5D220A4621100EBDFFB /* IGraphicsPopupMenu.h in Headers */,
 				4FC3EFFE2086CE5700BD11FA /* processdata.h in Headers */,
 				4FC3F0002086CE5700BD11FA /* stringconvert.h in Headers */,
@@ -2347,8 +2263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8199B77278C736C001F43E8 /* IAudioFile.cpp in Sources */,
-				B8199B76278C7369001F43E8 /* BaseAudioFile.cpp in Sources */,
+				B8C013B22998581200E4C164 /* oversampling.c in Sources */,
 				4FDAC0EB207D76C600299363 /* IPlugTimer.cpp in Sources */,
 				4F63696E20A463090022C370 /* IControls.cpp in Sources */,
 				4F03A5AD20A4621100EBDFFB /* IGraphics.cpp in Sources */,
@@ -2364,8 +2279,6 @@
 				4F8D9707209EF5AC006E2A11 /* HISSToolsConvolve.cpp in Sources */,
 				4F78D9BB13B63BA50032E0F3 /* IPlugAPIBase.cpp in Sources */,
 				4FB1F59020E4B010004157C8 /* IGraphicsMac_view.mm in Sources */,
-				B81BF0B521F3A4C7002C1DA6 /* Convolve.cpp in Sources */,
-				B81BF0CD21F3A4C7002C1DA6 /* Waveform.cpp in Sources */,
 				4F35DEAE207E5C5A00867D8F /* IPlugPluginBase.cpp in Sources */,
 				4F78D9C813B63BA50032E0F3 /* IPlugParameter.cpp in Sources */,
 				B8D0830B231DA78900913E5B /* IPlugProcessor.cpp in Sources */,
@@ -2376,13 +2289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8199B81278C7395001F43E8 /* OAudioFile.cpp in Sources */,
-				B8199B80278C7393001F43E8 /* BaseAudioFile.cpp in Sources */,
+				B8C013B52998582400E4C164 /* oversampling.c in Sources */,
 				4FB1F59520E4B015004157C8 /* IGraphicsMac_view.mm in Sources */,
 				4F03A5B120A4621100EBDFFB /* IGraphics.cpp in Sources */,
 				4FAEBD30209DAF76002E6392 /* IPlugAUv3.mm in Sources */,
 				4F6369E220A464BB0022C370 /* IGraphicsNanoVG_src.m in Sources */,
-				B81BF0D221F3A4C7002C1DA6 /* Waveform.cpp in Sources */,
 				4F6369F020A466470022C370 /* IControl.cpp in Sources */,
 				4F63697220A463090022C370 /* IControls.cpp in Sources */,
 				4FAEBD34209DAF87002E6392 /* IPlugParameter.cpp in Sources */,
@@ -2395,7 +2306,6 @@
 				4FCE29DC21D6ED70004BCBA1 /* ITextEntryControl.cpp in Sources */,
 				4FAEBD35209DAF87002E6392 /* IPlugTimer.cpp in Sources */,
 				4F5F344620C0226200487201 /* IPlugPaths.mm in Sources */,
-				B81BF0BA21F3A4C7002C1DA6 /* Convolve.cpp in Sources */,
 				4FAEBD32209DAF76002E6392 /* IPlugAUViewController.mm in Sources */,
 				4FB1F58E20E4B008004157C8 /* IGraphicsMac.mm in Sources */,
 				4FAEBD33209DAF87002E6392 /* IPlugAPIBase.cpp in Sources */,
@@ -2407,13 +2317,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8199B7B278C737E001F43E8 /* IAudioFile.cpp in Sources */,
-				B8199B7A278C7379001F43E8 /* BaseAudioFile.cpp in Sources */,
+				B8C013B42998581D00E4C164 /* oversampling.c in Sources */,
 				4F03A5AF20A4621100EBDFFB /* IGraphics.cpp in Sources */,
 				4F6369E020A464BB0022C370 /* IGraphicsNanoVG_src.m in Sources */,
 				4F6369EE20A466470022C370 /* IControl.cpp in Sources */,
 				4F1A528C205D916F00CF2908 /* IPlugAU.cpp in Sources */,
-				B81BF0CF21F3A4C7002C1DA6 /* Waveform.cpp in Sources */,
 				4F63697020A463090022C370 /* IControls.cpp in Sources */,
 				4FD52131202A5B9B00A4D22A /* IPlugAU_view_factory.mm in Sources */,
 				4F8C10E320BA2796006320CD /* IGraphicsEditorDelegate.cpp in Sources */,
@@ -2426,7 +2334,6 @@
 				4FCE29DA21D6ED70004BCBA1 /* ITextEntryControl.cpp in Sources */,
 				4F5F344420C0226200487201 /* IPlugPaths.mm in Sources */,
 				4F35DEB0207E5C5A00867D8F /* IPlugPluginBase.cpp in Sources */,
-				B81BF0B721F3A4C7002C1DA6 /* Convolve.cpp in Sources */,
 				4F78D95C13B63BA50032E0F3 /* IPlugParameter.cpp in Sources */,
 				4FB1F58C20E4B006004157C8 /* IGraphicsMac.mm in Sources */,
 				4F3862F22014BBEC0009F402 /* HISSToolsConvolve.cpp in Sources */,
@@ -2438,15 +2345,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8199B79278C7373001F43E8 /* IAudioFile.cpp in Sources */,
-				B8199B78278C736F001F43E8 /* BaseAudioFile.cpp in Sources */,
+				B8C013B32998581600E4C164 /* oversampling.c in Sources */,
 				4F81597C205D50EB00393585 /* baseiids.cpp in Sources */,
 				4FDAC0EC207D76C600299363 /* IPlugTimer.cpp in Sources */,
-				B81BF0CE21F3A4C7002C1DA6 /* Waveform.cpp in Sources */,
 				4F3862F12014BBEC0009F402 /* HISSToolsConvolve.cpp in Sources */,
 				B8F3700C23D11B5700291018 /* commoniids.cpp in Sources */,
 				B8F3700A23D11B4000291018 /* pluginfactory.cpp in Sources */,
-				B81BF0B621F3A4C7002C1DA6 /* Convolve.cpp in Sources */,
 				B8F3701023D11B7800291018 /* IPlugVST3_ProcessorBase.cpp in Sources */,
 				4F63696F20A463090022C370 /* IControls.cpp in Sources */,
 				4F815973205D50EB00393585 /* vstinitiids.cpp in Sources */,
@@ -2498,10 +2402,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8199B7D278C7385001F43E8 /* IAudioFile.cpp in Sources */,
-				B8199B7C278C7381001F43E8 /* BaseAudioFile.cpp in Sources */,
-				B81BF0D021F3A4C7002C1DA6 /* Waveform.cpp in Sources */,
-				B81BF0B821F3A4C7002C1DA6 /* Convolve.cpp in Sources */,
 				4F3862F32014BBEC0009F402 /* HISSToolsConvolve.cpp in Sources */,
 				4F35DEB1207E5C5A00867D8F /* IPlugPluginBase.cpp in Sources */,
 				4F9A82FB213DE80400BE63A4 /* IPopupMenuControl.cpp in Sources */,
@@ -2533,7 +2433,6 @@
 				4F03A5B220A4621100EBDFFB /* IGraphics.cpp in Sources */,
 				4F6369E320A464BB0022C370 /* IGraphicsNanoVG_src.m in Sources */,
 				4FB1F58F20E4B009004157C8 /* IGraphicsMac.mm in Sources */,
-				B81BF0BB21F3A4C7002C1DA6 /* Convolve.cpp in Sources */,
 				4F6369F120A466470022C370 /* IControl.cpp in Sources */,
 				4F8C10E620BA2796006320CD /* IGraphicsEditorDelegate.cpp in Sources */,
 				B8F5C9FE228825F000BAA6F8 /* IGraphicsCoreText.mm in Sources */,
@@ -2543,7 +2442,6 @@
 				4FCE29DD21D6ED70004BCBA1 /* ITextEntryControl.cpp in Sources */,
 				4FB1F59620E4B017004157C8 /* IGraphicsMac_view.mm in Sources */,
 				4F9A82FD213DE80400BE63A4 /* IPopupMenuControl.cpp in Sources */,
-				B81BF0D321F3A4C7002C1DA6 /* Waveform.cpp in Sources */,
 				4F472103209B294400A0A0A8 /* IPlugVST3_Controller.cpp in Sources */,
 				4FC3EFCB2086C27800BD11FA /* HISSToolsConvolve.cpp in Sources */,
 			);
@@ -2553,19 +2451,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8199B75278C7366001F43E8 /* IAudioFile.cpp in Sources */,
-				B8199B74278C7362001F43E8 /* BaseAudioFile.cpp in Sources */,
 				4F10D3D9203A6719003EF82A /* RtMidi.cpp in Sources */,
 				4F6369DD20A464BB0022C370 /* IGraphicsNanoVG_src.m in Sources */,
 				4F6369EB20A466470022C370 /* IControl.cpp in Sources */,
 				4FD16D0513B634AA001D0217 /* swell-dlg.mm in Sources */,
+				B8C013B12998580D00E4C164 /* oversampling.c in Sources */,
 				4FD16D1613B634D2001D0217 /* swell-ini.cpp in Sources */,
 				4F5C5F6921BED05B00E024A7 /* swellappmain.mm in Sources */,
 				4FD16D3A13B63582001D0217 /* swell-kb.mm in Sources */,
 				4FCE29D721D6ED70004BCBA1 /* ITextEntryControl.cpp in Sources */,
 				4F5F344120C0226200487201 /* IPlugPaths.mm in Sources */,
 				4FD16D3C13B6358C001D0217 /* swell-miscdlg.mm in Sources */,
-				B81BF0CC21F3A4C7002C1DA6 /* Waveform.cpp in Sources */,
 				4FD16D3E13B63595001D0217 /* swell-menu.mm in Sources */,
 				4FB1F59120E4B011004157C8 /* IGraphicsMac_view.mm in Sources */,
 				4F5C5F6B21BED08700E024A7 /* swell-appstub.mm in Sources */,
@@ -2576,7 +2472,6 @@
 				4F1A5282205D913300CF2908 /* IPlugAPP.cpp in Sources */,
 				4F03A5AC20A4621100EBDFFB /* IGraphics.cpp in Sources */,
 				4F2EA978203A50EA008E4850 /* IPlugAPP_dialog.cpp in Sources */,
-				B81BF0B421F3A4C7002C1DA6 /* Convolve.cpp in Sources */,
 				4FAFFE5821495A4800A6E72D /* RtAudio.cpp in Sources */,
 				4F690C9B203A345100A4A13E /* IPlugAPP_main.cpp in Sources */,
 				B8F5C9F8228825F000BAA6F8 /* IGraphicsCoreText.mm in Sources */,
@@ -2598,12 +2493,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8199B7F278C738F001F43E8 /* IAudioFile.cpp in Sources */,
-				B8199B7E278C738C001F43E8 /* BaseAudioFile.cpp in Sources */,
+				B8C013B62998582700E4C164 /* oversampling.c in Sources */,
 				4FFBB90520863B0E00DDD0E7 /* baseiids.cpp in Sources */,
 				4FFBB90620863B0E00DDD0E7 /* IPlugTimer.cpp in Sources */,
-				B81BF0D121F3A4C7002C1DA6 /* Waveform.cpp in Sources */,
-				B81BF0B921F3A4C7002C1DA6 /* Convolve.cpp in Sources */,
 				4FFBB90720863B0E00DDD0E7 /* HISSToolsConvolve.cpp in Sources */,
 				4FFBB90920863B0E00DDD0E7 /* vstinitiids.cpp in Sources */,
 				4FFBB90A20863B0E00DDD0E7 /* fdebug.cpp in Sources */,
