@@ -337,7 +337,6 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
     WDL_String filePath("");
     WDL_String fileName("");
     
-    const char *fileNameCString;
     char chanInfo[32];
     
     bool mute;
@@ -356,9 +355,8 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
     
     if (xPos > -1)
     {
-        mFiles.getFile(xPos, yPos, &fileNameCString, &chan, &mute);
+        mFiles.getFile(xPos, yPos, filePath, &chan, &mute);
         mFiles.getInfo(xPos, yPos, &frames, &sampleRate, &numChans);
-        filePath.Set(fileNameCString);
         scheme.getFileFromPath(&fileName, &filePath);
     }
     else
@@ -371,15 +369,15 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
 
     for (auto it = mFiles.begin(); it != mFiles.end(); it++)
     {
-        const char *filePath;
+        WDL_String filePath;
         int inChan = it.getIn();
         int outChan = it.getOut();
         
         bool channelActive = inChan < mCurrentIChans && outChan < mCurrentOChans;
         
-        it->getFile(&filePath, &chan, &mute);
+        it->getFile(filePath, &chan, &mute);
         
-        int state = channelActive ? (mute ? 3 : filePath[0] ? 2 : 1) : 0;
+        int state = channelActive ? (mute ? 3 : filePath.GetLength() ? 2 : 1) : 0;
         matrix->SetState(inChan, outChan, state);
     }
     
@@ -394,7 +392,7 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
 
 void HISSToolsConvolve::LoadIRs()
 {
-    const char *filePath;
+    WDL_String filePath;
     bool mute;
     int chan;
         
@@ -407,12 +405,12 @@ void HISSToolsConvolve::LoadIRs()
         
         bool channelActive = inChan < mCurrentIChans && outChan < mCurrentOChans;
                 
-        if (!it->getFile(&filePath, &chan, &mute, true) || !channelActive)
+        if (!it->getFile(filePath, &chan, &mute, true) || !channelActive)
             continue;
                 
         if (!mute)
         {
-            HISSTools::IAudioFile file(filePath);
+            HISSTools::IAudioFile file(filePath.Get());
             
             if (file.isOpen() && !file.getErrorFlags())
             {
@@ -542,7 +540,7 @@ bool HISSToolsConvolve::SerializeState(IByteChunk& chunk) const
 {
     //IMutexLock lock(this);
     
-    const char *filePath;
+    WDL_String filePath;
     bool mute;
     int chan;
     
@@ -556,13 +554,13 @@ bool HISSToolsConvolve::SerializeState(IByteChunk& chunk) const
     
     for (auto it = mFiles.cbegin(); it != mFiles.cend(); it++)
     {
-        it->getFile(&filePath, &chan, &mute);
+        it->getFile(filePath, &chan, &mute);
         
         if (chunk.Put(&mute) <= 0)
             return false;
         if (chunk.Put(&chan) <= 0)
             return false;
-        if (chunk.PutStr(filePath) <= 0)
+        if (chunk.PutStr(filePath.Get()) <= 0)
             return false;
     }
     

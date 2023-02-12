@@ -45,10 +45,10 @@ public:
             mLock.release();
         }
         
-        bool getFile(const char **filePath, int *chan, bool *mute, bool clean = false) const
+        bool getFile(WDL_String& path, int *chan, bool *mute, bool clean = false) const
         {
             mLock.acquire();
-            *filePath = mFilePath.Get();
+            path.Set(mFilePath.Get());
             *chan = mChan;
             *mute = mMute;
             bool slotDirty = mDirty;
@@ -186,9 +186,9 @@ public:
         get(input, output).setFile(filePath, chan, mute);
 	}
 	
-	bool getFile(int input, int output, const char **filePath, int *chan, bool *mute, bool clean = false) const
+	bool getFile(int input, int output, WDL_String &path, int *chan, bool *mute, bool clean = false) const
 	{
-		return get(input, output).getFile(filePath, chan, mute, clean);
+		return get(input, output).getFile(path, chan, mute, clean);
 	}
 	
 	void setInfo(int input, int output, int frames, int sampleRate, int numChans)
