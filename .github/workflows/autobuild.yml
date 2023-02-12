@@ -117,7 +117,7 @@ jobs:
         with:
           repository: 'AlexHarker/HISSTools_PluginLib'
           path: "iPlug2/Projects/HISSTools_PluginLib"
-      - name: Download windows builds
+      - name: Download Windows Builds
         if: false
         uses: actions/download-artifact@v3
         with:
@@ -148,7 +148,7 @@ jobs:
         run: xcodebuild -project 'iPlug2/Projects/HISSTools_Convolve/projects/HISSToolsConvolve-macOS.xcodeproj' -scheme 'Finished Plugs' -destination 'platform=OS X,arch=x86_64' -configuration Deployment -quiet build CODE_SIGNING_ALLOWED=YES  
       - name: Zip All
         run: iPlug2/Projects/HISSTools_Convolve/scripts/dist-zip.sh
-      - name: Make release
+      - name: Make Release
         uses: "softprops/action-gh-release@v1"
         with:
           prerelease: ${{ endsWith(github.ref_name, 'rc') }}
