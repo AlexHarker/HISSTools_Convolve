@@ -180,8 +180,8 @@ HISSToolsConvolve::HISSToolsConvolve(const InstanceInfo &info)
 , mConvolver(8, 8, kLatencyZero)
 , mIVUSender(kTagIMeter)
 , mOVUSender(kTagOMeter)
-, mILEDSender(kTagILEDs)
-, mOLEDSender(kTagOLEDs)
+, mILEDSender(kTagILEDs, true)
+, mOLEDSender(kTagOLEDs, false)
 {
     TRACE;
     

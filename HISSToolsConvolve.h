@@ -42,7 +42,7 @@ class LEDSender
   
 public:
   
-  LEDSender(int controlTag) : mControlTag(controlTag), mQueue(32) {}
+  LEDSender(int controlTag, bool horizontal) : mControlTag(controlTag), mHorizontal(horizontal), mQueue(32) {}
   
   void Set(const std::array<int, MAX_CHANNELS>& states)
   {
@@ -58,8 +58,16 @@ public:
 
       HISSTools_Matrix *matrix = g->GetControlWithTag(mControlTag)->As<HISSTools_Matrix>();
       
-      for (int i = 0 ; i < MAX_CHANNELS; i++)
-        matrix->SetState(i, 0, v.mStates[i]);
+      if (mHorizontal)
+      {
+        for (int i = 0 ; i < MAX_CHANNELS; i++)
+          matrix->SetState(i, 0, v.mStates[i]);
+      }
+      else
+      {
+        for (int i = 0 ; i < MAX_CHANNELS; i++)
+          matrix->SetState(0, i, v.mStates[i]);
+      }
     }
   }
   
@@ -74,6 +82,7 @@ public:
 private:
   
   int mControlTag;
+  bool mHorizontal;
   IPlugQueue<LEDValues> mQueue;
 };
 
