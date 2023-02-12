@@ -275,14 +275,14 @@ void HISSToolsConvolve::OnReset()
 {
     TRACE;
     //IMutexLock lock(this);
-    
-    CheckConnections();
-    
+        
     mIVUSender.Reset();
     mOVUSender.Reset();
     mILEDSender.Reset();
     mOLEDSender.Reset();
     
+    CheckConnections();
+    GUIUpdateFileDisplay();
     // FIX - Need to empty buffers here.....
 }
 
@@ -347,6 +347,8 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
     int frames = 0;
     int sampleRate = 0;
     
+    HISSTools_Matrix *matrix = GetUI()->GetControlWithTag(kTagMatrix)->As<HISSTools_Matrix>();;
+
     FileScheme scheme;
     
     int xPos = GetUI()->GetControlWithTag(kTagMatrix)->As<HISSTools_Matrix>()->getXPos();
@@ -360,7 +362,26 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
         scheme.getFileFromPath(&fileName, &filePath);
     }
     else
+    {
         fileName.Set(&mBaseName);
+        matrix->SetHilite(false);
+    }
+    
+    // FIX - Decide on how to display non active channels where something should be loaded
+
+    for (auto it = mFiles.begin(); it != mFiles.end(); it++)
+    {
+        const char *filePath;
+        int inChan = it.getIn();
+        int outChan = it.getOut();
+        
+        bool channelActive = inChan < mCurrentIChans && outChan < mCurrentOChans;
+        
+        it->getFile(&filePath, &chan, &mute);
+        
+        int state = channelActive ? (mute ? 3 : filePath[0] ? 2 : 1) : 0;
+        matrix->SetState(inChan, outChan, state);
+    }
     
     if (numChans)
         sprintf(chanInfo, "%d of %d", chan + 1, numChans);
@@ -376,13 +397,7 @@ void HISSToolsConvolve::LoadIRs()
     const char *filePath;
     bool mute;
     int chan;
-    int result = 0;
-    
-    HISSTools_Matrix *matrix = nullptr;
-    
-    if (GetUI())
-        matrix = GetUI()->GetControlWithTag(kTagMatrix)->As<HISSTools_Matrix>();
-    
+        
     CheckConnections();
     
     for (auto it = mFiles.begin(); it != mFiles.end(); it++)
@@ -391,16 +406,9 @@ void HISSToolsConvolve::LoadIRs()
         int outChan = it.getOut();
         
         bool channelActive = inChan < mCurrentIChans && outChan < mCurrentOChans;
-        
-        // FIX - Decide on how to display non active channels where something should be loaded
-        
+                
         if (!it->getFile(&filePath, &chan, &mute, true) || !channelActive)
-        {
-            if (*filePath == 0 || !channelActive)
-                if (matrix)
-                    matrix->SetState(inChan, outChan, channelActive);
             continue;
-        }
                 
         if (!mute)
         {
@@ -413,23 +421,11 @@ void HISSToolsConvolve::LoadIRs()
                 file.readChannel(audio.data(), file.getFrames(), chan);
                 mConvolver.set(inChan, outChan, audio.data(), file.getFrames(), true);
                 mFiles.setInfo(inChan, outChan, file.getFrames(), file.getSamplingRate(), file.getChannels());
-                
-                result = 1;
             }
         }
         else
-        {
-            result = 2;
             mConvolver.clear(inChan, outChan, false);
-        }
-        
-        //IMutexLock lock(this);
-        if (matrix)
-            matrix->SetState(inChan, outChan, channelActive ? result + 1 : 0);
     }
-    
-    if (matrix)
-        matrix->SetHilite(false);
     
     UpdateBaseName();
     GUIUpdateFileDisplay();
@@ -491,9 +487,7 @@ void HISSToolsConvolve::ProcessBlock(double** inputs, double** outputs, int nFra
     double lastRamp;
     
     std::array<int, MAX_CHANNELS> LEDStates;
-    
-    CheckConnections();
-    
+        
     mIBallistics.calcVULevels(inputs, mCurrentIChans, nFrames);
     mIVUSender.Set(mIBallistics.getPeak(), mIBallistics.getRMS(), mIBallistics.getPeakHold(), mIBallistics.getOver());
     
