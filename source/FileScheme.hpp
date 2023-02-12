@@ -1,10 +1,9 @@
 
-#ifndef __HISSTOOLS_CONVOLVER_FILE_SCHEME__
-#define __HISSTOOLS_CONVOLVER_FILE_SCHEME__
+#pragma once
 
-#include <vector>
-#include <string>
 #include <fstream>
+#include <string>
+#include <vector>
 
 #include "FileList.hpp"
 #include "IAudioFile.h"
@@ -1550,5 +1549,3 @@ public:
 		return FALSE;
 	}
 };
-
-#endif /* __HISSTOOLS_CONVOLVER_FILE_SCHEME__ */

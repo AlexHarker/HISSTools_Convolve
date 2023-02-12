@@ -1,9 +1,8 @@
 
-#ifndef __HISSTOOLS_CONVOLVER_FILE_LIST__
-#define __HISSTOOLS_CONVOLVER_FILE_LIST__
+#pragma once
 
 #include <wdlstring.h>
-#include <HISSTools_Utility/HISSTools_ThreadSafety.hpp>
+#include "HISSTools_ThreadSafety.hpp"
 
 class FileList
 {	
@@ -338,6 +337,3 @@ private:
 	
 	FileSlot *mFileSlots;
 };
-
-
-#endif /* __HISSTOOLS_CONVOLVER_FILE_LIST__ */
