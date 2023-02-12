@@ -79,7 +79,7 @@ jobs:
           name: deploy-win
           path: "win-builds"
   deploy-mac:
-    runs-on: macos-latest
+    runs-on: macos-11
 #   needs: deploy-win
     steps:
       - name: Checkout iPlug2
