@@ -274,6 +274,7 @@ void HISSToolsConvolve::OnReset()
     mOLEDSender.Reset();
     
     CheckConnections();
+    LoadIRs();
     GUIUpdateFileDisplay();
     // FIX - Need to empty buffers here.....
 }
@@ -393,7 +394,7 @@ void HISSToolsConvolve::LoadIRs()
         
         bool channelActive = inChan < mCurrentIChans && outChan < mCurrentOChans;
                 
-        if (!it->getFile(filePath, &chan, &mute, true) || !channelActive)
+        if (!channelActive || !it->getFile(filePath, &chan, &mute, true))
             continue;
                 
         if (!mute)
