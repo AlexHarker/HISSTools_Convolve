@@ -240,6 +240,7 @@ void HISSToolsConvolve::LayoutUI(IGraphics* pGraphics)
 {
     if (!pGraphics->NControls())
     {
+        pGraphics->LoadFont("Arial Bold", "Arial", ETextStyle::Bold);
         IColor bgrb = IColor(255, 185, 195, 205);
         
         pGraphics->AttachControl(new HISSTools_CFileSelector(this, 110, 205, 150, 0, EFileAction::Open, "", "wav aif aiff aifc", "label"));
