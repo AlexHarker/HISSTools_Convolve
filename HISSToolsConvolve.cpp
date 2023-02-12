@@ -244,8 +244,8 @@ void HISSToolsConvolve::LayoutUI(IGraphics* pGraphics)
         IColor bgrb = IColor(255, 185, 195, 205);
         
         pGraphics->AttachControl(new HISSTools_CFileSelector(this, 110, 205, 150, 0, EFileAction::Open, "", "wav aif aiff aifc", "label"));
-        pGraphics->AttachControl(new HISSTools_TextBlock(75, 250, 150, 20, "", kHAlignLeft, kVAlignCenter, "small"));
-        pGraphics->AttachControl(new HISSTools_TextBlock(75, 270, 50, 20, "", kHAlignLeft, kVAlignCenter, "small"));
+        pGraphics->AttachControl(new HISSTools_TextBlock(75, 250, 150, 20, "", kHAlignLeft, kVAlignCenter, "small"), kTagFileName);
+        pGraphics->AttachControl(new HISSTools_TextBlock(75, 270, 50, 20, "", kHAlignLeft, kVAlignCenter, "small"), kTagFileChan);
         
         pGraphics->AttachControl(new HISSTools_Panel(65, 10, 210, 170));
         pGraphics->AttachControl(new HISSTools_Panel(65, 190, 210, 280, "tight"));
@@ -255,12 +255,12 @@ void HISSToolsConvolve::LayoutUI(IGraphics* pGraphics)
         pGraphics->AttachControl(new HISSTools_Dial(kWetGain, 175, 50, "green"));
         
         pGraphics->AttachControl(new HISSTools_FileMatrix(this, 90, 315, 8, 8), kTagMatrix);
-        pGraphics->AttachControl(new HISSTools_Matrix(kNoParameter, 91.5, 298, 8, 1, "round VU_Leds"));
-        pGraphics->AttachControl(new HISSTools_Matrix(kNoParameter, 236, 316.5, 1, 8, "round VU_Leds"));
+        pGraphics->AttachControl(new HISSTools_Matrix(kNoParameter, 91.5, 298, 8, 1, "round VU_Leds"), kTagILEDs);
+        pGraphics->AttachControl(new HISSTools_Matrix(kNoParameter, 236, 316.5, 1, 8, "round VU_Leds"), kTagOLEDs);
         //mOLEDs = new HISSTools_Matrix(*this, -1, &mVecDraw, 28, 226.5, 1, 8, "round VU_Leds");
 
-        pGraphics->AttachControl(new HISSTools_VUMeter(15, 10, 40, 460));
-        pGraphics->AttachControl(new HISSTools_VUMeter(285, 10, 40, 460, true));
+        pGraphics->AttachControl(new HISSTools_VUMeter(15, 10, 40, 460), kTagIMeter);
+        pGraphics->AttachControl(new HISSTools_VUMeter(285, 10, 40, 460, true), kTagOMeter);
         //mIMeter = new HISSTools_MeterTest(230, 130, 400, 40);
         //mOMeter = new HISSTools_MeterTest(230, 190, 400, 40);
         
