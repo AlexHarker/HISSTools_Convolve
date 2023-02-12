@@ -47,51 +47,51 @@ private:
         return mPlug->IsChannelConnected(kInput, chan);
     }
     
-    void reportToPlug() override
+    void reportToPlug(int xPos, int yPos, const IMouseMod& mod, MousingAction action, float wheel) override
     {
         WDL_String path, tempStr;
 
         mPlug->GUIUpdateFileDisplay();
         
-        switch (mMousing)
+        switch (action)
         {
             case kMouseDown:
                 
-                if (mXPos > -1 && IsChannelConnected(mXPos) && IsChannelConnected(mYPos))
+                if (xPos > -1 && IsChannelConnected(xPos) && IsChannelConnected(yPos))
                 {
-                    if (mPMod.A)
+                    if (mod.A)
                         break;
                     
-                    if (mPMod.S)
+                    if (mod.S)
                     {
-                        mPlug->IncrementChan(mXPos, mYPos);
+                        mPlug->IncrementChan(xPos, yPos);
                         break;
                     }
                     
-                    mPlug->FlipMute(mXPos, mYPos);
+                    mPlug->FlipMute(xPos, yPos);
                     break;
                     
                 case kMouseDblClick:
                     
-                    if (mXPos > -1 && IsChannelConnected(mXPos) && IsChannelConnected(mYPos))
+                    if (xPos > -1 && IsChannelConnected(xPos) && IsChannelConnected(yPos))
                     {
-                        if (mPMod.A)
+                        if (mod.A)
                         {
-                            mPlug->SetFile(mXPos, mYPos, "");
+                            mPlug->SetFile(xPos, yPos, "");
                             break;
                         }
                         
-                        unsigned char currentState = GetState(mXPos, mYPos);
-                        SetState(mXPos, mYPos, 1);
+                        unsigned char currentState = GetState(xPos, yPos);
+                        SetState(xPos, yPos, 1);
                         GetUI()->PromptForFile(tempStr, path, EFileAction::Open,  "wav aif aiff aifc");
                         
                         if (path.GetLength())
                         {
-                            mPlug->SetFile(mXPos, mYPos, path.Get());
+                            mPlug->SetFile(xPos, yPos, path.Get());
                         }
                         else
                         {
-                            SetState(mXPos, mYPos, currentState);
+                            SetState(xPos, yPos, currentState);
                             SetHilite(false);
                         }
                     }
@@ -100,7 +100,7 @@ private:
                 
             case kMouseOver:
                 
-                if (mXPos > -1 && IsChannelConnected(mXPos) && IsChannelConnected(mYPos))
+                if (xPos > -1 && IsChannelConnected(xPos) && IsChannelConnected(yPos))
                     SetHilite(true);
                 
                 break;
@@ -150,21 +150,21 @@ void HISSToolsConvolve::SelectFile(const char *file)
     SetEvent(mLoadEvent);
 }
 
-void HISSToolsConvolve::IncrementChan(int x, int y)
+void HISSToolsConvolve::IncrementChan(int xPos, int yPos)
 {
-    if (mFiles.incrementChan(x, y))
+    if (mFiles.incrementChan(xPos, yPos))
         SetEvent(mLoadEvent);
 }
 
-void HISSToolsConvolve::FlipMute(int x, int y)
+void HISSToolsConvolve::FlipMute(int xPos, int yPos)
 {
-    if (mFiles.flipMute(x, y))
+    if (mFiles.flipMute(xPos, yPos))
         SetEvent(mLoadEvent);
 }
 
-void HISSToolsConvolve::SetFile(int x, int y, const char *path)
+void HISSToolsConvolve::SetFile(int xPos, int yPos, const char *path)
 {
-    mFiles.setFile(mXPos, mYPos, path);
+    mFiles.setFile(xPos, yPos, path);
     SetEvent(mLoadEvent);
 }
 
@@ -196,9 +196,6 @@ HISSToolsConvolve::HISSToolsConvolve(const InstanceInfo &info)
     
     // Allocate Memory
             
-    mXPos = -1;
-    mYPos = -1;
-    
     mCurrentIChans = 0;
     mCurrentOChans = 0;
     
@@ -352,10 +349,13 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
     
     FileScheme scheme;
     
-    if (mXPos > -1)
+    int xPos = GetUI()->GetControlWithTag(kTagMatrix)->As<HISSTools_Matrix>()->getXPos();
+    int yPos = GetUI()->GetControlWithTag(kTagMatrix)->As<HISSTools_Matrix>()->getYPos();
+    
+    if (xPos > -1)
     {
-        mFiles.getFile(mXPos, mYPos, &fileNameCString, &chan, &mute);
-        mFiles.getInfo(mXPos, mYPos, &frames, &sampleRate, &numChans);
+        mFiles.getFile(xPos, yPos, &fileNameCString, &chan, &mute);
+        mFiles.getInfo(xPos, yPos, &frames, &sampleRate, &numChans);
         filePath.Set(fileNameCString);
         scheme.getFileFromPath(&fileName, &filePath);
     }

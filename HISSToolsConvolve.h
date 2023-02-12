@@ -115,9 +115,9 @@ public:
 //  bool IsOutChannelConnected(int idx) { return IsChannelConnected(kOutput, idx); }
 
   void SelectFile(const char *file);
-  void IncrementChan(int x, int y);
-  void FlipMute(int x, int y);
-  void SetFile(int x, int y, const char *path);
+  void IncrementChan(int xPos, int yPos);
+  void FlipMute(int xPos, int yPos);
+  void SetFile(int xPos, int yPos, const char *path);
   
 private:
   
@@ -152,9 +152,6 @@ private:
   int mOutputSelect;
   int mCurrentIChans;
   int mCurrentOChans;
-  
-  int mXPos;
-  int mYPos;
   
   // File Info
   
