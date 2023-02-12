@@ -151,7 +151,7 @@ jobs:
       - name: Make release
         uses: "softprops/action-gh-release@v1"
         with:
-          prerelease: ${{endsWith(github.ref_name, "RC")}}
+          prerelease: ${{ endsWith(github.ref_name, 'rc') }}
           fail_on_unmatched_files: true
           files: iPlug2/Projects/HISSTools_Convolve/build-mac/HISSTools_Convolve.zip
           target_commitish: ${{ github.sha }}
