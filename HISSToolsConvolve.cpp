@@ -121,21 +121,21 @@ private:
 //////////////////////////////////////////////// LOADING THREAD ////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-DWORD LoadingThread(LPVOID ConvPlugParam)
+DWORD LoadingThread(LPVOID plugParam)
 {
-    HISSToolsConvolve *ConvPlug = (HISSToolsConvolve *) ConvPlugParam;
+    HISSToolsConvolve *pPlug = (HISSToolsConvolve *) plugParam;
     
-    while (TRUE)
+    while (true)
     {
-        WaitForSingleObject(ConvPlug->mLoadEvent, INFINITE);
+        WaitForSingleObject(pPlug->mLoadEvent, INFINITE);
         
-        if (ConvPlug->mThreadExiting == TRUE)
+        if (pPlug->mThreadExiting == true)
             break;
         
-        ConvPlug->LoadIRs();
+        pPlug->LoadIRs();
     }
     
-    ConvPlug->mThreadExiting = FALSE;
+    pPlug->mThreadExiting = false;
     
     return NULL;
 }
@@ -182,6 +182,9 @@ HISSToolsConvolve::HISSToolsConvolve(const InstanceInfo &info)
 , mOVUSender(kTagOMeter)
 , mILEDSender(kTagILEDs, true)
 , mOLEDSender(kTagOLEDs, false)
+, mCurrentIChans(0)
+, mCurrentOChans(0)
+, mUpdateDisplay(false)
 {
     TRACE;
     
@@ -190,16 +193,6 @@ HISSToolsConvolve::HISSToolsConvolve(const InstanceInfo &info)
     GetParam(kDryGain)->InitDouble("Dry Gain", 0, -60, 20, 0.1, "dB");
     GetParam(kWetGain)->InitDouble("Wet Gain", 0, -60, 20, 0.1, "dB");
     GetParam(kOutputSelect)->InitEnum("Output Select", 2 , 3);
-    
-//    GetParam(kFileSelect)->InitBool("Load Multiple", false, "", IParam::kFlagCannotAutomate);
-//    GetParam(kMatrixControl)->InitBool("Matrix Control", false, "", IParam::kFlagCannotAutomate);
-    
-    // Allocate Memory
-            
-    mCurrentIChans = 0;
-    mCurrentOChans = 0;
-    
-    mBaseName.Set("");
     
     // Threading
     
@@ -254,13 +247,10 @@ void HISSToolsConvolve::LayoutUI(IGraphics* pGraphics)
         pGraphics->AttachControl(new HISSTools_FileMatrix(this, 90, 315, 8, 8), kTagMatrix);
         pGraphics->AttachControl(new HISSTools_Matrix(kNoParameter, 91.5, 298, 8, 1, "round VU_Leds"), kTagILEDs);
         pGraphics->AttachControl(new HISSTools_Matrix(kNoParameter, 236, 316.5, 1, 8, "round VU_Leds"), kTagOLEDs);
-        //mOLEDs = new HISSTools_Matrix(*this, -1, &mVecDraw, 28, 226.5, 1, 8, "round VU_Leds");
 
         pGraphics->AttachControl(new HISSTools_VUMeter(15, 10, 40, 460), kTagIMeter);
         pGraphics->AttachControl(new HISSTools_VUMeter(285, 10, 40, 460, true), kTagOMeter);
-        //mIMeter = new HISSTools_MeterTest(230, 130, 400, 40);
-        //mOMeter = new HISSTools_MeterTest(230, 190, 400, 40);
-        
+  
         pGraphics->AttachControl(new HISSTools_Switch(kOutputSelect, 140, 20, 50, 20, 3));
         
         pGraphics->AttachPanelBackground(bgrb);
@@ -268,6 +258,8 @@ void HISSToolsConvolve::LayoutUI(IGraphics* pGraphics)
         // Finalise Graphics
         
         pGraphics->EnableMouseOver(true);
+        
+        GUIUpdateFileDisplay();
     }
 }
 
@@ -288,18 +280,14 @@ void HISSToolsConvolve::OnReset()
 
 void HISSToolsConvolve::CheckConnections()
 {
-    //unsigned int currentIChans = mCurrentIChans;
-    
+    unsigned int prevIChans = mCurrentIChans;
+    unsigned int prevOChans = mCurrentOChans;
+
     mCurrentIChans = NChannelsConnected(kInput);
     mCurrentOChans = NChannelsConnected(kOutput);
     
-    // FIX - IPlug for these.
-    
-    mCurrentOChans = mCurrentIChans;
-    
-    // FIX - Temp for display niceness...
-    //if (currentIChans != mCurrentIChans)
-    //    LoadIRs();
+    if (prevIChans != mCurrentIChans || prevOChans != mCurrentIChans)
+        mUpdateDisplay = true;
 }
 
 void HISSToolsConvolve::UpdateBaseName()
@@ -432,9 +420,7 @@ void HISSToolsConvolve::LoadIRs()
 void HISSToolsConvolve::OnParamChange(int paramIdx, EParamSource source, int sampleOffset)
 {
     //IMutexLock lock(this);
-        
-    CheckConnections();
-    
+            
     switch (paramIdx)
     {
         case kDryGain:
@@ -483,6 +469,8 @@ void HISSToolsConvolve::ProcessBlock(double** inputs, double** outputs, int nFra
     double targetDryGain = mOutputSelect != 2 ? mTargetDryGain : 0;
     double targetWetGain = mOutputSelect != 0 ? mTargetWetGain : 0;
     double lastRamp;
+    
+    CheckConnections();
     
     std::array<int, MAX_CHANNELS> LEDStates;
         
@@ -649,4 +637,10 @@ void HISSToolsConvolve::OnIdle()
     mOVUSender.UpdateControl(*this);
     mILEDSender.UpdateControl(GetUI());
     mOLEDSender.UpdateControl(GetUI());
+    
+    if (mUpdateDisplay)
+    {
+        mUpdateDisplay = false;
+        GUIUpdateFileDisplay();
+    }
 }

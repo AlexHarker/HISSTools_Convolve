@@ -153,6 +153,8 @@ private:
   int mCurrentIChans;
   int mCurrentOChans;
   
+  bool mUpdateDisplay;
+  
   // File Info
   
   FileList mFiles;
