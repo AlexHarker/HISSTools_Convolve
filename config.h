@@ -25,11 +25,6 @@
 #define PLUG_HEIGHT  480
 #define PLUG_HOST_RESIZE 1
 
-// ProTools stuff
-#define PLUG_MFR_DIGI "AHarker\nAHarker\nAHar\n"
-#define PLUG_NAME_DIGI "AHConvN\nIPEF"
-#define EFFECT_TYPE_DIGI "Effect" // valid options "None" "EQ" "Dynamics" "PitchShift" "Reverb" "Delay" "Modulation" "Harmonic" "NoiseReduction" "Dither" "SoundField" "Effect" instrument determined by PLUG _IS _INST
-
 #define MAX_CHANNELS 8
 #define PLUG_CHANNEL_IO "1-1 2-2 3-3 4-4 5-5 6-6 7-7 8-8"
 #define PLUG_LATENCY 0
@@ -42,23 +37,23 @@
 #define PLUG_HAS_UI 1
 #define PLUG_SHARED_RESOURCES 0
 
-// on MSVC, you must define SA_API in the resource editor preprocessor macros as well as the c++ ones
-#ifdef SA_API
-  #ifndef OS_IOS
-    #include "app_wrapper/app_resource.h"
-  #endif
+#if defined(AAX_API) && !defined(_PIDS_)
+#define _PIDS_
+const int PLUG_TYPE_IDS[2] = {'EFN1', 'EFN2'};
+const int PLUG_TYPE_IDS_AS[2] = {'EFA1', 'EFA2'}; // AudioSuite
 #endif
+#define AAX_PLUG_MFR_STR "AlexHarker\nAlexHarker\nAcme"
+#define AAX_PLUG_NAME_STR "HISSToolsConvolve\nIPEF"
+#define AAX_PLUG_CATEGORY_STR "Effect"
+#define AAX_DOES_AUDIOSUITE 1
 
-// vst3 stuff
-#define MFR_URL "www.olilarkin.co.uk"
-#define MFR_EMAIL "spam@me.com"
-#define EFFECT_TYPE_VST3 kFx
+#define SHARED_RESOURCES_SUBPATH "HISSToolsGranular"
 
-/* kFxAnalyzer, kFxDelay, kFxDistortion, kFxDynamics, kFxEQ, kFxFilter,
-kFx, kFxInstrument, kFxInstrumentExternal, kFxSpatial, kFxGenerator,
-kFxMastering, kFxModulation, kFxPitchShift, kFxRestoration, kFxReverb,
-kFxSurround, kFxTools, kInstrument, kInstrumentDrum, kInstrumentSampler,
-kInstrumentSynth, kInstrumentSynthSample, kInstrumentExternal, kSpatial,
-kSpatialFx, kOnlyRealTime, kOnlyOfflineProcess, kMono, kStereo,
-kSurround
-*/
+#define VST3_SUBCATEGORY "Effect"
+
+#define APP_ENABLE_SYSEX 0
+#define APP_ENABLE_MIDICLOCK 0
+#define APP_ENABLE_ACTIVE_SENSING 0
+#define APP_NUM_CHANNELS 2
+#define APP_N_VECTOR_WAIT 50
+#define APP_MULT 1.0

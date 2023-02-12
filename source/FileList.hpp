@@ -24,18 +24,19 @@ class FileList
 		
 		// Lock
 		
-		HISSTools_SpinLock mLock;
-		bool mDirty;
+		mutable HISSTools_SpinLock mLock;
+        mutable bool mDirty;
 	};
 
 public:
 	
-	class iterator
+    template <typename FL>
+	class iterator_base
 	{	
 		
 	public:
 		
-		iterator(FileList *fileList, int startPos)
+        iterator_base(FL *fileList, int startPos)
 		{
 			mPos = startPos;
 			mFileList = fileList;
@@ -51,37 +52,37 @@ public:
 			return mFileList->convertIndexToOutput(mPos); 
 		}
 		
-		bool operator ==(const iterator &rhs)	
+		bool operator ==(const iterator_base &rhs) const
 		{	
-			return (rhs.mFileList == mFileList && rhs.mPos == mPos) ? TRUE : FALSE; 
+			return (rhs.mFileList == mFileList && rhs.mPos == mPos);
 		}
 		
-		bool operator !=(const iterator &rhs)	
+		bool operator !=(const iterator_base &rhs) const
 		{	
-			return (*this == rhs) == TRUE ? FALSE : TRUE; 
+			return !(*this == rhs);
 		}
 		
-		iterator &operator ++() 
+        iterator_base &operator ++()
 		{	
 			mPos++; 
 			return *this; 
 		}
 		
-		iterator &operator --()
+        iterator_base &operator --()
 		{
 			mPos--; 
 			return *this; 
 		}
 		
-		iterator operator ++(int)
+        iterator_base operator ++(int)
 		{	
-			iterator iResult(mFileList, mPos++); 
+            iterator_base iResult(mFileList, mPos++);
 			return iResult; 
 		}
 		
-		iterator operator --(int)				
+        iterator_base operator --(int)
 		{	
-			iterator iResult(mFileList, mPos--);
+            iterator_base iResult(mFileList, mPos--);
 			return iResult; 
 		}
 		
@@ -90,15 +91,15 @@ public:
 			if (mFileList->checkRange(getIn(), getOut()))
 				return mFileList->mFileSlots + mPos;
 			
-			return 0;
+			return nullptr;
 		}
 		
-		void setFile(const char *filePath, int chan = 0, bool mute = FALSE)
+		void setFile(const char *filePath, int chan = 0, bool mute = false)
 		{
 			mFileList->setFile(mFileList->convertIndexToInput(mPos), mFileList->convertIndexToOutput(mPos), filePath, chan, mute);
 		}
 		
-		bool getFile(const char **filePath, int *chan, bool *mute, bool clean = FALSE)
+		bool getFile(const char **filePath, int *chan, bool *mute, bool clean = false)
 		{
 			return mFileList->getFile(mFileList->convertIndexToInput(mPos), mFileList->convertIndexToOutput(mPos), filePath, chan, mute, clean);
 		}
@@ -115,10 +116,13 @@ public:
 		
 	private:
 		
-		FileList *mFileList;
+        FL *mFileList;
 		int mPos;
 	};	
 	
+    using iterator = iterator_base<FileList>;
+    using const_iterator = iterator_base<const FileList>;
+    
 	FileList(int numIns = 8, int numOuts = 8)
 	{
 		numIns = numIns < 1 ? 1 : numIns;
@@ -137,7 +141,7 @@ public:
 		for (int i = 0; i < mNumIns * mNumOuts; i++)
 		{
 			mFileSlots[i].mFilePath.Set("");
-			mFileSlots[i].mMute = FALSE;
+			mFileSlots[i].mMute = false;
 			mFileSlots[i].mChan = 0;
 			
 			// File Information
@@ -148,24 +152,32 @@ public:
 			
 			// Locking and Dirty Info
 			
-			mFileSlots[i].mDirty = TRUE;
+			mFileSlots[i].mDirty = true;
 		}
 	}
 	
 	FileSlot *get(int input, int output)
 	{
-		if (checkRange(input, output) == TRUE)
+		if (checkRange(input, output))
 			return mFileSlots + convertIOToIndex(input, output);
 		
-		return 0;
+		return nullptr;
 	}
+    
+    const FileSlot *get(int input, int output) const
+    {
+        if (checkRange(input, output))
+            return mFileSlots + convertIOToIndex(input, output);
+        
+        return nullptr;
+    }
 	
-	void setFile(int input, int output, const char *filePath, int chan = 0, bool mute = FALSE)
+	void setFile(int input, int output, const char *filePath, int chan = 0, bool mute = false)
 	{
 		setFile(get(input, output), filePath, chan, mute);
 	}
 	
-	bool getFile(int input, int output, const char **filePath, int *chan, bool *mute, bool clean = FALSE)
+	bool getFile(int input, int output, const char **filePath, int *chan, bool *mute, bool clean = false) const
 	{
 		return getFile(get(input, output), filePath, chan, mute, clean);
 	}
@@ -175,7 +187,7 @@ public:
 		setInfo(get(input, output), frames, sampleRate, numChans);
 	}
 	
-	void getInfo(int input, int output, int *frames, int *sampleRate, int *numChans)
+	void getInfo(int input, int output, int *frames, int *sampleRate, int *numChans) const
 	{
 		getInfo(get(input, output), frames, sampleRate, numChans);
 	}
@@ -209,10 +221,20 @@ public:
 	{	
 		return iterator(this, convertIOToIndex(mNumIns - 1, mNumOuts - 1) + 1); 
 	}
+    
+    const_iterator cbegin() const
+    {
+        return const_iterator(this, 0);
+    }
+    
+    const_iterator cend() const
+    {
+        return const_iterator(this, convertIOToIndex(mNumIns - 1, mNumOuts - 1) + 1);
+    }
 	
 private:
 	
-	void setFile(FileSlot *slot, const char *filePath, int chan, bool mute)
+	static void setFile(FileSlot *slot, const char *filePath, int chan, bool mute)
 	{
 		if (slot)
 		{
@@ -223,14 +245,14 @@ private:
 			slot->mFrames = 0;	
 			slot->mSampleRate = 0;
 			slot->mNumChans = 0;
-			slot->mDirty = TRUE;
+			slot->mDirty = true;
 			slot->mLock.release();
 		}
 	}
 	
-	bool getFile(FileSlot *slot, const char **filePath, int *chan, bool *mute, bool clean)
+	static bool getFile(const FileSlot *slot, const char **filePath, int *chan, bool *mute, bool clean)
 	{
-		bool slotDirty = FALSE;
+		bool slotDirty = false;
 		
 		if (slot)
 		{
@@ -239,14 +261,14 @@ private:
 			*chan = slot->mChan;
 			*mute = slot->mMute;
 			slotDirty = slot->mDirty;
-			slot->mDirty = (clean == TRUE) ? FALSE : slot->mDirty;
+			slot->mDirty = clean ? false : slot->mDirty;
 			slot->mLock.release();
 		}
 		
 		return slotDirty;
 	}
 	
-	bool flipMute(FileSlot *slot)
+	static bool flipMute(FileSlot *slot)
 	{		
 		if (slot && slot->mFilePath.GetLength())
 		{
@@ -254,21 +276,20 @@ private:
 			
 			if (slot->mFilePath.GetLength())
 			{
-				slot->mMute = (slot->mMute == TRUE) ? FALSE : TRUE;
-				slot->mDirty = TRUE;
+				slot->mMute = !slot->mMute;
+				slot->mDirty = true;
 				slot->mLock.release();
 				
-				return TRUE;
-				
+				return true;
 			}
 			
 			slot->mLock.release();
 		}
 		
-		return FALSE;
+		return false;
 	}
 	
-	bool incrementChan(FileSlot *slot)
+	static bool incrementChan(FileSlot *slot)
 	{		
 		if (slot)
 		{
@@ -277,19 +298,19 @@ private:
 			if (slot->mNumChans > 1)
 			{
 				slot->mChan = (slot->mChan + 1) % slot->mNumChans;
-				slot->mDirty = TRUE;
+				slot->mDirty = true;
 				slot->mLock.release();
 				
-				return TRUE;
+				return true;
 			}
 			
 			slot->mLock.release();
 		}
 		
-		return FALSE;
+		return false;
 	}
 	
-	void setInfo(FileSlot *slot, int frames, int sampleRate, int numChans)
+    static void setInfo(FileSlot *slot, int frames, int sampleRate, int numChans)
 	{
 		if (slot)
 		{
@@ -299,7 +320,7 @@ private:
 		}
 	}
 	
-	void getInfo(FileSlot *slot, int *frames, int *sampleRate, int *numChans)
+	static void getInfo(const FileSlot *slot, int *frames, int *sampleRate, int *numChans)
 	{
 		if (slot)
 		{
@@ -309,25 +330,22 @@ private:
 		}
 	}
 	
-	bool checkRange(int input, int output)
+	bool checkRange(int input, int output) const
 	{
-		if (input >= 0 && input < mNumIns && output >= 0 && output < mNumOuts)
-			return TRUE;
-		
-		return FALSE;
+        return (input >= 0 && input < mNumIns && output >= 0 && output < mNumOuts);
 	}
 	
-	int convertIOToIndex(int input, int output) 
+	int convertIOToIndex(int input, int output) const
 	{	
 		return mNumIns * input + output; 
 	}
 	
-	int convertIndexToInput(int idx)			
+	int convertIndexToInput(int idx) const
 	{	
 		return idx / mNumIns; 
 	}
 	
-	int convertIndexToOutput(int idx)			
+	int convertIndexToOutput(int idx) const
 	{	
 		return idx % mNumIns; 
 	}

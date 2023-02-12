@@ -3,73 +3,135 @@
 
 #include "IPlug_include_in_plug_hdr.h"
 
-#include "Convolver.h"
+#include <array>
+
 #include "HISSTools_Controls.hpp"
 #include "HISSTools_VU_Ballistics.hpp"
+#include "Convolver.h"
 #include "FileScheme.hpp"
 
-// An enumerated list for all the parameters of the plugin
+#ifdef __APPLE__
+#include "swell.h"
+#ifdef FillRect
+#undef FillRect
+#endif
+#ifdef DrawText
+#undef DrawText
+#endif
+#endif
+
+const int kNumPrograms = 1;
 
 enum EParams
 {
-  kDryGain,
+  kDryGain = 0,
   kWetGain,
   kOutputSelect,
-  kFileSelect,      // dummy for file stuff (automation off)
-  kMatrixControl,   // dummy for matrix stuff (automation off)
-  kNumParams,       // the last element is used to store the total number of parameters
+  kNumParams       // the last element is used to store the total number of parameters
 };
 
-class HISSToolsConvolve : public IPlug
+using namespace iplug;
+using namespace igraphics;
+
+class LEDSender
+{
+  struct LEDValues
+  {
+    std::array<int, MAX_CHANNELS> mStates;
+  };
+  
+public:
+  
+  LEDSender(int controlTag) : mControlTag(controlTag), mQueue(32) {}
+  
+  void Set(const std::array<int, MAX_CHANNELS>& states)
+  {
+    mQueue.Push(LEDValues{ states });
+  }
+  
+  void UpdateControl(IGraphics *g)
+  {
+    while (g && mQueue.ElementsAvailable())
+    {
+      LEDValues v;
+      mQueue.Pop(v);
+
+      HISSTools_Matrix *matrix = g->GetControlWithTag(mControlTag)->As<HISSTools_Matrix>();
+      
+      for (int i = 0 ; i < MAX_CHANNELS; i++)
+        matrix->SetState(i, 0, v.mStates[i]);
+    }
+  }
+  
+  void Reset()
+  {
+    LEDValues v;
+    
+    while (mQueue.ElementsAvailable())
+      mQueue.Pop(v);
+  }
+  
+private:
+  
+  int mControlTag;
+  IPlugQueue<LEDValues> mQueue;
+};
+
+class HISSToolsConvolve : public Plugin
 {
 public:
   
-  HISSToolsConvolve(IPlugInstanceInfo instanceInfo);
+  HISSToolsConvolve(const InstanceInfo &info);
   ~HISSToolsConvolve();
   
   // Implement these if your audio or GUI logic requires doing something, when params change or when audio processing stops / starts.
   
-  void OnReset();
+  void OnIdle() override;
+  void OnReset() override;
+  void OnParamChange(int paramIdx, EParamSource source, int sampleOffset) override;
+  void OnParamChangeUI(int paramIdx, EParamSource source) override;
+  void ProcessBlock(double** inputs, double** outputs, int nFrames) override;
+
+  bool SerializeState(IByteChunk& chunk) const override;
+  int UnserializeState(const IByteChunk& chunk, int pos) override;
   
-  void CheckConnections(double** inputs = NULL, double** outputs = NULL);
+  void CheckConnections();
   
   void UpdateBaseName();
-  void UpdateFileDisplay();
+  void GUIUpdateFileDisplay();
   
   void LoadIRs();
-  
-  void OnParamChange(int paramIdx);//, ParamChangeSource source);
-  
-  void ProcessBlock(double** inputs, double** outputs, int nFrames);
-  
-  bool SerializeState(IByteChunk& pChunk);
-  int UnserializeState(IByteChunk& pChunk, int startPos);
-  
-  bool IsInChannelConnected(int idx) { return IsChannelConnected(kInput, idx); }
-  bool IsOutChannelConnected(int idx) { return IsChannelConnected(kOutput, idx); }
+    
+//  bool IsInChannelConnected(int idx) { return IsChannelConnected(kInput, idx); }
+//  bool IsOutChannelConnected(int idx) { return IsChannelConnected(kOutput, idx); }
+
+  void SelectFile(const char *file);
+  void IncrementChan(int x, int y);
+  void FlipMute(int x, int y);
+  void SetFile(int x, int y, const char *path);
   
 private:
+  
+  IGraphics* CreateGraphics() override;
+  void LayoutUI(IGraphics* pGraphics) override;
+  
+  void GUIUpdateDials();
   
   // Convolution Engine
   
   HISSTools::Convolver mConvolver;
-  
-  // Controls and Drawing
-  
-  HISSTools_Dial *mDryGainDial;
-  HISSTools_Dial *mWetGainDial;
-  HISSTools_FileSelector *mFileDialog;
-  HISSTools_TextBlock *mFileName;
-  HISSTools_TextBlock *mFileChan;
-  HISSTools_MeterTest *mIMeter;
-  HISSTools_MeterTest *mOMeter;
-  HISSTools_Matrix *mMatrix;
-  HISSTools_Matrix *mILEDs;
-  HISSTools_Matrix *mOLEDs;
-  HISSTools_VecLib mVecDraw;
+    
+  // Meter Ballistics
   
   HISSTools_VU_Ballistics mIBallistics;
   HISSTools_VU_Ballistics mOBallistics;
+  
+  // Meter Senders
+  
+  HISSTools_VUMeter::Sender mIVUSender;
+  HISSTools_VUMeter::Sender mOVUSender;
+  LEDSender mILEDSender;
+  LEDSender mOLEDSender;
   
   // Parameters
   
@@ -95,8 +157,8 @@ public:
   
   // Threading
   
-  HANDLE WINAPI mLoadThread;
-  HANDLE WINAPI mLoadEvent;
+  HANDLE mLoadThread;
+  HANDLE mLoadEvent;
   
   bool mThreadExiting;
 };

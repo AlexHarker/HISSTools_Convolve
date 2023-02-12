@@ -278,12 +278,64 @@
 		4FFBB93020863B0E00DDD0E7 /* fbuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8158C1205D50EB00393585 /* fbuffer.cpp */; };
 		4FFBB93420863B0E00DDD0E7 /* coreiids.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8158E0205D50EB00393585 /* coreiids.cpp */; };
 		4FFBB93520863B0E00DDD0E7 /* vstnoteexpressiontypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F81588E205D50EB00393585 /* vstnoteexpressiontypes.cpp */; };
-		B8C013B12998580D00E4C164 /* oversampling.c in Sources */ = {isa = PBXBuildFile; fileRef = B8C013AF299857FC00E4C164 /* oversampling.c */; };
-		B8C013B22998581200E4C164 /* oversampling.c in Sources */ = {isa = PBXBuildFile; fileRef = B8C013AF299857FC00E4C164 /* oversampling.c */; };
-		B8C013B32998581600E4C164 /* oversampling.c in Sources */ = {isa = PBXBuildFile; fileRef = B8C013AF299857FC00E4C164 /* oversampling.c */; };
-		B8C013B42998581D00E4C164 /* oversampling.c in Sources */ = {isa = PBXBuildFile; fileRef = B8C013AF299857FC00E4C164 /* oversampling.c */; };
-		B8C013B52998582400E4C164 /* oversampling.c in Sources */ = {isa = PBXBuildFile; fileRef = B8C013AF299857FC00E4C164 /* oversampling.c */; };
-		B8C013B62998582700E4C164 /* oversampling.c in Sources */ = {isa = PBXBuildFile; fileRef = B8C013AF299857FC00E4C164 /* oversampling.c */; };
+		B80F3801299905C500D35771 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F22998667A00E4C164 /* BaseAudioFile.cpp */; };
+		B80F3802299905D200D35771 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F72998667A00E4C164 /* IAudioFile.cpp */; };
+		B80F3803299905D600D35771 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F22998667A00E4C164 /* BaseAudioFile.cpp */; };
+		B80F3804299905D900D35771 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F72998667A00E4C164 /* IAudioFile.cpp */; };
+		B80F3805299905E000D35771 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F72998667A00E4C164 /* IAudioFile.cpp */; };
+		B80F3806299905E300D35771 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F22998667A00E4C164 /* BaseAudioFile.cpp */; };
+		B80F3807299905E800D35771 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F22998667A00E4C164 /* BaseAudioFile.cpp */; };
+		B80F3808299905EB00D35771 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F72998667A00E4C164 /* IAudioFile.cpp */; };
+		B80F3809299905F800D35771 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F22998667A00E4C164 /* BaseAudioFile.cpp */; };
+		B80F380A299905FD00D35771 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F72998667A00E4C164 /* IAudioFile.cpp */; };
+		B80F380B2999061800D35771 /* Convolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E32998667A00E4C164 /* Convolver.cpp */; };
+		B80F380C2999061A00D35771 /* NToMonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */; };
+		B80F380D2999061D00D35771 /* MonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */; };
+		B80F380E2999062000D35771 /* PartitionedConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */; };
+		B80F380F2999062200D35771 /* TimeDomainConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */; };
+		B80F38102999062700D35771 /* Convolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E32998667A00E4C164 /* Convolver.cpp */; };
+		B80F38112999062900D35771 /* NToMonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */; };
+		B80F38122999062B00D35771 /* MonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */; };
+		B80F38132999062D00D35771 /* PartitionedConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */; };
+		B80F38142999062F00D35771 /* TimeDomainConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */; };
+		B80F38152999063300D35771 /* Convolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E32998667A00E4C164 /* Convolver.cpp */; };
+		B80F38162999063600D35771 /* NToMonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */; };
+		B80F38172999063800D35771 /* MonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */; };
+		B80F38182999063C00D35771 /* PartitionedConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */; };
+		B80F38192999064900D35771 /* TimeDomainConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */; };
+		B80F381A2999065200D35771 /* Convolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E32998667A00E4C164 /* Convolver.cpp */; };
+		B80F381B2999065500D35771 /* NToMonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */; };
+		B80F381C2999065700D35771 /* MonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */; };
+		B80F381D2999065900D35771 /* PartitionedConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */; };
+		B80F381E2999065B00D35771 /* TimeDomainConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */; };
+		B80F381F2999066200D35771 /* Convolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E32998667A00E4C164 /* Convolver.cpp */; };
+		B80F38202999066500D35771 /* NToMonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */; };
+		B80F38212999066700D35771 /* MonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */; };
+		B80F38222999066A00D35771 /* PartitionedConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */; };
+		B80F38232999067200D35771 /* TimeDomainConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */; };
+		B80F38242999069000D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
+		B80F38252999069700D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
+		B80F38262999069B00D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
+		B80F38272999069F00D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
+		B80F3828299906A200D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
+		B80F382A299906B100D35771 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F3829299906B100D35771 /* Accelerate.framework */; };
+		B80F382B299906B400D35771 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F3829299906B100D35771 /* Accelerate.framework */; };
+		B80F382C299906B800D35771 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F3829299906B100D35771 /* Accelerate.framework */; };
+		B80F382D299906BB00D35771 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F3829299906B100D35771 /* Accelerate.framework */; };
+		B80F382E299906C200D35771 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F3829299906B100D35771 /* Accelerate.framework */; };
+		B80F384029990ACB00D35771 /* swell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D4313B635B2001D0217 /* swell.cpp */; };
+		B80F384129990ACE00D35771 /* swell-misc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D3F13B635A0001D0217 /* swell-misc.mm */; };
+		B80F384229990AD200D35771 /* swell-dlg.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D0413B634AA001D0217 /* swell-dlg.mm */; };
+		B80F384329990AD600D35771 /* swell-ini.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D1513B634D2001D0217 /* swell-ini.cpp */; };
+		B80F384629990AE400D35771 /* libSWELL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F383B29990A9A00D35771 /* libSWELL.a */; };
+		B80F384929990AEC00D35771 /* libSWELL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F383B29990A9A00D35771 /* libSWELL.a */; };
+		B80F384E29990AF800D35771 /* libSWELL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F383B29990A9A00D35771 /* libSWELL.a */; };
+		B80F385129990B0D00D35771 /* swell-kb.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D3913B63582001D0217 /* swell-kb.mm */; };
+		B80F385229990B1900D35771 /* swell-menu.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D3D13B63595001D0217 /* swell-menu.mm */; };
+		B80F385329990B1B00D35771 /* swell-miscdlg.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D3B13B6358C001D0217 /* swell-miscdlg.mm */; };
+		B80F385429990B2F00D35771 /* swell-gdi.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D0B13B634BF001D0217 /* swell-gdi.mm */; };
+		B80F385529990B3200D35771 /* swell-wnd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D4113B635AB001D0217 /* swell-wnd.mm */; };
+		B80F385729990D7100D35771 /* libSWELL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F383B29990A9A00D35771 /* libSWELL.a */; };
 		B8D0830A231DA78500913E5B /* IPlugProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */; };
 		B8D0830B231DA78900913E5B /* IPlugProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */; };
 		B8D0830C231DA79700913E5B /* IPlugProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */; };
@@ -361,6 +413,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4FC3EFC32086C0A600BD11FA;
 			remoteInfo = VST3C;
+		};
+		B80F384429990ADE00D35771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B80F383A29990A9A00D35771;
+			remoteInfo = SWELL;
+		};
+		B80F384729990AE900D35771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B80F383A29990A9A00D35771;
+			remoteInfo = SWELL;
+		};
+		B80F384A29990AF000D35771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B80F383A29990A9A00D35771;
+			remoteInfo = SWELL;
+		};
+		B80F384F29990AFC00D35771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B80F383A29990A9A00D35771;
+			remoteInfo = SWELL;
 		};
 		B8199982278C65D0001F43E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -478,7 +558,7 @@
 		4F2EA977203A50E9008E4850 /* IPlugAPP_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IPlugAPP_dialog.cpp; path = ../../../IPlug/APP/IPlugAPP_dialog.cpp; sourceTree = "<group>"; };
 		4F35DEAB207E5C5A00867D8F /* IPlugPluginBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IPlugPluginBase.cpp; path = ../../../IPlug/IPlugPluginBase.cpp; sourceTree = "<group>"; };
 		4F35DEAC207E5C5A00867D8F /* IPlugPluginBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPlugPluginBase.h; path = ../../../IPlug/IPlugPluginBase.h; sourceTree = "<group>"; };
-		4F3862ED2014BBEC0009F402 /* HISSToolsConvolve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; name = HISSToolsConvolve.cpp; path = ../HISSToolsConvolve.cpp; sourceTree = "<group>"; tabWidth = 2; };
+		4F3862ED2014BBEC0009F402 /* HISSToolsConvolve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HISSToolsConvolve.cpp; path = ../HISSToolsConvolve.cpp; sourceTree = "<group>"; tabWidth = 4; };
 		4F3862EE2014BBEC0009F402 /* HISSToolsConvolve.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = HISSToolsConvolve.h; path = ../HISSToolsConvolve.h; sourceTree = "<group>"; tabWidth = 2; };
 		4F3862FF2014BCC70009F402 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = ../scripts; sourceTree = "<group>"; };
 		4F3907602013EBA300DDA490 /* HISSToolsConvolve.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HISSToolsConvolve.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -776,6 +856,9 @@
 		4FFBB94120863E9300DDD0E7 /* IPlugVST3_Parameter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IPlugVST3_Parameter.h; path = ../../../IPlug/VST3/IPlugVST3_Parameter.h; sourceTree = "<group>"; };
 		4FFF72B8214BB71400839091 /* main.rc */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.rc; path = ../resources/main.rc; sourceTree = "<group>"; };
 		52FBBED30D0CF143001C8B8A /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../config.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
+		B80F3829299906B100D35771 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B80F383B29990A9A00D35771 /* libSWELL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSWELL.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80F384C29990AF200D35771 /* libSWELL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSWELL.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B81BF0DA21F3A588002C1DA6 /* AH_Rand_Seed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AH_Rand_Seed.h; sourceTree = "<group>"; };
 		B81BF0DB21F3A588002C1DA6 /* AH_Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AH_Types.h; sourceTree = "<group>"; };
 		B81BF0DC21F3A588002C1DA6 /* AH_Win_Complex_Math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AH_Win_Complex_Math.h; sourceTree = "<group>"; };
@@ -810,6 +893,29 @@
 		B8C013AE299857FC00E4C164 /* FileList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FileList.hpp; sourceTree = "<group>"; };
 		B8C013AF299857FC00E4C164 /* oversampling.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = oversampling.c; sourceTree = "<group>"; };
 		B8C013B0299857FC00E4C164 /* oversampling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = oversampling.h; sourceTree = "<group>"; };
+		B8C013BB2998667A00E4C164 /* Doxyfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
+		B8C013BC2998667A00E4C164 /* HISSTools_FFT_Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HISSTools_FFT_Core.h; sourceTree = "<group>"; };
+		B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HISSTools_FFT.cpp; sourceTree = "<group>"; };
+		B8C013BE2998667A00E4C164 /* HISSTools_FFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HISSTools_FFT.h; sourceTree = "<group>"; };
+		B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TimeDomainConvolve.cpp; sourceTree = "<group>"; };
+		B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NToMonoConvolve.cpp; sourceTree = "<group>"; };
+		B8C013E32998667A00E4C164 /* Convolver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Convolver.cpp; sourceTree = "<group>"; };
+		B8C013E42998667A00E4C164 /* MonoConvolve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonoConvolve.h; sourceTree = "<group>"; };
+		B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PartitionedConvolve.cpp; sourceTree = "<group>"; };
+		B8C013E62998667A00E4C164 /* ConvolveErrors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConvolveErrors.h; sourceTree = "<group>"; };
+		B8C013E72998667A00E4C164 /* MemorySwap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemorySwap.h; sourceTree = "<group>"; };
+		B8C013E82998667A00E4C164 /* NToMonoConvolve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NToMonoConvolve.h; sourceTree = "<group>"; };
+		B8C013E92998667A00E4C164 /* ConvolveSIMD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConvolveSIMD.h; sourceTree = "<group>"; };
+		B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MonoConvolve.cpp; sourceTree = "<group>"; };
+		B8C013EB2998667A00E4C164 /* PartitionedConvolve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartitionedConvolve.h; sourceTree = "<group>"; };
+		B8C013EC2998667A00E4C164 /* Convolver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Convolver.h; sourceTree = "<group>"; };
+		B8C013ED2998667A00E4C164 /* TimeDomainConvolve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeDomainConvolve.h; sourceTree = "<group>"; };
+		B8C013F22998667A00E4C164 /* BaseAudioFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BaseAudioFile.cpp; sourceTree = "<group>"; };
+		B8C013F32998667A00E4C164 /* BaseAudioFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseAudioFile.h; sourceTree = "<group>"; };
+		B8C013F42998667A00E4C164 /* OAudioFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAudioFile.h; sourceTree = "<group>"; };
+		B8C013F52998667A00E4C164 /* IAudioFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IAudioFile.h; sourceTree = "<group>"; };
+		B8C013F62998667A00E4C164 /* OAudioFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OAudioFile.cpp; sourceTree = "<group>"; };
+		B8C013F72998667A00E4C164 /* IAudioFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IAudioFile.cpp; sourceTree = "<group>"; };
 		B8F3700923D11B3E00291018 /* pluginfactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pluginfactory.cpp; sourceTree = "<group>"; };
 		B8F3700B23D11B5700291018 /* commoniids.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = commoniids.cpp; sourceTree = "<group>"; };
 		B8F3700D23D11B7500291018 /* IPlugVST3_ControllerBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IPlugVST3_ControllerBase.h; path = ../../../IPlug/VST3/IPlugVST3_ControllerBase.h; sourceTree = "<group>"; };
@@ -824,6 +930,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B80F384629990AE400D35771 /* libSWELL.a in Frameworks */,
+				B80F382B299906B400D35771 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,6 +939,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B80F384E29990AF800D35771 /* libSWELL.a in Frameworks */,
+				B80F382E299906C200D35771 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,6 +948,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B80F384929990AEC00D35771 /* libSWELL.a in Frameworks */,
+				B80F382C299906B800D35771 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,6 +965,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B80F385729990D7100D35771 /* libSWELL.a in Frameworks */,
+				B80F382D299906BB00D35771 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,6 +981,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B80F382A299906B100D35771 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,6 +990,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FC3EFD42086C49D00BD11FA /* HISSToolsConvolveVST3Controller.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80F383929990A9A00D35771 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,6 +1022,8 @@
 		089C1671FE841209C02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B80F384C29990AF200D35771 /* libSWELL.a */,
+				B80F3829299906B100D35771 /* Accelerate.framework */,
 				4F03A54820A461FD00EBDFFB /* IGraphics */,
 				4F78D8D013B63B390032E0F3 /* IPlug */,
 				4FF01613134E0BCD001447BA /* WDL */,
@@ -939,6 +1063,7 @@
 				4F3907602013EBA300DDA490 /* HISSToolsConvolve.appex */,
 				4FFBB93B20863B0E00DDD0E7 /* HISSToolsConvolve.vst3 */,
 				4FC3EFC42086C0A600BD11FA /* HISSToolsConvolveVST3Controller.a */,
+				B80F383B29990A9A00D35771 /* libSWELL.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1635,6 +1760,7 @@
 		B81BF08E21F3A4C6002C1DA6 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				B8C013B82998667A00E4C164 /* HISSTools_Library */,
 				B8C013AE299857FC00E4C164 /* FileList.hpp */,
 				B8C013AD299857FC00E4C164 /* FileScheme.hpp */,
 				B8C013AF299857FC00E4C164 /* oversampling.c */,
@@ -1728,6 +1854,68 @@
 			path = HISSTools_Utility;
 			sourceTree = "<group>";
 		};
+		B8C013B82998667A00E4C164 /* HISSTools_Library */ = {
+			isa = PBXGroup;
+			children = (
+				B8C013B92998667A00E4C164 /* HISSTools_FFT */,
+				B8C013E02998667A00E4C164 /* HIRT_Multichannel_Convolution */,
+				B8C013F12998667A00E4C164 /* AudioFile */,
+			);
+			path = HISSTools_Library;
+			sourceTree = "<group>";
+		};
+		B8C013B92998667A00E4C164 /* HISSTools_FFT */ = {
+			isa = PBXGroup;
+			children = (
+				B8C013BA2998667A00E4C164 /* Documentation */,
+				B8C013BC2998667A00E4C164 /* HISSTools_FFT_Core.h */,
+				B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */,
+				B8C013BE2998667A00E4C164 /* HISSTools_FFT.h */,
+			);
+			path = HISSTools_FFT;
+			sourceTree = "<group>";
+		};
+		B8C013BA2998667A00E4C164 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				B8C013BB2998667A00E4C164 /* Doxyfile */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
+		B8C013E02998667A00E4C164 /* HIRT_Multichannel_Convolution */ = {
+			isa = PBXGroup;
+			children = (
+				B8C013E62998667A00E4C164 /* ConvolveErrors.h */,
+				B8C013E72998667A00E4C164 /* MemorySwap.h */,
+				B8C013E92998667A00E4C164 /* ConvolveSIMD.h */,
+				B8C013EC2998667A00E4C164 /* Convolver.h */,
+				B8C013E32998667A00E4C164 /* Convolver.cpp */,
+				B8C013E82998667A00E4C164 /* NToMonoConvolve.h */,
+				B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */,
+				B8C013E42998667A00E4C164 /* MonoConvolve.h */,
+				B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */,
+				B8C013EB2998667A00E4C164 /* PartitionedConvolve.h */,
+				B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */,
+				B8C013ED2998667A00E4C164 /* TimeDomainConvolve.h */,
+				B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */,
+			);
+			path = HIRT_Multichannel_Convolution;
+			sourceTree = "<group>";
+		};
+		B8C013F12998667A00E4C164 /* AudioFile */ = {
+			isa = PBXGroup;
+			children = (
+				B8C013F32998667A00E4C164 /* BaseAudioFile.h */,
+				B8C013F22998667A00E4C164 /* BaseAudioFile.cpp */,
+				B8C013F52998667A00E4C164 /* IAudioFile.h */,
+				B8C013F72998667A00E4C164 /* IAudioFile.cpp */,
+				B8C013F42998667A00E4C164 /* OAudioFile.h */,
+				B8C013F62998667A00E4C164 /* OAudioFile.cpp */,
+			);
+			path = AudioFile;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1766,6 +1954,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B80F383729990A9A00D35771 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -1781,6 +1976,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B80F384529990ADE00D35771 /* PBXTargetDependency */,
 				B8199983278C65D0001F43E8 /* PBXTargetDependency */,
 			);
 			name = VST2;
@@ -1800,6 +1996,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B80F385029990AFC00D35771 /* PBXTargetDependency */,
 				B819998D278C65DE001F43E8 /* PBXTargetDependency */,
 			);
 			name = AUv3;
@@ -1821,6 +2018,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B80F384B29990AF000D35771 /* PBXTargetDependency */,
 				B8199987278C65D5001F43E8 /* PBXTargetDependency */,
 			);
 			name = AU;
@@ -1840,6 +2038,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B80F384829990AE900D35771 /* PBXTargetDependency */,
 				B8199985278C65D3001F43E8 /* PBXTargetDependency */,
 			);
 			name = VST3;
@@ -1926,6 +2125,23 @@
 			productReference = 4FFBB93B20863B0E00DDD0E7 /* HISSToolsConvolve.vst3 */;
 			productType = "com.apple.product-type.bundle";
 		};
+		B80F383A29990A9A00D35771 /* SWELL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B80F383C29990A9B00D35771 /* Build configuration list for PBXNativeTarget "SWELL" */;
+			buildPhases = (
+				B80F383729990A9A00D35771 /* Headers */,
+				B80F383829990A9A00D35771 /* Sources */,
+				B80F383929990A9A00D35771 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SWELL;
+			productName = SWELL;
+			productReference = B80F383B29990A9A00D35771 /* libSWELL.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1988,6 +2204,9 @@
 						DevelopmentTeam = 76XBB8EK7J;
 						ProvisioningStyle = Manual;
 					};
+					B80F383A29990A9A00D35771 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					B8D31D89278C6593009A9F2E = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -2019,6 +2238,7 @@
 			);
 			projectRoot = "";
 			targets = (
+				B80F383A29990A9A00D35771 /* SWELL */,
 				B8D31D89278C6593009A9F2E /* Info_Plists */,
 				4F78DAF113B643600032E0F3 /* All */,
 				B8E42C7923D1EC8A00FFE184 /* Finished Plugs */,
@@ -2263,7 +2483,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C013B22998581200E4C164 /* oversampling.c in Sources */,
+				B80F38272999069F00D35771 /* HISSTools_FFT.cpp in Sources */,
+				B80F38102999062700D35771 /* Convolver.cpp in Sources */,
+				B80F38112999062900D35771 /* NToMonoConvolve.cpp in Sources */,
+				B80F38122999062B00D35771 /* MonoConvolve.cpp in Sources */,
+				B80F38132999062D00D35771 /* PartitionedConvolve.cpp in Sources */,
+				B80F38142999062F00D35771 /* TimeDomainConvolve.cpp in Sources */,
+				B80F3807299905E800D35771 /* BaseAudioFile.cpp in Sources */,
+				B80F3808299905EB00D35771 /* IAudioFile.cpp in Sources */,
 				4FDAC0EB207D76C600299363 /* IPlugTimer.cpp in Sources */,
 				4F63696E20A463090022C370 /* IControls.cpp in Sources */,
 				4F03A5AD20A4621100EBDFFB /* IGraphics.cpp in Sources */,
@@ -2289,7 +2516,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C013B52998582400E4C164 /* oversampling.c in Sources */,
+				B80F38242999069000D35771 /* HISSTools_FFT.cpp in Sources */,
+				B80F381F2999066200D35771 /* Convolver.cpp in Sources */,
+				B80F38202999066500D35771 /* NToMonoConvolve.cpp in Sources */,
+				B80F38212999066700D35771 /* MonoConvolve.cpp in Sources */,
+				B80F38222999066A00D35771 /* PartitionedConvolve.cpp in Sources */,
+				B80F38232999067200D35771 /* TimeDomainConvolve.cpp in Sources */,
+				B80F3809299905F800D35771 /* BaseAudioFile.cpp in Sources */,
+				B80F380A299905FD00D35771 /* IAudioFile.cpp in Sources */,
 				4FB1F59520E4B015004157C8 /* IGraphicsMac_view.mm in Sources */,
 				4F03A5B120A4621100EBDFFB /* IGraphics.cpp in Sources */,
 				4FAEBD30209DAF76002E6392 /* IPlugAUv3.mm in Sources */,
@@ -2317,7 +2551,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C013B42998581D00E4C164 /* oversampling.c in Sources */,
+				B80F38252999069700D35771 /* HISSTools_FFT.cpp in Sources */,
+				B80F381E2999065B00D35771 /* TimeDomainConvolve.cpp in Sources */,
+				B80F381D2999065900D35771 /* PartitionedConvolve.cpp in Sources */,
+				B80F381C2999065700D35771 /* MonoConvolve.cpp in Sources */,
+				B80F381B2999065500D35771 /* NToMonoConvolve.cpp in Sources */,
+				B80F381A2999065200D35771 /* Convolver.cpp in Sources */,
+				B80F3801299905C500D35771 /* BaseAudioFile.cpp in Sources */,
+				B80F3802299905D200D35771 /* IAudioFile.cpp in Sources */,
 				4F03A5AF20A4621100EBDFFB /* IGraphics.cpp in Sources */,
 				4F6369E020A464BB0022C370 /* IGraphicsNanoVG_src.m in Sources */,
 				4F6369EE20A466470022C370 /* IControl.cpp in Sources */,
@@ -2345,7 +2586,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C013B32998581600E4C164 /* oversampling.c in Sources */,
+				B80F38262999069B00D35771 /* HISSTools_FFT.cpp in Sources */,
+				B80F38152999063300D35771 /* Convolver.cpp in Sources */,
+				B80F38162999063600D35771 /* NToMonoConvolve.cpp in Sources */,
+				B80F38172999063800D35771 /* MonoConvolve.cpp in Sources */,
+				B80F38182999063C00D35771 /* PartitionedConvolve.cpp in Sources */,
+				B80F38192999064900D35771 /* TimeDomainConvolve.cpp in Sources */,
+				B80F3806299905E300D35771 /* BaseAudioFile.cpp in Sources */,
+				B80F3805299905E000D35771 /* IAudioFile.cpp in Sources */,
 				4F81597C205D50EB00393585 /* baseiids.cpp in Sources */,
 				4FDAC0EC207D76C600299363 /* IPlugTimer.cpp in Sources */,
 				4F3862F12014BBEC0009F402 /* HISSToolsConvolve.cpp in Sources */,
@@ -2451,11 +2699,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B80F3828299906A200D35771 /* HISSTools_FFT.cpp in Sources */,
+				B80F380F2999062200D35771 /* TimeDomainConvolve.cpp in Sources */,
+				B80F380E2999062000D35771 /* PartitionedConvolve.cpp in Sources */,
+				B80F380D2999061D00D35771 /* MonoConvolve.cpp in Sources */,
+				B80F380C2999061A00D35771 /* NToMonoConvolve.cpp in Sources */,
+				B80F380B2999061800D35771 /* Convolver.cpp in Sources */,
+				B80F3803299905D600D35771 /* BaseAudioFile.cpp in Sources */,
+				B80F3804299905D900D35771 /* IAudioFile.cpp in Sources */,
 				4F10D3D9203A6719003EF82A /* RtMidi.cpp in Sources */,
 				4F6369DD20A464BB0022C370 /* IGraphicsNanoVG_src.m in Sources */,
 				4F6369EB20A466470022C370 /* IControl.cpp in Sources */,
 				4FD16D0513B634AA001D0217 /* swell-dlg.mm in Sources */,
-				B8C013B12998580D00E4C164 /* oversampling.c in Sources */,
 				4FD16D1613B634D2001D0217 /* swell-ini.cpp in Sources */,
 				4F5C5F6921BED05B00E024A7 /* swellappmain.mm in Sources */,
 				4FD16D3A13B63582001D0217 /* swell-kb.mm in Sources */,
@@ -2493,7 +2748,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C013B62998582700E4C164 /* oversampling.c in Sources */,
 				4FFBB90520863B0E00DDD0E7 /* baseiids.cpp in Sources */,
 				4FFBB90620863B0E00DDD0E7 /* IPlugTimer.cpp in Sources */,
 				4FFBB90720863B0E00DDD0E7 /* HISSToolsConvolve.cpp in Sources */,
@@ -2534,6 +2788,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B80F383829990A9A00D35771 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B80F384029990ACB00D35771 /* swell.cpp in Sources */,
+				B80F384129990ACE00D35771 /* swell-misc.mm in Sources */,
+				B80F384229990AD200D35771 /* swell-dlg.mm in Sources */,
+				B80F384329990AD600D35771 /* swell-ini.cpp in Sources */,
+				B80F385129990B0D00D35771 /* swell-kb.mm in Sources */,
+				B80F385229990B1900D35771 /* swell-menu.mm in Sources */,
+				B80F385329990B1B00D35771 /* swell-miscdlg.mm in Sources */,
+				B80F385429990B2F00D35771 /* swell-gdi.mm in Sources */,
+				B80F385529990B3200D35771 /* swell-wnd.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2571,6 +2841,26 @@
 			isa = PBXTargetDependency;
 			target = 4FC3EFC32086C0A600BD11FA /* VST3C */;
 			targetProxy = 4FC3EFD22086C46800BD11FA /* PBXContainerItemProxy */;
+		};
+		B80F384529990ADE00D35771 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B80F383A29990A9A00D35771 /* SWELL */;
+			targetProxy = B80F384429990ADE00D35771 /* PBXContainerItemProxy */;
+		};
+		B80F384829990AE900D35771 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B80F383A29990A9A00D35771 /* SWELL */;
+			targetProxy = B80F384729990AE900D35771 /* PBXContainerItemProxy */;
+		};
+		B80F384B29990AF000D35771 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B80F383A29990A9A00D35771 /* SWELL */;
+			targetProxy = B80F384A29990AF000D35771 /* PBXContainerItemProxy */;
+		};
+		B80F385029990AFC00D35771 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B80F383A29990A9A00D35771 /* SWELL */;
+			targetProxy = B80F384F29990AFC00D35771 /* PBXContainerItemProxy */;
 		};
 		B8199983278C65D0001F43E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3643,6 +3933,109 @@
 			};
 			name = Tracer;
 		};
+		B80F383D29990A9B00D35771 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 76XBB8EK7J;
+				EXECUTABLE_EXTENSION = a;
+				EXECUTABLE_PREFIX = lib;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.7;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B80F383E29990A9B00D35771 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 76XBB8EK7J;
+				ENABLE_NS_ASSERTIONS = NO;
+				EXECUTABLE_EXTENSION = a;
+				EXECUTABLE_PREFIX = lib;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B80F383F29990A9B00D35771 /* Tracer */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 76XBB8EK7J;
+				ENABLE_NS_ASSERTIONS = NO;
+				EXECUTABLE_EXTENSION = a;
+				EXECUTABLE_PREFIX = lib;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Tracer;
+		};
 		B8D31D8B278C6593009A9F2E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3793,6 +4186,16 @@
 				4FFBB93820863B0E00DDD0E7 /* Debug */,
 				4FFBB93920863B0E00DDD0E7 /* Release */,
 				4FFBB93A20863B0E00DDD0E7 /* Tracer */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B80F383C29990A9B00D35771 /* Build configuration list for PBXNativeTarget "SWELL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B80F383D29990A9B00D35771 /* Debug */,
+				B80F383E29990A9B00D35771 /* Release */,
+				B80F383F29990A9B00D35771 /* Tracer */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

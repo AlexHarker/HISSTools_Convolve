@@ -1,11 +1,121 @@
 
 #include "HISSToolsConvolve.h"
-#include "IAudioFile.h"
 #include "IPlug_include_in_plug_src.h"
-#include "IControl.h"
-#include "config.h"
-#include <math.h>
+#include "IAudioFile.h"
 
+enum ETags
+{
+    kTagMatrix = 0,
+    kTagFileName,
+    kTagFileChan,
+    kTagIMeter,
+    kTagOMeter,
+    kTagILEDs,
+    kTagOLEDs
+};
+
+class HISSTools_CFileSelector : public HISSTools_FileSelector
+{
+    
+public:
+    
+    HISSTools_CFileSelector(HISSToolsConvolve *plug, double x, double y, double w, double h, EFileAction action, char* dir = "", char* extensions = "", const char *type = 0, HISSTools_Design_Scheme *designScheme = &DefaultDesignScheme)
+    :HISSTools_FileSelector(kNoParameter, x, y, w, h, action, dir, extensions, type, designScheme, "Select"), mPlug(plug) {}
+    
+private:
+    
+    void reportToPlug() override
+    {
+        mPlug->SelectFile(GetLastSelectedFileForPlug().Get());
+    }
+    
+    HISSToolsConvolve *mPlug;
+};
+
+class HISSTools_FileMatrix : public HISSTools_Matrix
+{
+    
+public:
+    
+    HISSTools_FileMatrix(HISSToolsConvolve *plug,double x, double y, int xDim, int yDim, const char *type = 0, HISSTools_Design_Scheme *designScheme = &DefaultDesignScheme, HISSTools_Design_Scheme *stateScheme = nullptr)
+    : HISSTools_Matrix(kNoParameter, x, y, xDim, yDim, type, designScheme, stateScheme), mPlug(plug)  {}
+    
+private:
+    
+    bool IsChannelConnected(int chan)
+    {
+        return mPlug->IsChannelConnected(kInput, chan);
+    }
+    
+    void reportToPlug() override
+    {
+        WDL_String path, tempStr;
+
+        mPlug->GUIUpdateFileDisplay();
+        
+        switch (mMousing)
+        {
+            case kMouseDown:
+                
+                if (mXPos > -1 && IsChannelConnected(mXPos) && IsChannelConnected(mYPos))
+                {
+                    if (mPMod.A)
+                        break;
+                    
+                    if (mPMod.S)
+                    {
+                        mPlug->IncrementChan(mXPos, mYPos);
+                        break;
+                    }
+                    
+                    mPlug->FlipMute(mXPos, mYPos);
+                    break;
+                    
+                case kMouseDblClick:
+                    
+                    if (mXPos > -1 && IsChannelConnected(mXPos) && IsChannelConnected(mYPos))
+                    {
+                        if (mPMod.A)
+                        {
+                            mPlug->SetFile(mXPos, mYPos, "");
+                            break;
+                        }
+                        
+                        unsigned char currentState = GetState(mXPos, mYPos);
+                        SetState(mXPos, mYPos, 1);
+                        GetUI()->PromptForFile(tempStr, path, EFileAction::Open,  "wav aif aiff aifc");
+                        
+                        if (path.GetLength())
+                        {
+                            mPlug->SetFile(mXPos, mYPos, path.Get());
+                        }
+                        else
+                        {
+                            SetState(mXPos, mYPos, currentState);
+                            SetHilite(false);
+                        }
+                    }
+                }
+                break;
+                
+            case kMouseOver:
+                
+                if (mXPos > -1 && IsChannelConnected(mXPos) && IsChannelConnected(mYPos))
+                    SetHilite(true);
+                
+                break;
+                
+            case kMouseOut:
+                SetHilite(false);
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    HISSToolsConvolve *mPlug;
+};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////// LOADING THREAD ////////////////////////////////////////////////
@@ -30,6 +140,34 @@ DWORD LoadingThread(LPVOID ConvPlugParam)
     return NULL;
 }
 
+void HISSToolsConvolve::SelectFile(const char *file)
+{
+    WDL_String path(file);
+    FileScheme scheme;
+
+    scheme.loadWithScheme(&path, &mFiles, mCurrentIChans, mCurrentOChans);
+
+    SetEvent(mLoadEvent);
+}
+
+void HISSToolsConvolve::IncrementChan(int x, int y)
+{
+    if (mFiles.incrementChan(x, y))
+        SetEvent(mLoadEvent);
+}
+
+void HISSToolsConvolve::FlipMute(int x, int y)
+{
+    if (mFiles.flipMute(x, y))
+        SetEvent(mLoadEvent);
+}
+
+void HISSToolsConvolve::SetFile(int x, int y, const char *path)
+{
+    mFiles.setFile(mXPos, mYPos, path);
+    SetEvent(mLoadEvent);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,10 +175,13 @@ DWORD LoadingThread(LPVOID ConvPlugParam)
 
 // The number of presets / programs
 
-const int kNumPrograms = 1;
-
-HISSToolsConvolve::HISSToolsConvolve(IPlugInstanceInfo instanceInfo)
-:    IPLUG_CTOR(kNumParams, kNumPrograms, instanceInfo), mConvolver(8, 8, HISSTools::Convolver::kLatencyZero)
+HISSToolsConvolve::HISSToolsConvolve(const InstanceInfo &info)
+: Plugin(info, MakeConfig(kNumParams, kNumPrograms))
+, mConvolver(8, 8, kLatencyZero)
+, mIVUSender(kTagIMeter)
+, mOVUSender(kTagOMeter)
+, mILEDSender(kTagILEDs)
+, mOLEDSender(kTagOLEDs)
 {
     TRACE;
     
@@ -50,63 +191,11 @@ HISSToolsConvolve::HISSToolsConvolve(IPlugInstanceInfo instanceInfo)
     GetParam(kWetGain)->InitDouble("Wet Gain", 0, -60, 20, 0.1, "dB");
     GetParam(kOutputSelect)->InitEnum("Output Select", 2 , 3);
     
-    GetParam(kFileSelect)->InitBool("Load Multiple", false, "", IParam::kFlagCannotAutomate);
-    GetParam(kMatrixControl)->InitBool("Matrix Control", false, "", IParam::kFlagCannotAutomate);
+//    GetParam(kFileSelect)->InitBool("Load Multiple", false, "", IParam::kFlagCannotAutomate);
+//    GetParam(kMatrixControl)->InitBool("Matrix Control", false, "", IParam::kFlagCannotAutomate);
     
     // Allocate Memory
-    
-    IGraphics* pGraphics = MakeGraphics(*this, PLUG_WIDTH, PLUG_HEIGHT);
-    
-    pGraphics->SetStrictDrawing(false);
-    
-    IColor bgrb = IColor(255, 185, 195, 205);
-    //IColor bgrb = IColor(255, 135, 135, 135);
-    //IColor bgrb = IColor(255, 55, 75, 85);
-    
-    mFileDialog = new HISSTools_FileSelector(*this, kFileSelect, &mVecDraw, 110, 205, 150, 0, kFileOpen, "", "wav aif aiff aifc caf flac ogg oga", "label");
-    mFileName = new HISSTools_TextBlock(*this, &mVecDraw, 75, 250, 150, 20, "", kHAlignLeft, kVAlignCenter, "small");
-    mFileChan = new HISSTools_TextBlock(*this, &mVecDraw, 75, 270, 50, 20, "", kHAlignLeft, kVAlignCenter, "small");
-    
-    pGraphics->AttachControl(new HISSTools_Panel(*this, &mVecDraw, 65, 10, 210, 170));
-    pGraphics->AttachControl(new HISSTools_Panel(*this, &mVecDraw, 65, 190, 210, 280, "tight"));
-    pGraphics->AttachControl(new HISSTools_Panel(*this, &mVecDraw, 70, 195, 200, 94, "tight grey"));
-    
-    mDryGainDial = new HISSTools_Dial(*this, kDryGain, &mVecDraw, 75, 50, "red");
-    mWetGainDial = new HISSTools_Dial(*this, kWetGain, &mVecDraw, 175, 50, "green");
-    
-    pGraphics->AttachControl(mDryGainDial);
-    pGraphics->AttachControl(mWetGainDial);
-    
-    mIMeter = new HISSTools_MeterTest(*this, &mVecDraw, 15, 10, 40, 460);
-    mOMeter = new HISSTools_MeterTest(*this, &mVecDraw, 285, 10, 40, 460, TRUE);
-    
-    //mIMeter = new HISSTools_MeterTest(*this, &mVecDraw, 230, 130, 400, 40);
-    //mOMeter = new HISSTools_MeterTest(*this, &mVecDraw, 230, 190, 400, 40);
-    
-    mMatrix = new HISSTools_Matrix(*this, kMatrixControl, &mVecDraw, 90, 315, 8, 8);
-    mILEDs = new HISSTools_Matrix(*this, -1, &mVecDraw, 91.5, 298, 8, 1, "round VU_Leds");
-    mOLEDs = new HISSTools_Matrix(*this, -1, &mVecDraw, 236, 316.5, 1, 8, "round VU_Leds");
-    //mOLEDs = new HISSTools_Matrix(*this, -1, &mVecDraw, 28, 226.5, 1, 8, "round VU_Leds");
-    pGraphics->AttachControl(mILEDs);
-    pGraphics->AttachControl(mOLEDs);
-    
-    pGraphics->AttachControl(mFileDialog);
-    pGraphics->AttachControl(mFileName);
-    pGraphics->AttachControl(mFileChan);
-    pGraphics->AttachControl(mIMeter);
-    pGraphics->AttachControl(mOMeter);
-    
-    pGraphics->AttachControl(new HISSTools_Switch(*this, kOutputSelect, &mVecDraw, 140, 20, 50, 20, 3));
-    //pGraphics->AttachControl(new HISSTools_Button(this, -1, 360, 60, 100, 30, -1, TRUE));
-    pGraphics->AttachControl(mMatrix);
-    
-    pGraphics->AttachPanelBackground(bgrb);
-    pGraphics->HandleMouseOver(TRUE);
-    
-    //pGraphics->SetAllowRetina(false);
-    
-    AttachGraphics(pGraphics);
-    
+            
     mXPos = -1;
     mYPos = -1;
     
@@ -122,8 +211,7 @@ HISSToolsConvolve::HISSToolsConvolve(IPlugInstanceInfo instanceInfo)
     mLoadThread = CreateThread(NULL, 0, LoadingThread, this, 0, NULL);
     mLoadEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
     
-    EnsureDefaultPreset();
-    OnReset();
+    MakeDefaultPreset("-", kNumPrograms);
 }
 
 HISSToolsConvolve::~HISSToolsConvolve()
@@ -143,31 +231,69 @@ HISSToolsConvolve::~HISSToolsConvolve()
     CloseHandle(mLoadThread);
 }
 
+IGraphics* HISSToolsConvolve::CreateGraphics()
+{
+    return MakeGraphics(*this, PLUG_WIDTH, PLUG_HEIGHT, 60, 1.);
+}
+
+void HISSToolsConvolve::LayoutUI(IGraphics* pGraphics)
+{
+    if (!pGraphics->NControls())
+    {
+        IColor bgrb = IColor(255, 185, 195, 205);
+        
+        pGraphics->AttachControl(new HISSTools_CFileSelector(this, 110, 205, 150, 0, EFileAction::Open, "", "wav aif aiff aifc", "label"));
+        pGraphics->AttachControl(new HISSTools_TextBlock(75, 250, 150, 20, "", kHAlignLeft, kVAlignCenter, "small"));
+        pGraphics->AttachControl(new HISSTools_TextBlock(75, 270, 50, 20, "", kHAlignLeft, kVAlignCenter, "small"));
+        
+        pGraphics->AttachControl(new HISSTools_Panel(65, 10, 210, 170));
+        pGraphics->AttachControl(new HISSTools_Panel(65, 190, 210, 280, "tight"));
+        pGraphics->AttachControl(new HISSTools_Panel(70, 195, 200, 94, "tight grey"));
+
+        pGraphics->AttachControl(new HISSTools_Dial(kDryGain, 75, 50, "red"));
+        pGraphics->AttachControl(new HISSTools_Dial(kWetGain, 175, 50, "green"));
+        
+        pGraphics->AttachControl(new HISSTools_FileMatrix(this, 90, 315, 8, 8), kTagMatrix);
+        pGraphics->AttachControl(new HISSTools_Matrix(kNoParameter, 91.5, 298, 8, 1, "round VU_Leds"));
+        pGraphics->AttachControl(new HISSTools_Matrix(kNoParameter, 236, 316.5, 1, 8, "round VU_Leds"));
+        //mOLEDs = new HISSTools_Matrix(*this, -1, &mVecDraw, 28, 226.5, 1, 8, "round VU_Leds");
+
+        pGraphics->AttachControl(new HISSTools_VUMeter(15, 10, 40, 460));
+        pGraphics->AttachControl(new HISSTools_VUMeter(285, 10, 40, 460, true));
+        //mIMeter = new HISSTools_MeterTest(230, 130, 400, 40);
+        //mOMeter = new HISSTools_MeterTest(230, 190, 400, 40);
+        
+        pGraphics->AttachControl(new HISSTools_Switch(kOutputSelect, 140, 20, 50, 20, 3));
+        
+        pGraphics->AttachPanelBackground(bgrb);
+        
+        // Finalise Graphics
+        
+        pGraphics->EnableMouseOver(true);
+    }
+}
+
 void HISSToolsConvolve::OnReset()
 {
     TRACE;
     //IMutexLock lock(this);
     
+    CheckConnections();
+    
+    mIVUSender.Reset();
+    mOVUSender.Reset();
+    mILEDSender.Reset();
+    mOLEDSender.Reset();
+    
     // FIX - Need to empty buffers here.....
 }
 
-void HISSToolsConvolve::CheckConnections(double** inputs, double** outputs)
+void HISSToolsConvolve::CheckConnections()
 {
-    int i;
+    //unsigned int currentIChans = mCurrentIChans;
     
-    unsigned int currentIChans = mCurrentIChans;
-    
-    for (i = 0; i < MAX_CHANNELS; i++)
-        if (!IsInChannelConnected(i) || (inputs && inputs[i] == NULL))
-            break;
-    
-    mCurrentIChans = i;
-    
-    for (i = 0; i < MAX_CHANNELS; i++)
-        if (!IsOutChannelConnected(i) || (outputs && outputs[i] == NULL))
-            break;
-    
-    mCurrentOChans = i;
+    mCurrentIChans = NChannelsConnected(kInput);
+    mCurrentOChans = NChannelsConnected(kOutput);
     
     // FIX - IPlug for these.
     
@@ -185,7 +311,7 @@ void HISSToolsConvolve::UpdateBaseName()
     
     FileScheme scheme;
     
-    for (FileList::iterator it = mFiles.begin(); it != mFiles.end(); it++)
+    for (auto it = mFiles.begin(); it != mFiles.end(); it++)
     {
         if (!(*it)->mFilePath.GetLength())
             continue;
@@ -205,8 +331,11 @@ void HISSToolsConvolve::UpdateBaseName()
 }
 
 
-void HISSToolsConvolve::UpdateFileDisplay()
+void HISSToolsConvolve::GUIUpdateFileDisplay()
 {
+    if (!GetUI())
+        return;
+        
     WDL_String filePath("");
     WDL_String fileName("");
     
@@ -237,8 +366,8 @@ void HISSToolsConvolve::UpdateFileDisplay()
     else
         sprintf(chanInfo, "");
     
-    mFileName->setText(fileName.Get());
-    mFileChan->setText(chanInfo);
+    GetUI()->GetControlWithTag(kTagFileName)->As<HISSTools_TextBlock>()->setText(fileName.Get());
+    GetUI()->GetControlWithTag(kTagFileChan)->As<HISSTools_TextBlock>()->setText(chanInfo);
 }
 
 void HISSToolsConvolve::LoadIRs()
@@ -246,10 +375,16 @@ void HISSToolsConvolve::LoadIRs()
     const char *filePath;
     bool mute;
     int chan;
+    int result = 0;
+    
+    HISSTools_Matrix *matrix = nullptr;
+    
+    if (GetUI())
+        matrix = GetUI()->GetControlWithTag(kTagMatrix)->As<HISSTools_Matrix>();
     
     CheckConnections();
     
-    for (FileList::iterator it = mFiles.begin(); it != mFiles.end(); it++)
+    for (auto it = mFiles.begin(); it != mFiles.end(); it++)
     {
         int inChan = it.getIn();
         int outChan = it.getOut();
@@ -258,54 +393,51 @@ void HISSToolsConvolve::LoadIRs()
         
         // FIX - Decide on how to display non active channels where something should be loaded
         
-        if (it.getFile(&filePath, &chan, &mute, TRUE) == FALSE || channelActive == FALSE)
+        if (!it.getFile(&filePath, &chan, &mute, true) || !channelActive)
         {
-            if (*filePath == 0 || channelActive == FALSE)
-                mMatrix->SetState(inChan, outChan, (channelActive == FALSE) ? 0 : 1);
+            if (*filePath == 0 || !channelActive)
+                if (matrix)
+                    matrix->SetState(inChan, outChan, channelActive);
             continue;
         }
-        
-        int result = 0;
-        
-        if (mute == FALSE)
+                
+        if (!mute)
         {
             HISSTools::IAudioFile file(filePath);
             
             if (file.isOpen() && !file.getErrorFlags())
             {
-                float *audio = new float[file.getFrames()];
-                file.readChannel(audio, file.getFrames(), chan);
-                mConvolver.set(inChan, outChan, audio, file.getFrames(), true);
+                std::vector<float> audio(file.getFrames());
+
+                file.readChannel(audio.data(), file.getFrames(), chan);
+                mConvolver.set(inChan, outChan, audio.data(), file.getFrames(), true);
                 mFiles.setInfo(inChan, outChan, file.getFrames(), file.getSamplingRate(), file.getChannels());
-                delete[] audio;
                 
                 result = 1;
             }
         }
         else
         {
-            // FIX - surely this is always true?
-            
-            result = mute == TRUE ? 2 : 0;
+            result = 2;
             mConvolver.clear(inChan, outChan, false);
         }
         
         //IMutexLock lock(this);
-        mMatrix->SetState(inChan, outChan, channelActive ? result + 1 : 0);
+        if (matrix)
+            matrix->SetState(inChan, outChan, channelActive ? result + 1 : 0);
     }
     
-    mMatrix->SetHilite(FALSE);
+    if (matrix)
+        matrix->SetHilite(false);
     
     UpdateBaseName();
-    UpdateFileDisplay();
+    GUIUpdateFileDisplay();
 }
 
-void HISSToolsConvolve::OnParamChange(int paramIdx)//, ParamChangeSource source)
+void HISSToolsConvolve::OnParamChange(int paramIdx, EParamSource source, int sampleOffset)
 {
     //IMutexLock lock(this);
-    
-    WDL_String path, tempStr;
-    
+        
     CheckConnections();
     
     switch (paramIdx)
@@ -320,118 +452,35 @@ void HISSToolsConvolve::OnParamChange(int paramIdx)//, ParamChangeSource source)
             
         case kOutputSelect:
             mOutputSelect = GetParam(kOutputSelect)->Int();
-            switch (mOutputSelect)
-            {
-                case 0:
-                    mDryGainDial->GrayOut(FALSE);
-                    mWetGainDial->GrayOut(TRUE);
-                    break;
-                    
-                case 1:
-                    mDryGainDial->GrayOut(FALSE);
-                    mWetGainDial->GrayOut(FALSE);
-                    break;
-                    
-                case 2:
-                    mDryGainDial->GrayOut(TRUE);
-                    mWetGainDial->GrayOut(FALSE);
-                    break;
-            }
             break;
-            
-        case kFileSelect:
-            
-            if (mFileDialog->validReport() == TRUE)
-            {
-                FileScheme scheme;
-                
-                mFileDialog->GetLastSelectedFileForPlug(&path);
-                scheme.loadWithScheme(&path, &mFiles, mCurrentIChans, mCurrentOChans);
-                
-                SetEvent(mLoadEvent);
-            }
-            
+                        
+        default:
             break;
-            
-        case kMatrixControl:
-            
-            if (mMatrix->validReport() == FALSE)
-                return;
-            
-            mXPos = mMatrix->mXPos;
-            mYPos = mMatrix->mYPos;
-            
-            UpdateFileDisplay();
-            
-            switch (mMatrix->mMousing)
-            {
-                case kMouseDown:
-                    
-                    if (mXPos > -1 && IsInChannelConnected(mXPos) && IsInChannelConnected(mYPos))
-                    {
-                        if (mMatrix->mPMod.A == TRUE)
-                            break;
-                        
-                        if (mMatrix->mPMod.S == TRUE)
-                        {
-                            if (mFiles.incrementChan(mXPos, mYPos))
-                                SetEvent(mLoadEvent);
-                            break;
-                        }
-                        
-                        if (mFiles.flipMute(mXPos, mYPos))
-                            SetEvent(mLoadEvent);
-                        break;
-                        
-                    case kMouseDblClick:
-                        
-                        if (mXPos > -1 && IsInChannelConnected(mXPos) && IsInChannelConnected(mYPos))
-                        {
-                            if (mMatrix->mPMod.A == TRUE)
-                            {
-                                mFiles.setFile(mXPos, mYPos, "");
-                                SetEvent(mLoadEvent);
-                                break;
-                            }
-                            
-                            unsigned char currentState = mMatrix->GetState(mXPos, mYPos);
-                            mMatrix->SetState(mXPos, mYPos, 1);
-                            GetUI()->PromptForFile(tempStr, path, kFileOpen,  "wav aif aiff aifc caf flac ogg oga");
-                            
-                            if (path.GetLength())
-                            {
-                                mFiles.setFile(mXPos, mYPos, path.Get());
-                                SetEvent(mLoadEvent);
-                            }
-                            else
-                            {
-                                mMatrix->SetState(mXPos, mYPos, currentState);
-                                mMatrix->SetHilite(FALSE);
-                            }
-                        }
-                    }
-                    break;
-                    
-                case kMouseOver:
-                    
-                    if (mXPos > -1 && IsInChannelConnected(mXPos) && IsInChannelConnected(mYPos))
-                        mMatrix->SetHilite(TRUE);
-                    
-                    break;
-                    
-                case kMouseOut:
-                    mMatrix->SetHilite(FALSE);
-                    break;
-                    
-                default:
-                    break;
-            }
-            
-            break;
+    }
+}
+
+void HISSToolsConvolve::OnParamChangeUI(int paramIdx, EParamSource source)
+{
+    switch (paramIdx)
+    {
+        case kDryGain:                              break;
+        case kWetGain:                              break;
+        case kOutputSelect:     GUIUpdateDials();   break;
             
         default:
             break;
     }
+}
+
+void HISSToolsConvolve::GUIUpdateDials()
+{
+    int outputSelect = GetParam(kOutputSelect)->Int();
+    
+    if (!GetUI())
+        return;
+    
+    GetUI()->DisableControl(kDryGain, outputSelect == 2);
+    GetUI()->DisableControl(kWetGain, outputSelect == 0);
 }
 
 void HISSToolsConvolve::ProcessBlock(double** inputs, double** outputs, int nFrames)
@@ -440,13 +489,19 @@ void HISSToolsConvolve::ProcessBlock(double** inputs, double** outputs, int nFra
     double targetWetGain = mOutputSelect != 0 ? mTargetWetGain : 0;
     double lastRamp;
     
-    CheckConnections(inputs, outputs);
+    std::array<int, MAX_CHANNELS> LEDStates;
+    
+    CheckConnections();
     
     mIBallistics.calcVULevels(inputs, mCurrentIChans, nFrames);
-    mIMeter->setLevels(mIBallistics.getPeak(), mIBallistics.getRMS(), mIBallistics.getPeakHold(), mIBallistics.getOver());
+    mIVUSender.Set(mIBallistics.getPeak(), mIBallistics.getRMS(), mIBallistics.getPeakHold(), mIBallistics.getOver());
     
     for (unsigned int i = 0; i < mCurrentIChans; i++)
-        mILEDs->SetState(i, 0, mIBallistics.getledVUState(i));
+        LEDStates[i] = mIBallistics.getledVUState(i);
+    for (unsigned int i = mCurrentIChans; i < MAX_CHANNELS; i++)
+        LEDStates[i] = 0;
+    
+    mILEDSender.Set(LEDStates);
     
     mConvolver.process((const double **) inputs, outputs, (uint32_t) mCurrentIChans, (uint32_t) mCurrentOChans, (uintptr_t) nFrames);
     
@@ -478,13 +533,17 @@ void HISSToolsConvolve::ProcessBlock(double** inputs, double** outputs, int nFra
     mLastDryGain = lastRamp;
     
     mOBallistics.calcVULevels(outputs, mCurrentOChans, nFrames);
-    mOMeter->setLevels(mOBallistics.getPeak(), mOBallistics.getRMS(), mOBallistics.getPeakHold(), mOBallistics.getOver());
+    mOVUSender.Set(mOBallistics.getPeak(), mOBallistics.getRMS(), mOBallistics.getPeakHold(), mOBallistics.getOver());
     
     for (unsigned int i = 0; i < mCurrentOChans; i++)
-        mOLEDs->SetState(0, i, mOBallistics.getledVUState(i));
+        LEDStates[i] = mOBallistics.getledVUState(i);
+    for (unsigned int i = mCurrentOChans; i < MAX_CHANNELS; i++)
+        LEDStates[i] = 0;
+    
+    mOLEDSender.Set(LEDStates);
 }
 
-bool HISSToolsConvolve::SerializeState(IByteChunk& pChunk)
+bool HISSToolsConvolve::SerializeState(IByteChunk& chunk) const
 {
     //IMutexLock lock(this);
     
@@ -492,30 +551,30 @@ bool HISSToolsConvolve::SerializeState(IByteChunk& pChunk)
     bool mute;
     int chan;
     
-    // Store the number of the preset system (allows backward compatibility for presets
+    // Store the number of the preset system (allows backward compatibility for presets)
     
     int presetVersion = 1;
-    if (pChunk.PutStr("HISSTools_Convolver_Preset") <= 0)
-        return FALSE;
-    if (pChunk.Put(&presetVersion) <= 0)
-        return FALSE;
+    if (chunk.PutStr("HISSTools_Convolver_Preset") <= 0)
+        return false;
+    if (chunk.Put(&presetVersion) <= 0)
+        return false;
     
-    for (FileList::iterator it = mFiles.begin(); it != mFiles.end(); it++)
+    for (auto it = mFiles.cbegin(); it != mFiles.cend(); it++)
     {
         it.getFile(&filePath, &chan, &mute);
         
-        if (pChunk.Put(&mute) <= 0)
-            return FALSE;
-        if (pChunk.Put(&chan) <= 0)
-            return FALSE;
-        if (pChunk.PutStr(filePath) <= 0)
-            return FALSE;
+        if (chunk.Put(&mute) <= 0)
+            return false;
+        if (chunk.Put(&chan) <= 0)
+            return false;
+        if (chunk.PutStr(filePath) <= 0)
+            return false;
     }
     
-    return SerializeParams(pChunk);
+    return SerializeParams(chunk);
 }
 
-int HISSToolsConvolve::UnserializeState(IByteChunk& pChunk, int startPos)
+int HISSToolsConvolve::UnserializeState(const IByteChunk& chunk, int pos)
 {
     //IMutexLock lock(this);
     
@@ -528,10 +587,10 @@ int HISSToolsConvolve::UnserializeState(IByteChunk& pChunk, int startPos)
     int chan;
     
     WDL_String pStr;
-    startPos = pChunk.GetStr(pStr, startPos);
+    pos = chunk.GetStr(pStr, pos);
     
     if (strcmp(pStr.Get(), "HISSTools_Convolver_Preset") == 0)
-        startPos = pChunk.Get(&presetVersion, startPos);
+        pos = chunk.Get(&presetVersion, pos);
     
     CheckConnections();
     
@@ -541,14 +600,15 @@ int HISSToolsConvolve::UnserializeState(IByteChunk& pChunk, int startPos)
             
             // Fixed Structure for Previous Presets
             
-            mFileDialog->SetLastSelectedFileFromPlug(pStr.Get());
-            startPos = pChunk.Get(&v, startPos);
+            // FIX
+            //mFileDialog->SetLastSelectedFileFromPlug(pStr.Get());
+            pos = chunk.Get(&v, pos);
             GetParam(kDryGain)->Set(v);
-            startPos = pChunk.Get(&v, startPos);
+            pos = chunk.Get(&v, pos);
             GetParam(kWetGain)->Set(v);
-            startPos = pChunk.Get(&v, startPos);
+            pos = chunk.Get(&v, pos);
             GetParam(kOutputSelect)->Set(v);
-            startPos = pChunk.Get(&v, startPos);
+            pos = chunk.Get(&v, pos);
             
             // N.B. File Selector value is meaningless so we don't restore the final value
             
@@ -562,24 +622,24 @@ int HISSToolsConvolve::UnserializeState(IByteChunk& pChunk, int startPos)
             
         case 1:
             
-            for (FileList::iterator it = mFiles.begin(); it != mFiles.end(); it++)
+            for (auto it = mFiles.begin(); it != mFiles.end(); it++)
             {
-                startPos = pChunk.Get(&mute, startPos);
-                startPos = pChunk.Get(&chan, startPos);
-                stringEndPos = pChunk.GetStr(pStr, startPos);
+                pos = chunk.Get(&mute, pos);
+                pos = chunk.Get(&chan, pos);
+                stringEndPos = chunk.GetStr(pStr, pos);
                 
                 // Check For Empty String (pStr is not updated correctly in this case)
                 
-                if (stringEndPos == startPos + 4)
+                if (stringEndPos == pos + 4)
                     it.setFile("");
                 else
                     it.setFile(pStr.Get(), chan, mute);
                 
-                startPos = stringEndPos;
+                pos = stringEndPos;
             }
             
             LoadIRs();
-            startPos = UnserializeParams(pChunk, startPos);
+            pos = UnserializeParams(chunk, pos);
     }
     
     // Stop wet/dry gain from ramping on preset recall
@@ -587,6 +647,13 @@ int HISSToolsConvolve::UnserializeState(IByteChunk& pChunk, int startPos)
     mLastDryGain = mTargetDryGain;
     mLastWetGain = mTargetWetGain;
     
-    return startPos;
+    return pos;
 }
 
+void HISSToolsConvolve::OnIdle()
+{
+    mIVUSender.UpdateControl(*this);
+    mOVUSender.UpdateControl(*this);
+    mILEDSender.UpdateControl(GetUI());
+    mOLEDSender.UpdateControl(GetUI());
+}
