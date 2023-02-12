@@ -311,10 +311,10 @@ void HISSToolsConvolve::UpdateBaseName()
     
     for (auto it = mFiles.begin(); it != mFiles.end(); it++)
     {
-        if (!(*it)->mFilePath.GetLength())
+        if (!it->mFilePath.GetLength())
             continue;
         
-        scheme.getBaseName(&currentBaseName, &(*it)->mFilePath);
+        scheme.getBaseName(&currentBaseName, &it->mFilePath);
         
         if (baseName.GetLength() && strcmp(baseName.Get(), currentBaseName.Get()))
         {
@@ -394,7 +394,7 @@ void HISSToolsConvolve::LoadIRs()
         
         // FIX - Decide on how to display non active channels where something should be loaded
         
-        if (!it.getFile(&filePath, &chan, &mute, true) || !channelActive)
+        if (!it->getFile(&filePath, &chan, &mute, true) || !channelActive)
         {
             if (*filePath == 0 || !channelActive)
                 if (matrix)
@@ -562,7 +562,7 @@ bool HISSToolsConvolve::SerializeState(IByteChunk& chunk) const
     
     for (auto it = mFiles.cbegin(); it != mFiles.cend(); it++)
     {
-        it.getFile(&filePath, &chan, &mute);
+        it->getFile(&filePath, &chan, &mute);
         
         if (chunk.Put(&mute) <= 0)
             return false;
@@ -632,9 +632,9 @@ int HISSToolsConvolve::UnserializeState(const IByteChunk& chunk, int pos)
                 // Check For Empty String (pStr is not updated correctly in this case)
                 
                 if (stringEndPos == pos + 4)
-                    it.setFile("");
+                    it->setFile("");
                 else
-                    it.setFile(pStr.Get(), chan, mute);
+                    it->setFile(pStr.Get(), chan, mute);
                 
                 pos = stringEndPos;
             }
