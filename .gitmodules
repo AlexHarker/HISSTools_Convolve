@@ -1,0 +1,3 @@
+[submodule "source/HISSTools_Library"]
+	path = source/HISSTools_Library
+	url = https://github.com/AlexHarker/HISSTools_Library.git
