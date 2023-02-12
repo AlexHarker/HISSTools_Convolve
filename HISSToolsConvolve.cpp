@@ -372,7 +372,7 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
         
         it->getFile(filePath, &chan, &mute);
         
-        int state = channelActive ? (mute ? 3 : filePath.GetLength() ? 2 : 1) : 0;
+        int state = channelActive ? (mute ? 3 : (filePath.GetLength() ? 2 : 1)) : 0;
         matrix->SetState(inChan, outChan, state);
     }
     
