@@ -11,26 +11,29 @@ class FileList
 {
 public:
 
-	struct FileSlot
+	class FileSlot
 	{
-		// Parameters
-		
-		WDL_String mFilePath;
-		
-		bool mMute;
-		
-		int mChan;
-		
-		// File Information
-		
-		int mFrames;
-		int mSampleRate;
-		int mNumChans;
-		
-		// Lock
-		
-		mutable HISSTools_SpinLock mLock;
-        mutable bool mDirty;
+    public:
+        
+        void clear()
+        {
+            mLock.acquire();
+
+            mFilePath.Set("");
+            mMute = false;
+            mChan = 0;
+            
+            // File Information
+            
+            mSampleRate = 0;
+            mNumChans = 0;
+            mFrames = 0;
+            
+            // Set Dirty
+            
+            mDirty = true;
+            mLock.release();
+        }
         
         void setFile(const char *filePath, int chan = 0, bool mute = false)
         {
@@ -60,21 +63,18 @@ public:
         
         bool flipMute()
         {
+            mLock.acquire();
+            
             if (mFilePath.GetLength())
             {
-                mLock.acquire();
-                
-                if (mFilePath.GetLength())
-                {
-                    mMute = !mMute;
-                    mDirty = true;
-                    mLock.release();
-                    
-                    return true;
-                }
-                
+                mMute = !mMute;
+                mDirty = true;
                 mLock.release();
+                
+                return true;
             }
+                
+            mLock.release();
             
             return false;
         }
@@ -99,17 +99,40 @@ public:
         
         void setInfo(int frames, int sampleRate, int numChans)
         {
+            mLock.acquire();
             mFrames = frames;
             mSampleRate = sampleRate;
             mNumChans = numChans;
+            mLock.release();
         }
         
         void getInfo(int *frames, int *sampleRate, int *numChans) const
         {
+            mLock.acquire();
             *frames = mFrames;
             *sampleRate = mSampleRate;
             *numChans = mNumChans;
+            mLock.release();
         }
+        
+    private:
+        
+        // Parameters
+        
+        WDL_String mFilePath;
+        bool mMute = false;
+        int mChan = 0;
+        
+        // File Information
+        
+        int mFrames = 0;
+        int mSampleRate = 0;
+        int mNumChans = 0;
+        
+        // Lock
+        
+        mutable HISSTools_SpinLock mLock;
+        mutable bool mDirty = true;
 	};
 	
     template <typename FL, typename IT>
@@ -148,27 +171,12 @@ public:
     , mNumOuts(std::max(1, numOuts))
     , mFileSlots(mNumIns * mNumOuts)
 	{
-		clear();
 	}
 	
 	void clear()
 	{
-		for (int i = 0; i < mNumIns * mNumOuts; i++)
-		{
-			mFileSlots[i].mFilePath.Set("");
-			mFileSlots[i].mMute = false;
-			mFileSlots[i].mChan = 0;
-			
-			// File Information
-			
-			mFileSlots[i].mSampleRate = 0;
-			mFileSlots[i].mNumChans = 0;
-			mFileSlots[i].mFrames = 0;
-			
-			// Locking and Dirty Info
-			
-			mFileSlots[i].mDirty = true;
-		}
+		for (auto it = begin(); it != end(); it++)
+            it->clear();
 	}
 	
 	FileSlot& get(int input, int output)

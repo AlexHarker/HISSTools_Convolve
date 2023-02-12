@@ -300,10 +300,16 @@ void HISSToolsConvolve::UpdateBaseName()
     
     for (auto it = mFiles.begin(); it != mFiles.end(); it++)
     {
-        if (!it->mFilePath.GetLength())
+        WDL_String path;
+        int chan;
+        bool mute;
+        
+        it->getFile(path, &chan, &mute);
+        
+        if (!path.GetLength())
             continue;
         
-        scheme.getBaseName(&currentBaseName, &it->mFilePath);
+        scheme.getBaseName(&currentBaseName, &path);
         
         if (baseName.GetLength() && strcmp(baseName.Get(), currentBaseName.Get()))
         {
