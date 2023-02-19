@@ -10,6 +10,7 @@ ipch/
 *.suo
 *.ncb
 *.vcproj.*
+*.vcxproj.user
 *.pkg
 *.dmg
 *.depend
@@ -17,12 +18,17 @@ ipch/
 *.mode1v3
 *.db
 *.LSOverride
-*.xcworkspace
-*.xcuserdata
-*.xcschememanagement.plist
-build-*
+xcuserdata/
+*.xcuserdata/
+*.xcuserdatad/
+build*
 ipch/*
 gui/*
 
 Icon?
 .DS_Stor*
+
+## VS
+.vs/
+*.tlog/
+*.user
