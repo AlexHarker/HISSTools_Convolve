@@ -7,7 +7,7 @@
 
 #include "HISSTools_Controls.hpp"
 #include "HISSTools_VU_Ballistics.hpp"
-#include "Convolver.h"
+#include "ConvolveMultichannel.hpp"
 #include "FileScheme.hpp"
 
 #ifdef __APPLE__
@@ -128,7 +128,7 @@ private:
   
   // Convolution Engine
   
-  HISSTools::Convolver mConvolver;
+  convolve_multichannel<double> mConvolver;
     
   // Meter Ballistics
   

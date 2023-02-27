@@ -276,6 +276,8 @@ void HISSToolsConvolve::OnReset()
     CheckConnections();
     LoadIRs();
     GUIUpdateFileDisplay();
+    
+    mConvolver.reset();
     // FIX - Need to empty buffers here.....
 }
 

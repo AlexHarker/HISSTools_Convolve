@@ -288,31 +288,6 @@
 		B80F3808299905EB00D35771 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F72998667A00E4C164 /* IAudioFile.cpp */; };
 		B80F3809299905F800D35771 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F22998667A00E4C164 /* BaseAudioFile.cpp */; };
 		B80F380A299905FD00D35771 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F72998667A00E4C164 /* IAudioFile.cpp */; };
-		B80F380B2999061800D35771 /* Convolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E32998667A00E4C164 /* Convolver.cpp */; };
-		B80F380C2999061A00D35771 /* NToMonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */; };
-		B80F380D2999061D00D35771 /* MonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */; };
-		B80F380E2999062000D35771 /* PartitionedConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */; };
-		B80F380F2999062200D35771 /* TimeDomainConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */; };
-		B80F38102999062700D35771 /* Convolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E32998667A00E4C164 /* Convolver.cpp */; };
-		B80F38112999062900D35771 /* NToMonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */; };
-		B80F38122999062B00D35771 /* MonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */; };
-		B80F38132999062D00D35771 /* PartitionedConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */; };
-		B80F38142999062F00D35771 /* TimeDomainConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */; };
-		B80F38152999063300D35771 /* Convolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E32998667A00E4C164 /* Convolver.cpp */; };
-		B80F38162999063600D35771 /* NToMonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */; };
-		B80F38172999063800D35771 /* MonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */; };
-		B80F38182999063C00D35771 /* PartitionedConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */; };
-		B80F38192999064900D35771 /* TimeDomainConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */; };
-		B80F381A2999065200D35771 /* Convolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E32998667A00E4C164 /* Convolver.cpp */; };
-		B80F381B2999065500D35771 /* NToMonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */; };
-		B80F381C2999065700D35771 /* MonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */; };
-		B80F381D2999065900D35771 /* PartitionedConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */; };
-		B80F381E2999065B00D35771 /* TimeDomainConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */; };
-		B80F381F2999066200D35771 /* Convolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E32998667A00E4C164 /* Convolver.cpp */; };
-		B80F38202999066500D35771 /* NToMonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */; };
-		B80F38212999066700D35771 /* MonoConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */; };
-		B80F38222999066A00D35771 /* PartitionedConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */; };
-		B80F38232999067200D35771 /* TimeDomainConvolve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */; };
 		B80F38242999069000D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
 		B80F38252999069700D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
 		B80F38262999069B00D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
@@ -888,6 +863,12 @@
 		B81BF0FA21F3A588002C1DA6 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		B83F9A2E27962307002D1873 /* IGraphicsSkia.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IGraphicsSkia.cpp; sourceTree = "<group>"; };
 		B83F9A2F27962307002D1873 /* IGraphicsSkia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGraphicsSkia.h; sourceTree = "<group>"; };
+		B859DB9B29A7C079000E57B7 /* ConvolveMultichannel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConvolveMultichannel.hpp; sourceTree = "<group>"; };
+		B859DB9C29A7C079000E57B7 /* ConvolveNToMono.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConvolveNToMono.hpp; sourceTree = "<group>"; };
+		B859DB9D29A7C079000E57B7 /* ConvolveMono.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConvolveMono.hpp; sourceTree = "<group>"; };
+		B859DB9E29A7C4A4000E57B7 /* MemorySwap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MemorySwap.hpp; sourceTree = "<group>"; };
+		B859DB9F29A7C549000E57B7 /* ConvolveTimeDomain.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConvolveTimeDomain.hpp; sourceTree = "<group>"; };
+		B859DBA029A7C929000E57B7 /* ConvolvePartitioned.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConvolvePartitioned.hpp; sourceTree = "<group>"; };
 		B8C013AD299857FC00E4C164 /* FileScheme.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FileScheme.hpp; sourceTree = "<group>"; };
 		B8C013AE299857FC00E4C164 /* FileList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FileList.hpp; sourceTree = "<group>"; };
 		B8C013AF299857FC00E4C164 /* oversampling.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = oversampling.c; sourceTree = "<group>"; };
@@ -896,19 +877,7 @@
 		B8C013BC2998667A00E4C164 /* HISSTools_FFT_Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HISSTools_FFT_Core.h; sourceTree = "<group>"; };
 		B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HISSTools_FFT.cpp; sourceTree = "<group>"; };
 		B8C013BE2998667A00E4C164 /* HISSTools_FFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HISSTools_FFT.h; sourceTree = "<group>"; };
-		B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TimeDomainConvolve.cpp; sourceTree = "<group>"; };
-		B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NToMonoConvolve.cpp; sourceTree = "<group>"; };
-		B8C013E32998667A00E4C164 /* Convolver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Convolver.cpp; sourceTree = "<group>"; };
-		B8C013E42998667A00E4C164 /* MonoConvolve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonoConvolve.h; sourceTree = "<group>"; };
-		B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PartitionedConvolve.cpp; sourceTree = "<group>"; };
-		B8C013E62998667A00E4C164 /* ConvolveErrors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConvolveErrors.h; sourceTree = "<group>"; };
-		B8C013E72998667A00E4C164 /* MemorySwap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemorySwap.h; sourceTree = "<group>"; };
-		B8C013E82998667A00E4C164 /* NToMonoConvolve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NToMonoConvolve.h; sourceTree = "<group>"; };
-		B8C013E92998667A00E4C164 /* ConvolveSIMD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConvolveSIMD.h; sourceTree = "<group>"; };
-		B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MonoConvolve.cpp; sourceTree = "<group>"; };
-		B8C013EB2998667A00E4C164 /* PartitionedConvolve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartitionedConvolve.h; sourceTree = "<group>"; };
-		B8C013EC2998667A00E4C164 /* Convolver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Convolver.h; sourceTree = "<group>"; };
-		B8C013ED2998667A00E4C164 /* TimeDomainConvolve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeDomainConvolve.h; sourceTree = "<group>"; };
+		B8C013E62998667A00E4C164 /* ConvolveUtilities.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConvolveUtilities.hpp; sourceTree = "<group>"; };
 		B8C013F22998667A00E4C164 /* BaseAudioFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BaseAudioFile.cpp; sourceTree = "<group>"; };
 		B8C013F32998667A00E4C164 /* BaseAudioFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseAudioFile.h; sourceTree = "<group>"; };
 		B8C013F42998667A00E4C164 /* OAudioFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAudioFile.h; sourceTree = "<group>"; };
@@ -1855,6 +1824,7 @@
 		B8C013B82998667A00E4C164 /* HISSTools_Library */ = {
 			isa = PBXGroup;
 			children = (
+				B859DB9E29A7C4A4000E57B7 /* MemorySwap.hpp */,
 				B8C013B92998667A00E4C164 /* HISSTools_FFT */,
 				B8C013E02998667A00E4C164 /* HIRT_Multichannel_Convolution */,
 				B8C013F12998667A00E4C164 /* AudioFile */,
@@ -1884,19 +1854,12 @@
 		B8C013E02998667A00E4C164 /* HIRT_Multichannel_Convolution */ = {
 			isa = PBXGroup;
 			children = (
-				B8C013E62998667A00E4C164 /* ConvolveErrors.h */,
-				B8C013E72998667A00E4C164 /* MemorySwap.h */,
-				B8C013E92998667A00E4C164 /* ConvolveSIMD.h */,
-				B8C013EC2998667A00E4C164 /* Convolver.h */,
-				B8C013E32998667A00E4C164 /* Convolver.cpp */,
-				B8C013E82998667A00E4C164 /* NToMonoConvolve.h */,
-				B8C013E22998667A00E4C164 /* NToMonoConvolve.cpp */,
-				B8C013E42998667A00E4C164 /* MonoConvolve.h */,
-				B8C013EA2998667A00E4C164 /* MonoConvolve.cpp */,
-				B8C013EB2998667A00E4C164 /* PartitionedConvolve.h */,
-				B8C013E52998667A00E4C164 /* PartitionedConvolve.cpp */,
-				B8C013ED2998667A00E4C164 /* TimeDomainConvolve.h */,
-				B8C013E12998667A00E4C164 /* TimeDomainConvolve.cpp */,
+				B8C013E62998667A00E4C164 /* ConvolveUtilities.hpp */,
+				B859DB9B29A7C079000E57B7 /* ConvolveMultichannel.hpp */,
+				B859DB9C29A7C079000E57B7 /* ConvolveNToMono.hpp */,
+				B859DB9D29A7C079000E57B7 /* ConvolveMono.hpp */,
+				B859DBA029A7C929000E57B7 /* ConvolvePartitioned.hpp */,
+				B859DB9F29A7C549000E57B7 /* ConvolveTimeDomain.hpp */,
 			);
 			path = HIRT_Multichannel_Convolution;
 			sourceTree = "<group>";
@@ -2475,11 +2438,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B80F38272999069F00D35771 /* HISSTools_FFT.cpp in Sources */,
-				B80F38102999062700D35771 /* Convolver.cpp in Sources */,
-				B80F38112999062900D35771 /* NToMonoConvolve.cpp in Sources */,
-				B80F38122999062B00D35771 /* MonoConvolve.cpp in Sources */,
-				B80F38132999062D00D35771 /* PartitionedConvolve.cpp in Sources */,
-				B80F38142999062F00D35771 /* TimeDomainConvolve.cpp in Sources */,
 				B80F3807299905E800D35771 /* BaseAudioFile.cpp in Sources */,
 				B80F3808299905EB00D35771 /* IAudioFile.cpp in Sources */,
 				4FDAC0EB207D76C600299363 /* IPlugTimer.cpp in Sources */,
@@ -2508,11 +2466,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B80F38242999069000D35771 /* HISSTools_FFT.cpp in Sources */,
-				B80F381F2999066200D35771 /* Convolver.cpp in Sources */,
-				B80F38202999066500D35771 /* NToMonoConvolve.cpp in Sources */,
-				B80F38212999066700D35771 /* MonoConvolve.cpp in Sources */,
-				B80F38222999066A00D35771 /* PartitionedConvolve.cpp in Sources */,
-				B80F38232999067200D35771 /* TimeDomainConvolve.cpp in Sources */,
 				B80F3809299905F800D35771 /* BaseAudioFile.cpp in Sources */,
 				B80F380A299905FD00D35771 /* IAudioFile.cpp in Sources */,
 				4FB1F59520E4B015004157C8 /* IGraphicsMac_view.mm in Sources */,
@@ -2543,11 +2496,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B80F38252999069700D35771 /* HISSTools_FFT.cpp in Sources */,
-				B80F381E2999065B00D35771 /* TimeDomainConvolve.cpp in Sources */,
-				B80F381D2999065900D35771 /* PartitionedConvolve.cpp in Sources */,
-				B80F381C2999065700D35771 /* MonoConvolve.cpp in Sources */,
-				B80F381B2999065500D35771 /* NToMonoConvolve.cpp in Sources */,
-				B80F381A2999065200D35771 /* Convolver.cpp in Sources */,
 				B80F3801299905C500D35771 /* BaseAudioFile.cpp in Sources */,
 				B80F3802299905D200D35771 /* IAudioFile.cpp in Sources */,
 				4F03A5AF20A4621100EBDFFB /* IGraphics.cpp in Sources */,
@@ -2578,11 +2526,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B80F38262999069B00D35771 /* HISSTools_FFT.cpp in Sources */,
-				B80F38152999063300D35771 /* Convolver.cpp in Sources */,
-				B80F38162999063600D35771 /* NToMonoConvolve.cpp in Sources */,
-				B80F38172999063800D35771 /* MonoConvolve.cpp in Sources */,
-				B80F38182999063C00D35771 /* PartitionedConvolve.cpp in Sources */,
-				B80F38192999064900D35771 /* TimeDomainConvolve.cpp in Sources */,
 				B80F3806299905E300D35771 /* BaseAudioFile.cpp in Sources */,
 				B80F3805299905E000D35771 /* IAudioFile.cpp in Sources */,
 				4F81597C205D50EB00393585 /* baseiids.cpp in Sources */,
@@ -2691,11 +2634,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B80F3828299906A200D35771 /* HISSTools_FFT.cpp in Sources */,
-				B80F380F2999062200D35771 /* TimeDomainConvolve.cpp in Sources */,
-				B80F380E2999062000D35771 /* PartitionedConvolve.cpp in Sources */,
-				B80F380D2999061D00D35771 /* MonoConvolve.cpp in Sources */,
-				B80F380C2999061A00D35771 /* NToMonoConvolve.cpp in Sources */,
-				B80F380B2999061800D35771 /* Convolver.cpp in Sources */,
 				B80F3803299905D600D35771 /* BaseAudioFile.cpp in Sources */,
 				B80F3804299905D900D35771 /* IAudioFile.cpp in Sources */,
 				4F10D3D9203A6719003EF82A /* RtMidi.cpp in Sources */,
