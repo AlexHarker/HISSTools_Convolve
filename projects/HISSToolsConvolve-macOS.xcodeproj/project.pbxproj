@@ -791,7 +791,6 @@
 		4FFF72B8214BB71400839091 /* main.rc */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.rc; path = ../resources/main.rc; sourceTree = "<group>"; };
 		52FBBED30D0CF143001C8B8A /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../config.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		B80F3829299906B100D35771 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		B80F384C29990AF200D35771 /* libSWELL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSWELL.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B81BF0DA21F3A588002C1DA6 /* AH_Rand_Seed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AH_Rand_Seed.h; sourceTree = "<group>"; };
 		B81BF0DB21F3A588002C1DA6 /* AH_Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AH_Types.h; sourceTree = "<group>"; };
 		B81BF0DC21F3A588002C1DA6 /* AH_Win_Complex_Math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AH_Win_Complex_Math.h; sourceTree = "<group>"; };
@@ -937,7 +936,6 @@
 		089C1671FE841209C02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B80F384C29990AF200D35771 /* libSWELL.a */,
 				B80F3829299906B100D35771 /* Accelerate.framework */,
 				4F03A54820A461FD00EBDFFB /* IGraphics */,
 				4F78D8D013B63B390032E0F3 /* IPlug */,
