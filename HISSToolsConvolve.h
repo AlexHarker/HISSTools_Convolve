@@ -4,21 +4,14 @@
 #include "IPlug_include_in_plug_hdr.h"
 
 #include <array>
+#include <condition_variable>
+#include <thread>
 
 #include "HISSTools_Controls.hpp"
 #include "HISSTools_VU_Ballistics.hpp"
 #include "Convolver.h"
 #include "FileScheme.hpp"
 
-#ifdef __APPLE__
-#include "swell.h"
-#ifdef FillRect
-#undef FillRect
-#endif
-#ifdef DrawText
-#undef DrawText
-#endif
-#endif
 
 const int kNumPrograms = 1;
 
@@ -165,8 +158,8 @@ public:
   
   // Threading
   
-  HANDLE mLoadThread;
-  HANDLE mLoadEvent;
+  std::thread mLoadThread;
+  std::condition_variable_any mLoadEvent;
   
   bool mThreadExiting;
 };

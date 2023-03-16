@@ -121,23 +121,29 @@ private:
 //////////////////////////////////////////////// LOADING THREAD ////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-DWORD LoadingThread(LPVOID plugParam)
+// N.B. as there are multiple locks on the FileList there is no need for an overall lock or mutex
+
+struct DummyLock
 {
-    HISSToolsConvolve *pPlug = (HISSToolsConvolve *) plugParam;
-    
+    bool lock() { return true; }
+    void unlock() {}
+};
+
+void LoadingThread(HISSToolsConvolve *pPlug)
+{
     while (true)
     {
-        WaitForSingleObject(pPlug->mLoadEvent, INFINITE);
+        DummyLock lock;
         
-        if (pPlug->mThreadExiting == true)
+        pPlug->mLoadEvent.wait(lock);
+        
+        if (pPlug->mThreadExiting)
             break;
         
         pPlug->LoadIRs();
     }
     
     pPlug->mThreadExiting = false;
-    
-    return NULL;
 }
 
 void HISSToolsConvolve::SelectFile(const char *file)
@@ -147,25 +153,25 @@ void HISSToolsConvolve::SelectFile(const char *file)
 
     scheme.loadWithScheme(&path, &mFiles, mCurrentIChans, mCurrentOChans);
 
-    SetEvent(mLoadEvent);
+    mLoadEvent.notify_one();
 }
 
 void HISSToolsConvolve::IncrementChan(int xPos, int yPos)
 {
     if (mFiles.incrementChan(xPos, yPos))
-        SetEvent(mLoadEvent);
+        mLoadEvent.notify_one();
 }
 
 void HISSToolsConvolve::FlipMute(int xPos, int yPos)
 {
     if (mFiles.flipMute(xPos, yPos))
-        SetEvent(mLoadEvent);
+        mLoadEvent.notify_one();
 }
 
 void HISSToolsConvolve::SetFile(int xPos, int yPos, const char *path)
 {
     mFiles.setFile(xPos, yPos, path);
-    SetEvent(mLoadEvent);
+    mLoadEvent.notify_one();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -196,10 +202,9 @@ HISSToolsConvolve::HISSToolsConvolve(const InstanceInfo &info)
     
     // Threading
     
-    mThreadExiting = FALSE;
+    mThreadExiting = false;
     
-    mLoadThread = CreateThread(NULL, 0, LoadingThread, this, 0, NULL);
-    mLoadEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
+    mLoadThread  = std::thread(&LoadingThread, this);
     
     MakeDefaultPreset("-", kNumPrograms);
 }
@@ -209,16 +214,8 @@ HISSToolsConvolve::~HISSToolsConvolve()
     // Dispose of thread stuff.
     
     mThreadExiting = true;
-    SetEvent(mLoadEvent);
-    
-    // Spin while we wait for the thread to exit
-    
-    // FIX - Not sure what to do here....
-    
-    //while (mThreadExiting == TRUE);
-    
-    CloseHandle(mLoadEvent);
-    CloseHandle(mLoadThread);
+    mLoadEvent.notify_all();
+    mLoadThread.join();
 }
 
 IGraphics* HISSToolsConvolve::CreateGraphics()

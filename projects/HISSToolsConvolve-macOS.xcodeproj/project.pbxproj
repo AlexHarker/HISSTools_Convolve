@@ -323,19 +323,6 @@
 		B80F382C299906B800D35771 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F3829299906B100D35771 /* Accelerate.framework */; };
 		B80F382D299906BB00D35771 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F3829299906B100D35771 /* Accelerate.framework */; };
 		B80F382E299906C200D35771 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F3829299906B100D35771 /* Accelerate.framework */; };
-		B80F384029990ACB00D35771 /* swell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D4313B635B2001D0217 /* swell.cpp */; };
-		B80F384129990ACE00D35771 /* swell-misc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D3F13B635A0001D0217 /* swell-misc.mm */; };
-		B80F384229990AD200D35771 /* swell-dlg.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D0413B634AA001D0217 /* swell-dlg.mm */; };
-		B80F384329990AD600D35771 /* swell-ini.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D1513B634D2001D0217 /* swell-ini.cpp */; };
-		B80F384629990AE400D35771 /* libSWELL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F383B29990A9A00D35771 /* libSWELL.a */; };
-		B80F384929990AEC00D35771 /* libSWELL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F383B29990A9A00D35771 /* libSWELL.a */; };
-		B80F384E29990AF800D35771 /* libSWELL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F383B29990A9A00D35771 /* libSWELL.a */; };
-		B80F385129990B0D00D35771 /* swell-kb.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D3913B63582001D0217 /* swell-kb.mm */; };
-		B80F385229990B1900D35771 /* swell-menu.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D3D13B63595001D0217 /* swell-menu.mm */; };
-		B80F385329990B1B00D35771 /* swell-miscdlg.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D3B13B6358C001D0217 /* swell-miscdlg.mm */; };
-		B80F385429990B2F00D35771 /* swell-gdi.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D0B13B634BF001D0217 /* swell-gdi.mm */; };
-		B80F385529990B3200D35771 /* swell-wnd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FD16D4113B635AB001D0217 /* swell-wnd.mm */; };
-		B80F385729990D7100D35771 /* libSWELL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F383B29990A9A00D35771 /* libSWELL.a */; };
 		B8D0830A231DA78500913E5B /* IPlugProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */; };
 		B8D0830B231DA78900913E5B /* IPlugProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */; };
 		B8D0830C231DA79700913E5B /* IPlugProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F61A8202807B9003F2573 /* IPlugProcessor.cpp */; };
@@ -413,34 +400,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4FC3EFC32086C0A600BD11FA;
 			remoteInfo = VST3C;
-		};
-		B80F384429990ADE00D35771 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B80F383A29990A9A00D35771;
-			remoteInfo = SWELL;
-		};
-		B80F384729990AE900D35771 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B80F383A29990A9A00D35771;
-			remoteInfo = SWELL;
-		};
-		B80F384A29990AF000D35771 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B80F383A29990A9A00D35771;
-			remoteInfo = SWELL;
-		};
-		B80F384F29990AFC00D35771 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B80F383A29990A9A00D35771;
-			remoteInfo = SWELL;
 		};
 		B8199982278C65D0001F43E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -857,7 +816,6 @@
 		4FFF72B8214BB71400839091 /* main.rc */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.rc; path = ../resources/main.rc; sourceTree = "<group>"; };
 		52FBBED30D0CF143001C8B8A /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../config.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		B80F3829299906B100D35771 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		B80F383B29990A9A00D35771 /* libSWELL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSWELL.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80F384C29990AF200D35771 /* libSWELL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSWELL.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B81BF0DA21F3A588002C1DA6 /* AH_Rand_Seed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AH_Rand_Seed.h; sourceTree = "<group>"; };
 		B81BF0DB21F3A588002C1DA6 /* AH_Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AH_Types.h; sourceTree = "<group>"; };
@@ -929,7 +887,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B80F384629990AE400D35771 /* libSWELL.a in Frameworks */,
 				B80F382B299906B400D35771 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -938,7 +895,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B80F384E29990AF800D35771 /* libSWELL.a in Frameworks */,
 				B80F382E299906C200D35771 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -947,7 +903,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B80F384929990AEC00D35771 /* libSWELL.a in Frameworks */,
 				B80F382C299906B800D35771 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -964,7 +919,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B80F385729990D7100D35771 /* libSWELL.a in Frameworks */,
 				B80F382D299906BB00D35771 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -989,13 +943,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FC3EFD42086C49D00BD11FA /* HISSToolsConvolveVST3Controller.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B80F383929990A9A00D35771 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1062,7 +1009,6 @@
 				4F3907602013EBA300DDA490 /* HISSToolsConvolve.appex */,
 				4FFBB93B20863B0E00DDD0E7 /* HISSToolsConvolve.vst3 */,
 				4FC3EFC42086C0A600BD11FA /* HISSToolsConvolveVST3Controller.a */,
-				B80F383B29990A9A00D35771 /* libSWELL.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1952,13 +1898,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B80F383729990A9A00D35771 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -1974,7 +1913,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B80F384529990ADE00D35771 /* PBXTargetDependency */,
 				B8199983278C65D0001F43E8 /* PBXTargetDependency */,
 			);
 			name = VST2;
@@ -1994,7 +1932,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B80F385029990AFC00D35771 /* PBXTargetDependency */,
 				B819998D278C65DE001F43E8 /* PBXTargetDependency */,
 			);
 			name = AUv3;
@@ -2016,7 +1953,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B80F384B29990AF000D35771 /* PBXTargetDependency */,
 				B8199987278C65D5001F43E8 /* PBXTargetDependency */,
 			);
 			name = AU;
@@ -2036,7 +1972,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B80F384829990AE900D35771 /* PBXTargetDependency */,
 				B8199985278C65D3001F43E8 /* PBXTargetDependency */,
 			);
 			name = VST3;
@@ -2123,23 +2058,6 @@
 			productReference = 4FFBB93B20863B0E00DDD0E7 /* HISSToolsConvolve.vst3 */;
 			productType = "com.apple.product-type.bundle";
 		};
-		B80F383A29990A9A00D35771 /* SWELL */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B80F383C29990A9B00D35771 /* Build configuration list for PBXNativeTarget "SWELL" */;
-			buildPhases = (
-				B80F383729990A9A00D35771 /* Headers */,
-				B80F383829990A9A00D35771 /* Sources */,
-				B80F383929990A9A00D35771 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SWELL;
-			productName = SWELL;
-			productReference = B80F383B29990A9A00D35771 /* libSWELL.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2195,9 +2113,6 @@
 					4FFBB8F820863B0E00DDD0E7 = {
 						ProvisioningStyle = Manual;
 					};
-					B80F383A29990A9A00D35771 = {
-						CreatedOnToolsVersion = 13.2.1;
-					};
 					B8D31D89278C6593009A9F2E = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -2229,7 +2144,6 @@
 			);
 			projectRoot = "";
 			targets = (
-				B80F383A29990A9A00D35771 /* SWELL */,
 				B8D31D89278C6593009A9F2E /* Info_Plists */,
 				4F78DAF113B643600032E0F3 /* All */,
 				B8E42C7923D1EC8A00FFE184 /* Finished Plugs */,
@@ -2779,22 +2693,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B80F383829990A9A00D35771 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B80F384029990ACB00D35771 /* swell.cpp in Sources */,
-				B80F384129990ACE00D35771 /* swell-misc.mm in Sources */,
-				B80F384229990AD200D35771 /* swell-dlg.mm in Sources */,
-				B80F384329990AD600D35771 /* swell-ini.cpp in Sources */,
-				B80F385129990B0D00D35771 /* swell-kb.mm in Sources */,
-				B80F385229990B1900D35771 /* swell-menu.mm in Sources */,
-				B80F385329990B1B00D35771 /* swell-miscdlg.mm in Sources */,
-				B80F385429990B2F00D35771 /* swell-gdi.mm in Sources */,
-				B80F385529990B3200D35771 /* swell-wnd.mm in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2832,26 +2730,6 @@
 			isa = PBXTargetDependency;
 			target = 4FC3EFC32086C0A600BD11FA /* VST3C */;
 			targetProxy = 4FC3EFD22086C46800BD11FA /* PBXContainerItemProxy */;
-		};
-		B80F384529990ADE00D35771 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B80F383A29990A9A00D35771 /* SWELL */;
-			targetProxy = B80F384429990ADE00D35771 /* PBXContainerItemProxy */;
-		};
-		B80F384829990AE900D35771 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B80F383A29990A9A00D35771 /* SWELL */;
-			targetProxy = B80F384729990AE900D35771 /* PBXContainerItemProxy */;
-		};
-		B80F384B29990AF000D35771 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B80F383A29990A9A00D35771 /* SWELL */;
-			targetProxy = B80F384A29990AF000D35771 /* PBXContainerItemProxy */;
-		};
-		B80F385029990AFC00D35771 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B80F383A29990A9A00D35771 /* SWELL */;
-			targetProxy = B80F384F29990AFC00D35771 /* PBXContainerItemProxy */;
 		};
 		B8199983278C65D0001F43E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3919,100 +3797,6 @@
 			};
 			name = Tracer;
 		};
-		B80F383D29990A9B00D35771 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				EXECUTABLE_EXTENSION = a;
-				EXECUTABLE_PREFIX = lib;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		B80F383E29990A9B00D35771 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				EXECUTABLE_EXTENSION = a;
-				EXECUTABLE_PREFIX = lib;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		B80F383F29990A9B00D35771 /* Tracer */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				EXECUTABLE_EXTENSION = a;
-				EXECUTABLE_PREFIX = lib;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Tracer;
-		};
 		B8D31D8B278C6593009A9F2E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4163,16 +3947,6 @@
 				4FFBB93820863B0E00DDD0E7 /* Debug */,
 				4FFBB93920863B0E00DDD0E7 /* Release */,
 				4FFBB93A20863B0E00DDD0E7 /* Tracer */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B80F383C29990A9B00D35771 /* Build configuration list for PBXNativeTarget "SWELL" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B80F383D29990A9B00D35771 /* Debug */,
-				B80F383E29990A9B00D35771 /* Release */,
-				B80F383F29990A9B00D35771 /* Tracer */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
