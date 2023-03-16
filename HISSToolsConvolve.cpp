@@ -360,6 +360,11 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
         matrix->SetHilite(false);
     }
     
+    if (numChans)
+        sprintf(chanInfo, "%d of %d", chan + 1, numChans);
+    else
+        sprintf(chanInfo, "");
+    
     // FIX - Decide on how to display non active channels where something should be loaded
 
     for (auto it = mFiles.begin(); it != mFiles.end(); it++)
@@ -375,11 +380,6 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
         int state = channelActive ? (mute ? 3 : (filePath.GetLength() ? 2 : 1)) : 0;
         matrix->SetState(inChan, outChan, state);
     }
-    
-    if (numChans)
-        sprintf(chanInfo, "%d of %d", chan + 1, numChans);
-    else
-        sprintf(chanInfo, "");
     
     GetUI()->GetControlWithTag(kTagFileName)->As<HISSTools_TextBlock>()->setText(fileName.Get());
     GetUI()->GetControlWithTag(kTagFileChan)->As<HISSTools_TextBlock>()->setText(chanInfo);
