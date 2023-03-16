@@ -403,18 +403,15 @@ void HISSToolsConvolve::LoadIRs()
         if (!channelActive || !it->getFile(filePath, &chan, &mute, true))
             continue;
                 
-        if (!mute)
-        {
-            HISSTools::IAudioFile file(filePath.Get());
+        HISSTools::IAudioFile file(mute ? "" : filePath.Get());
             
-            if (file.isOpen() && !file.getErrorFlags())
-            {
-                std::vector<float> audio(file.getFrames());
+        if (file.isOpen() && !file.getErrorFlags())
+        {
+            std::vector<float> audio(file.getFrames());
 
-                file.readChannel(audio.data(), file.getFrames(), chan);
-                mConvolver.set(inChan, outChan, audio.data(), file.getFrames(), true);
-                mFiles.setInfo(inChan, outChan, file.getFrames(), file.getSamplingRate(), file.getChannels());
-            }
+            file.readChannel(audio.data(), file.getFrames(), chan);
+            mConvolver.set(inChan, outChan, audio.data(), file.getFrames(), true);
+            mFiles.setInfo(inChan, outChan, file.getFrames(), file.getSamplingRate(), file.getChannels());
         }
         else
             mConvolver.clear(inChan, outChan, false);
