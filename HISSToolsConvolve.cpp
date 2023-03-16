@@ -49,7 +49,7 @@ private:
     
     void reportToPlug(int xPos, int yPos, const IMouseMod& mod, MousingAction action, float wheel) override
     {
-        WDL_String path, tempStr;
+        WDL_String path, filePath;
 
         mPlug->GUIUpdateFileDisplay();
         
@@ -83,11 +83,11 @@ private:
                         
                         unsigned char currentState = GetState(xPos, yPos);
                         SetState(xPos, yPos, 1);
-                        GetUI()->PromptForFile(tempStr, path, EFileAction::Open,  "wav aif aiff aifc");
+                        GetUI()->PromptForFile(filePath, path, EFileAction::Open,  "wav aif aiff aifc");
                         
                         if (path.GetLength())
                         {
-                            mPlug->SetFile(xPos, yPos, path.Get());
+                            mPlug->SetFile(xPos, yPos, filePath.Get());
                         }
                         else
                         {
