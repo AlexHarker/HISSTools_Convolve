@@ -102,7 +102,7 @@ private:
                 
                 if (xPos > -1 && IsChannelConnected(xPos) && IsChannelConnected(yPos))
                     SetHilite(true);
-                
+    
                 break;
                 
             case kMouseOut:
@@ -487,7 +487,7 @@ void HISSToolsConvolve::ProcessBlock(double** inputs, double** outputs, int nFra
     
     mILEDSender.Set(LEDStates);
     
-    mConvolver.process((const double **) inputs, outputs, (uint32_t) mCurrentIChans, (uint32_t) mCurrentOChans, (uintptr_t) nFrames);
+    mConvolver.process(inputs, outputs, (uint32_t) mCurrentIChans, (uint32_t) mCurrentOChans, (uintptr_t) nFrames);
     
     // Do Ramps
     

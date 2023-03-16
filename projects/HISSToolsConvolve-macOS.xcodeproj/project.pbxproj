@@ -288,11 +288,6 @@
 		B80F3808299905EB00D35771 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F72998667A00E4C164 /* IAudioFile.cpp */; };
 		B80F3809299905F800D35771 /* BaseAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F22998667A00E4C164 /* BaseAudioFile.cpp */; };
 		B80F380A299905FD00D35771 /* IAudioFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013F72998667A00E4C164 /* IAudioFile.cpp */; };
-		B80F38242999069000D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
-		B80F38252999069700D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
-		B80F38262999069B00D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
-		B80F38272999069F00D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
-		B80F3828299906A200D35771 /* HISSTools_FFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */; };
 		B80F382A299906B100D35771 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F3829299906B100D35771 /* Accelerate.framework */; };
 		B80F382B299906B400D35771 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F3829299906B100D35771 /* Accelerate.framework */; };
 		B80F382C299906B800D35771 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B80F3829299906B100D35771 /* Accelerate.framework */; };
@@ -831,9 +826,8 @@
 		B8C013AF299857FC00E4C164 /* oversampling.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = oversampling.c; sourceTree = "<group>"; };
 		B8C013B0299857FC00E4C164 /* oversampling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = oversampling.h; sourceTree = "<group>"; };
 		B8C013BB2998667A00E4C164 /* Doxyfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
-		B8C013BC2998667A00E4C164 /* HISSTools_FFT_Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HISSTools_FFT_Core.h; sourceTree = "<group>"; };
-		B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HISSTools_FFT.cpp; sourceTree = "<group>"; };
-		B8C013BE2998667A00E4C164 /* HISSTools_FFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HISSTools_FFT.h; sourceTree = "<group>"; };
+		B8C013BC2998667A00E4C164 /* HISSTools_FFT_Core.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_FFT_Core.hpp; sourceTree = "<group>"; };
+		B8C013BE2998667A00E4C164 /* HISSTools_FFT.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_FFT.hpp; sourceTree = "<group>"; };
 		B8C013E62998667A00E4C164 /* ConvolveUtilities.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConvolveUtilities.hpp; sourceTree = "<group>"; };
 		B8C013F22998667A00E4C164 /* BaseAudioFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BaseAudioFile.cpp; sourceTree = "<group>"; };
 		B8C013F32998667A00E4C164 /* BaseAudioFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseAudioFile.h; sourceTree = "<group>"; };
@@ -841,6 +835,7 @@
 		B8C013F52998667A00E4C164 /* IAudioFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IAudioFile.h; sourceTree = "<group>"; };
 		B8C013F62998667A00E4C164 /* OAudioFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OAudioFile.cpp; sourceTree = "<group>"; };
 		B8C013F72998667A00E4C164 /* IAudioFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IAudioFile.cpp; sourceTree = "<group>"; };
+		B8F160B329C393BE00EF098B /* HISSTools_FFT_Types.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HISSTools_FFT_Types.hpp; sourceTree = "<group>"; };
 		B8F3700923D11B3E00291018 /* pluginfactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pluginfactory.cpp; sourceTree = "<group>"; };
 		B8F3700B23D11B5700291018 /* commoniids.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = commoniids.cpp; sourceTree = "<group>"; };
 		B8F3700D23D11B7500291018 /* IPlugVST3_ControllerBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IPlugVST3_ControllerBase.h; path = ../../../IPlug/VST3/IPlugVST3_ControllerBase.h; sourceTree = "<group>"; };
@@ -1780,9 +1775,9 @@
 			isa = PBXGroup;
 			children = (
 				B8C013BA2998667A00E4C164 /* Documentation */,
-				B8C013BC2998667A00E4C164 /* HISSTools_FFT_Core.h */,
-				B8C013BD2998667A00E4C164 /* HISSTools_FFT.cpp */,
-				B8C013BE2998667A00E4C164 /* HISSTools_FFT.h */,
+				B8C013BE2998667A00E4C164 /* HISSTools_FFT.hpp */,
+				B8C013BC2998667A00E4C164 /* HISSTools_FFT_Core.hpp */,
+				B8F160B329C393BE00EF098B /* HISSTools_FFT_Types.hpp */,
 			);
 			path = HISSTools_FFT;
 			sourceTree = "<group>";
@@ -2349,7 +2344,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B80F38272999069F00D35771 /* HISSTools_FFT.cpp in Sources */,
 				B80F3807299905E800D35771 /* BaseAudioFile.cpp in Sources */,
 				B80F3808299905EB00D35771 /* IAudioFile.cpp in Sources */,
 				4FDAC0EB207D76C600299363 /* IPlugTimer.cpp in Sources */,
@@ -2377,7 +2371,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B80F38242999069000D35771 /* HISSTools_FFT.cpp in Sources */,
 				B80F3809299905F800D35771 /* BaseAudioFile.cpp in Sources */,
 				B80F380A299905FD00D35771 /* IAudioFile.cpp in Sources */,
 				4FB1F59520E4B015004157C8 /* IGraphicsMac_view.mm in Sources */,
@@ -2407,7 +2400,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B80F38252999069700D35771 /* HISSTools_FFT.cpp in Sources */,
 				B80F3801299905C500D35771 /* BaseAudioFile.cpp in Sources */,
 				B80F3802299905D200D35771 /* IAudioFile.cpp in Sources */,
 				4F03A5AF20A4621100EBDFFB /* IGraphics.cpp in Sources */,
@@ -2437,7 +2429,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B80F38262999069B00D35771 /* HISSTools_FFT.cpp in Sources */,
 				B80F3806299905E300D35771 /* BaseAudioFile.cpp in Sources */,
 				B80F3805299905E000D35771 /* IAudioFile.cpp in Sources */,
 				4F81597C205D50EB00393585 /* baseiids.cpp in Sources */,
@@ -2545,7 +2536,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B80F3828299906A200D35771 /* HISSTools_FFT.cpp in Sources */,
 				B80F3803299905D600D35771 /* BaseAudioFile.cpp in Sources */,
 				B80F3804299905D900D35771 /* IAudioFile.cpp in Sources */,
 				4F10D3D9203A6719003EF82A /* RtMidi.cpp in Sources */,
