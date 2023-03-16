@@ -177,7 +177,7 @@ void HISSToolsConvolve::SetFile(int xPos, int yPos, const char *path)
 
 HISSToolsConvolve::HISSToolsConvolve(const InstanceInfo &info)
 : Plugin(info, MakeConfig(kNumParams, kNumPrograms))
-, mConvolver(8, 8, kLatencyZero)
+, mConvolver(8, 8, LatencyMode::Zero)
 , mIVUSender(kTagIMeter)
 , mOVUSender(kTagOMeter)
 , mILEDSender(kTagILEDs, true)
