@@ -140,10 +140,7 @@ public:
 	{
         friend FL;
         
-        iterator_base(FL& fileList, IT it)
-        : IT (it)
-        , mFileList(fileList)
-        {}
+        iterator_base(FL& fileList, IT it) : IT(it), mFileList(fileList) {}
         
 	public:
 		

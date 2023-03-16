@@ -49,7 +49,7 @@ private:
     
     void reportToPlug(int xPos, int yPos, const IMouseMod& mod, MousingAction action, float wheel) override
     {
-        WDL_String path, tempStr;
+        WDL_String path, filePath;
 
         mPlug->GUIUpdateFileDisplay();
         
@@ -83,11 +83,11 @@ private:
                         
                         unsigned char currentState = GetState(xPos, yPos);
                         SetState(xPos, yPos, 1);
-                        GetUI()->PromptForFile(tempStr, path, EFileAction::Open,  "wav aif aiff aifc");
+                        GetUI()->PromptForFile(filePath, path, EFileAction::Open,  "wav aif aiff aifc");
                         
                         if (path.GetLength())
                         {
-                            mPlug->SetFile(xPos, yPos, path.Get());
+                            mPlug->SetFile(xPos, yPos, filePath.Get());
                         }
                         else
                         {
@@ -121,23 +121,29 @@ private:
 //////////////////////////////////////////////// LOADING THREAD ////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-DWORD LoadingThread(LPVOID plugParam)
+// N.B. as there are multiple locks on the FileList there is no need for an overall lock or mutex
+
+struct DummyLock
 {
-    HISSToolsConvolve *pPlug = (HISSToolsConvolve *) plugParam;
-    
+    bool lock() { return true; }
+    void unlock() {}
+};
+
+void LoadingThread(HISSToolsConvolve *pPlug)
+{
     while (true)
     {
-        WaitForSingleObject(pPlug->mLoadEvent, INFINITE);
+        DummyLock lock;
         
-        if (pPlug->mThreadExiting == true)
+        pPlug->mLoadEvent.wait(lock);
+        
+        if (pPlug->mThreadExiting)
             break;
         
         pPlug->LoadIRs();
     }
     
     pPlug->mThreadExiting = false;
-    
-    return NULL;
 }
 
 void HISSToolsConvolve::SelectFile(const char *file)
@@ -147,25 +153,25 @@ void HISSToolsConvolve::SelectFile(const char *file)
 
     scheme.loadWithScheme(&path, &mFiles, mCurrentIChans, mCurrentOChans);
 
-    SetEvent(mLoadEvent);
+    mLoadEvent.notify_one();
 }
 
 void HISSToolsConvolve::IncrementChan(int xPos, int yPos)
 {
     if (mFiles.incrementChan(xPos, yPos))
-        SetEvent(mLoadEvent);
+        mLoadEvent.notify_one();
 }
 
 void HISSToolsConvolve::FlipMute(int xPos, int yPos)
 {
     if (mFiles.flipMute(xPos, yPos))
-        SetEvent(mLoadEvent);
+        mLoadEvent.notify_one();
 }
 
 void HISSToolsConvolve::SetFile(int xPos, int yPos, const char *path)
 {
     mFiles.setFile(xPos, yPos, path);
-    SetEvent(mLoadEvent);
+    mLoadEvent.notify_one();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -196,10 +202,9 @@ HISSToolsConvolve::HISSToolsConvolve(const InstanceInfo &info)
     
     // Threading
     
-    mThreadExiting = FALSE;
+    mThreadExiting = false;
     
-    mLoadThread = CreateThread(NULL, 0, LoadingThread, this, 0, NULL);
-    mLoadEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
+    mLoadThread  = std::thread(&LoadingThread, this);
     
     MakeDefaultPreset("-", kNumPrograms);
 }
@@ -209,16 +214,8 @@ HISSToolsConvolve::~HISSToolsConvolve()
     // Dispose of thread stuff.
     
     mThreadExiting = true;
-    SetEvent(mLoadEvent);
-    
-    // Spin while we wait for the thread to exit
-    
-    // FIX - Not sure what to do here....
-    
-    //while (mThreadExiting == TRUE);
-    
-    CloseHandle(mLoadEvent);
-    CloseHandle(mLoadThread);
+    mLoadEvent.notify_all();
+    mLoadThread.join();
 }
 
 IGraphics* HISSToolsConvolve::CreateGraphics()
@@ -362,6 +359,11 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
         matrix->SetHilite(false);
     }
     
+    if (numChans)
+        sprintf(chanInfo, "%d of %d", chan + 1, numChans);
+    else
+        sprintf(chanInfo, "");
+    
     // FIX - Decide on how to display non active channels where something should be loaded
 
     for (auto it = mFiles.begin(); it != mFiles.end(); it++)
@@ -377,11 +379,6 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
         int state = channelActive ? (mute ? 3 : (filePath.GetLength() ? 2 : 1)) : 0;
         matrix->SetState(inChan, outChan, state);
     }
-    
-    if (numChans)
-        sprintf(chanInfo, "%d of %d", chan + 1, numChans);
-    else
-        sprintf(chanInfo, "");
     
     GetUI()->GetControlWithTag(kTagFileName)->As<HISSTools_TextBlock>()->setText(fileName.Get());
     GetUI()->GetControlWithTag(kTagFileChan)->As<HISSTools_TextBlock>()->setText(chanInfo);
@@ -405,18 +402,15 @@ void HISSToolsConvolve::LoadIRs()
         if (!channelActive || !it->getFile(filePath, &chan, &mute, true))
             continue;
                 
-        if (!mute)
-        {
-            HISSTools::IAudioFile file(filePath.Get());
+        HISSTools::IAudioFile file(mute ? "" : filePath.Get());
             
-            if (file.isOpen() && !file.getErrorFlags())
-            {
-                std::vector<float> audio(file.getFrames());
+        if (file.isOpen() && !file.getErrorFlags())
+        {
+            std::vector<float> audio(file.getFrames());
 
-                file.readChannel(audio.data(), file.getFrames(), chan);
-                mConvolver.set(inChan, outChan, audio.data(), file.getFrames(), true);
-                mFiles.setInfo(inChan, outChan, file.getFrames(), file.getSamplingRate(), file.getChannels());
-            }
+            file.readChannel(audio.data(), file.getFrames(), chan);
+            mConvolver.set(inChan, outChan, audio.data(), file.getFrames(), true);
+            mFiles.setInfo(inChan, outChan, file.getFrames(), file.getSamplingRate(), file.getChannels());
         }
         else
             mConvolver.clear(inChan, outChan, false);
