@@ -1,7 +1,8 @@
 
 #include "HISSToolsConvolve.h"
 #include "IPlug_include_in_plug_src.h"
-#include "IAudioFile.h"
+
+#include <AudioFile/IAudioFile.h>
 
 enum ETags
 {

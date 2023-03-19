@@ -295,12 +295,6 @@
     <ClInclude Include="..\..\..\IPlug\VST2\IPlugVST2.h" />
     <ClInclude Include="..\HISSToolsConvolve.h" />
     <ClInclude Include="..\resources\resource.h" />
-    <ClInclude Include="..\source\Buffer.h" />
-    <ClInclude Include="..\source\Convolve.h" />
-    <ClInclude Include="..\source\List.h" />
-    <ClInclude Include="..\source\Nonlinear.h" />
-    <ClInclude Include="..\source\SallenAndKey.h" />
-    <ClInclude Include="..\source\Waveform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\IGraphics\Controls\IControls.cpp" />
@@ -334,10 +328,8 @@
     <ClCompile Include="..\..\..\IPlug\IPlugTimer.cpp" />
     <ClCompile Include="..\..\..\IPlug\VST2\IPlugVST2.cpp" />
     <ClCompile Include="..\HISSToolsConvolve.cpp" />
-    <ClCompile Include="..\source\Convolve.cpp" />
     <ClCompile Include="..\source\HISSTools_Library\AudioFile\BaseAudioFile.cpp" />
     <ClCompile Include="..\source\HISSTools_Library\AudioFile\IAudioFile.cpp" />
-    <ClCompile Include="..\source\Waveform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\resources\main.rc" />
