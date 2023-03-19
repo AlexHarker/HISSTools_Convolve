@@ -401,7 +401,6 @@
     <ClCompile Include="..\..\..\IPlug\VST3\IPlugVST3.cpp" />
     <ClCompile Include="..\..\..\IPlug\VST3\IPlugVST3_ProcessorBase.cpp" />
     <ClCompile Include="..\HISSToolsConvolve.cpp" />
-    <ClCompile Include="..\source\HISSTools_Library\AudioFile\BaseAudioFile.cpp" />
     <ClCompile Include="..\source\HISSTools_Library\AudioFile\IAudioFile.cpp" />
   </ItemGroup>
   <ItemGroup>

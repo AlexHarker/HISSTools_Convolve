@@ -360,7 +360,6 @@
     <ClCompile Include="..\..\..\IPlug\IPlugProcessor.cpp" />
     <ClCompile Include="..\..\..\IPlug\IPlugTimer.cpp" />
     <ClCompile Include="..\HISSToolsConvolve.cpp" />
-    <ClCompile Include="..\source\HISSTools_Library\AudioFile\BaseAudioFile.cpp" />
     <ClCompile Include="..\source\HISSTools_Library\AudioFile\IAudioFile.cpp" />
   </ItemGroup>
   <ItemGroup>

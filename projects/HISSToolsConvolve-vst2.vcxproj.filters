@@ -50,9 +50,6 @@
     <ClCompile Include="..\..\..\IGraphics\Drawing\IGraphicsSkia.cpp">
       <Filter>IGraphics\Drawing</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\HISSTools_Library\AudioFile\BaseAudioFile.cpp">
-      <Filter>HISSTools_Library</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\HISSTools_Library\AudioFile\IAudioFile.cpp">
       <Filter>HISSTools_Library</Filter>
     </ClCompile>
