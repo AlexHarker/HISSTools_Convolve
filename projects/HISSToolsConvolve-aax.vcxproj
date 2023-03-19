@@ -410,10 +410,8 @@
     <ClCompile Include="..\..\..\IPlug\IPlugProcessor.cpp" />
     <ClCompile Include="..\..\..\IPlug\IPlugTimer.cpp" />
     <ClCompile Include="..\HISSToolsConvolve.cpp" />
-    <ClCompile Include="..\src\Convolve.cpp" />
     <ClCompile Include="..\src\HISSTools_Library\AudioFile\BaseAudioFile.cpp" />
     <ClCompile Include="..\src\HISSTools_Library\AudioFile\IAudioFile.cpp" />
-    <ClCompile Include="..\src\Waveform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuildStep Include="..\..\AAX_SDK\Libs\Release\AAXLibrary.lib">
@@ -496,12 +494,6 @@
     <ClInclude Include="..\config.h" />
     <ClInclude Include="..\HISSToolsConvolve.h" />
     <ClInclude Include="..\resources\resource.h" />
-    <ClInclude Include="..\source\Buffer.h" />
-    <ClInclude Include="..\source\Convolve.h" />
-    <ClInclude Include="..\source\List.h" />
-    <ClInclude Include="..\source\Nonlinear.h" />
-    <ClInclude Include="..\source\SallenAndKey.h" />
-    <ClInclude Include="..\source\Waveform.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\resources\main.rc" />

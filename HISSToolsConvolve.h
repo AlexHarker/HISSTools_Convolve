@@ -7,11 +7,11 @@
 #include <condition_variable>
 #include <thread>
 
-#include "HISSTools_Controls.hpp"
-#include "HISSTools_VU_Ballistics.hpp"
-#include "ConvolveMultichannel.hpp"
-#include "FileScheme.hpp"
+#include <HISSTools_Controls.hpp>
+#include <HISSTools_VU_Ballistics.hpp>
+#include <HIRT_Multichannel_Convolution/ConvolveMultichannel.hpp>
 
+#include "source/FileScheme.hpp"
 
 const int kNumPrograms = 1;
 

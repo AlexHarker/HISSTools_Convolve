@@ -50,12 +50,6 @@
     <ClCompile Include="..\..\..\IGraphics\Drawing\IGraphicsSkia.cpp">
       <Filter>IGraphics\Drawing</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Convolve.cpp">
-      <Filter>DSP</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Waveform.cpp">
-      <Filter>DSP</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\HISSTools_Library\AudioFile\BaseAudioFile.cpp">
       <Filter>HISSTools_Library</Filter>
     </ClCompile>
@@ -204,24 +198,6 @@
     <ClInclude Include="..\..\..\IGraphics\Drawing\IGraphicsSkia.h">
       <Filter>IGraphics\Drawing</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Buffer.h">
-      <Filter>DSP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Convolve.h">
-      <Filter>DSP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\List.h">
-      <Filter>DSP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Nonlinear.h">
-      <Filter>DSP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\SallenAndKey.h">
-      <Filter>DSP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Waveform.h">
-      <Filter>DSP</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="IPlug">
@@ -247,9 +223,6 @@
     </Filter>
     <Filter Include="config">
       <UniqueIdentifier>{8c338368-7512-426b-af83-0f50719ca0bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DSP">
-      <UniqueIdentifier>{781180e6-da58-41db-8a01-990491537433}</UniqueIdentifier>
     </Filter>
     <Filter Include="HISSTools_Library">
       <UniqueIdentifier>{bd499525-e282-49ac-b6c9-849cd427be5a}</UniqueIdentifier>

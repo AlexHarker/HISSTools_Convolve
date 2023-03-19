@@ -340,12 +340,6 @@
     <ClInclude Include="..\..\..\IPlug\VST3\IPlugVST3_View.h" />
     <ClInclude Include="..\HISSToolsConvolve.h" />
     <ClInclude Include="..\resources\resource.h" />
-    <ClInclude Include="..\source\Buffer.h" />
-    <ClInclude Include="..\source\Convolve.h" />
-    <ClInclude Include="..\source\List.h" />
-    <ClInclude Include="..\source\Nonlinear.h" />
-    <ClInclude Include="..\source\SallenAndKey.h" />
-    <ClInclude Include="..\source\Waveform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Dependencies\IPlug\VST3_SDK\base\source\baseiids.cpp" />
@@ -407,10 +401,8 @@
     <ClCompile Include="..\..\..\IPlug\VST3\IPlugVST3.cpp" />
     <ClCompile Include="..\..\..\IPlug\VST3\IPlugVST3_ProcessorBase.cpp" />
     <ClCompile Include="..\HISSToolsConvolve.cpp" />
-    <ClCompile Include="..\source\Convolve.cpp" />
     <ClCompile Include="..\source\HISSTools_Library\AudioFile\BaseAudioFile.cpp" />
     <ClCompile Include="..\source\HISSTools_Library\AudioFile\IAudioFile.cpp" />
-    <ClCompile Include="..\source\Waveform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\resources\main.rc" />
