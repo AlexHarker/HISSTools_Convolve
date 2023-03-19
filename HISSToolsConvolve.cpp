@@ -205,7 +205,7 @@ HISSToolsConvolve::HISSToolsConvolve(const InstanceInfo &info)
     
     mThreadExiting = false;
     
-    mLoadThread  = std::thread(&LoadingThread, this);
+    mLoadThread = std::thread(&LoadingThread, this);
     
     MakeDefaultPreset("-", kNumPrograms);
 }
