@@ -56,6 +56,24 @@
     <ClCompile Include="..\source\HISSTools_Library\AudioFile\IAudioFile.cpp">
       <Filter>HISSTools_Library</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\HISSTools_Library\HIRT_Multichannel_Convolution\Convolver.cpp">
+      <Filter>HISSTools_Library\Convolution</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HISSTools_Library\HIRT_Multichannel_Convolution\MonoConvolve.cpp">
+      <Filter>HISSTools_Library\Convolution</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HISSTools_Library\HIRT_Multichannel_Convolution\NToMonoConvolve.cpp">
+      <Filter>HISSTools_Library\Convolution</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HISSTools_Library\HIRT_Multichannel_Convolution\PartitionedConvolve.cpp">
+      <Filter>HISSTools_Library\Convolution</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HISSTools_Library\HIRT_Multichannel_Convolution\TimeDomainConvolve.cpp">
+      <Filter>HISSTools_Library\Convolution</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HISSTools_Library\HISSTools_FFT\HISSTools_FFT.cpp">
+      <Filter>HISSTools_Library\Convolution</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="../config.h" />
@@ -226,6 +244,9 @@
     </Filter>
     <Filter Include="HISSTools_Library">
       <UniqueIdentifier>{bd499525-e282-49ac-b6c9-849cd427be5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HISSTools_Library\Convolution">
+      <UniqueIdentifier>{d0488ee8-3aaf-4924-bd5f-877dac773c50}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
