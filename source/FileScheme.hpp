@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "FileList.hpp"
-#include "IAudioFile.h"
+#include <AudioFile/IAudiofile.h>
 
 class FileScheme
 {

@@ -134,12 +134,6 @@
     <ClCompile Include="..\..\..\IGraphics\IGraphicsEditorDelegate.cpp">
       <Filter>IGraphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Convolve.cpp">
-      <Filter>DSP</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Waveform.cpp">
-      <Filter>DSP</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\HISSTools_Library\AudioFile\BaseAudioFile.cpp">
       <Filter>HISSTools_Library</Filter>
     </ClCompile>
@@ -366,24 +360,6 @@
     <ClInclude Include="..\..\..\IGraphics\IGraphicsEditorDelegate.h">
       <Filter>IGraphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Buffer.h">
-      <Filter>DSP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Convolve.h">
-      <Filter>DSP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\List.h">
-      <Filter>DSP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Nonlinear.h">
-      <Filter>DSP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\SallenAndKey.h">
-      <Filter>DSP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Waveform.h">
-      <Filter>DSP</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="resources">
@@ -442,9 +418,6 @@
     </Filter>
     <Filter Include="IPlug\VST3\VST3_SDK\plugininterfaces\base">
       <UniqueIdentifier>{5f06b03e-5093-46c0-9513-efb4e494c857}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DSP">
-      <UniqueIdentifier>{7569d0b7-ba50-4549-bd65-39dd31953495}</UniqueIdentifier>
     </Filter>
     <Filter Include="HISSTools_Library">
       <UniqueIdentifier>{345c0138-cc9b-4e22-8f4c-e31664683ec5}</UniqueIdentifier>
