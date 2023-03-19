@@ -6,7 +6,7 @@
 #include <vector>
 #include <wdlstring.h>
 
-#include <HISSTools_ThreadSafety.hpp>
+#include <HISSTools_Utility/HISSTools_ThreadSafety.hpp>
 
 class FileList
 {

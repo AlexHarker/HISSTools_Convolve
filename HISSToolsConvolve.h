@@ -7,8 +7,8 @@
 #include <condition_variable>
 #include <thread>
 
-#include <HISSTools_Controls.hpp>
-#include <HISSTools_VU_Ballistics.hpp>
+#include <HISSTools_UI/HISSTools_Controls.hpp>
+#include <HISSTools_DSP/HISSTools_VU_Ballistics.hpp>
 #include <HIRT_Multichannel_Convolution/Convolver.h>
 
 #include "source/FileScheme.hpp"
