@@ -25,7 +25,7 @@ public:
     
 private:
     
-    void reportToPlug() override
+    void ReportToPlug() override
     {
         mPlug->SelectFile(GetLastSelectedFileForPlug().Get());
     }
@@ -48,7 +48,7 @@ private:
         return mPlug->IsChannelConnected(kInput, chan);
     }
     
-    void reportToPlug(int xPos, int yPos, const IMouseMod& mod, MousingAction action, float wheel) override
+    void ReportToPlug(int xPos, int yPos, const IMouseMod& mod, MousingAction action, float wheel) override
     {
         WDL_String path, filePath;
 
@@ -343,8 +343,8 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
 
     FileScheme scheme;
     
-    int xPos = GetUI()->GetControlWithTag(kTagMatrix)->As<HISSTools_Matrix>()->getXPos();
-    int yPos = GetUI()->GetControlWithTag(kTagMatrix)->As<HISSTools_Matrix>()->getYPos();
+    int xPos = GetUI()->GetControlWithTag(kTagMatrix)->As<HISSTools_Matrix>()->GetXPos();
+    int yPos = GetUI()->GetControlWithTag(kTagMatrix)->As<HISSTools_Matrix>()->GetYPos();
     
     if (xPos > -1)
     {
@@ -379,8 +379,8 @@ void HISSToolsConvolve::GUIUpdateFileDisplay()
         matrix->SetState(inChan, outChan, state);
     }
     
-    GetUI()->GetControlWithTag(kTagFileName)->As<HISSTools_TextBlock>()->setText(fileName.Get());
-    GetUI()->GetControlWithTag(kTagFileChan)->As<HISSTools_TextBlock>()->setText(chanInfo);
+    GetUI()->GetControlWithTag(kTagFileName)->As<HISSTools_TextBlock>()->SetText(fileName.Get());
+    GetUI()->GetControlWithTag(kTagFileChan)->As<HISSTools_TextBlock>()->SetText(chanInfo);
 }
 
 void HISSToolsConvolve::LoadIRs()
