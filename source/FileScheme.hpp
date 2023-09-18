@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "FileList.hpp"
-#include <AudioFile/IAudioFile.h>
+#include <audio_file/in_file.hpp>
 
 class FileScheme
 {
@@ -1386,9 +1386,9 @@ private:
 	
     bool checkFileExist(const char *path, unsigned int channel)
     {
-        HISSTools::IAudioFile file(path);
+        htl::in_audio_file file(path);
         
-        if (file.isOpen() && !file.getErrorFlags() && file.getChannels() > channel)
+        if (file.is_open() && !file.is_error() && file.channels() > channel)
             return true;
         
         return false;

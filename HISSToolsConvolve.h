@@ -9,10 +9,9 @@
 
 #include <HISSTools_UI/HISSTools_Controls.hpp>
 #include <HISSTools_DSP/HISSTools_VU_Ballistics.hpp>
-#include <HIRT_Multichannel_Convolution/Convolver.h>
+#include <convolution/multichannel.hpp>
 
 #include "source/FileScheme.hpp"
-
 
 const int kNumPrograms = 1;
 
@@ -122,7 +121,7 @@ private:
   
   // Convolution Engine
   
-  HISSTools::Convolver mConvolver;
+  htl::convolve_multichannel<double> mConvolver;
     
   // Meter Ballistics
   

@@ -2,8 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="UserMacros">
     <IPLUG2_ROOT>$(ProjectDir)..\..\..</IPLUG2_ROOT>
-    <DEPENDENCIES_ROOT>$(ProjectDir)..\dependencies\build</DEPENDENCIES_ROOT>
-    <HISSTOOLS_LIBRARY_PATH>$(ProjectDir)..\source\HISSTools_Library</HISSTOOLS_LIBRARY_PATH>
+    <HISSTOOLS_LIBRARY_PATH>$(ProjectDir)..\source\HISSTools_Library\include</HISSTOOLS_LIBRARY_PATH>
     <HISSTOOLS_PLUGINLIB_PATH>$(ProjectDir)..\..\HISSTools_PluginLib</HISSTOOLS_PLUGINLIB_PATH>
     <BINARY_NAME>HISSToolsConvolve</BINARY_NAME>
     <EXTRA_ALL_DEFS>IGRAPHICS_SKIA;IGRAPHICS_GL2;</EXTRA_ALL_DEFS>

@@ -401,14 +401,6 @@
     <ClCompile Include="..\..\..\IPlug\VST3\IPlugVST3.cpp" />
     <ClCompile Include="..\..\..\IPlug\VST3\IPlugVST3_ProcessorBase.cpp" />
     <ClCompile Include="..\HISSToolsConvolve.cpp" />
-    <ClCompile Include="..\source\HISSTools_Library\AudioFile\BaseAudioFile.cpp" />
-    <ClCompile Include="..\source\HISSTools_Library\AudioFile\IAudioFile.cpp" />
-    <ClCompile Include="..\source\HISSTools_Library\HIRT_Multichannel_Convolution\Convolver.cpp" />
-    <ClCompile Include="..\source\HISSTools_Library\HIRT_Multichannel_Convolution\MonoConvolve.cpp" />
-    <ClCompile Include="..\source\HISSTools_Library\HIRT_Multichannel_Convolution\NToMonoConvolve.cpp" />
-    <ClCompile Include="..\source\HISSTools_Library\HIRT_Multichannel_Convolution\PartitionedConvolve.cpp" />
-    <ClCompile Include="..\source\HISSTools_Library\HIRT_Multichannel_Convolution\TimeDomainConvolve.cpp" />
-    <ClCompile Include="..\source\HISSTools_Library\HISSTools_FFT\HISSTools_FFT.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\resources\main.rc" />

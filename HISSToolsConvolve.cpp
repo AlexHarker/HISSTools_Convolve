@@ -2,7 +2,7 @@
 #include "HISSToolsConvolve.h"
 #include "IPlug_include_in_plug_src.h"
 
-#include <AudioFile/IAudioFile.h>
+#include <audio_file/in_file.hpp>
 
 enum ETags
 {
@@ -184,7 +184,7 @@ void HISSToolsConvolve::SetFile(int xPos, int yPos, const char *path)
 
 HISSToolsConvolve::HISSToolsConvolve(const InstanceInfo &info)
 : Plugin(info, MakeConfig(kNumParams, kNumPrograms))
-, mConvolver(8, 8, kLatencyZero)
+, mConvolver(8, 8, htl::latency_mode::zero)
 , mIVUSender(kTagIMeter)
 , mOVUSender(kTagOMeter)
 , mILEDSender(kTagILEDs, true)
@@ -274,6 +274,8 @@ void HISSToolsConvolve::OnReset()
     CheckConnections();
     LoadIRs();
     GUIUpdateFileDisplay();
+    
+    mConvolver.reset();
     // FIX - Need to empty buffers here.....
 }
 
@@ -401,15 +403,15 @@ void HISSToolsConvolve::LoadIRs()
         if (!channelActive || !it->getFile(filePath, &chan, &mute, true))
             continue;
                 
-        HISSTools::IAudioFile file(mute ? "" : filePath.Get());
+        htl::in_audio_file file(mute ? "" : filePath.Get());
             
-        if (file.isOpen() && !file.getErrorFlags())
+        if (file.is_open() && !file.is_error())
         {
-            std::vector<float> audio(file.getFrames());
+            std::vector<float> audio(file.frames());
 
-            file.readChannel(audio.data(), file.getFrames(), chan);
-            mConvolver.set(inChan, outChan, audio.data(), file.getFrames(), true);
-            mFiles.setInfo(inChan, outChan, file.getFrames(), file.getSamplingRate(), file.getChannels());
+            file.read_channel(audio.data(), file.frames(), chan);
+            mConvolver.set(inChan, outChan, audio.data(), file.frames(), true);
+            mFiles.setInfo(inChan, outChan, file.frames(), file.sampling_rate(), file.channels());
         }
         else
             mConvolver.clear(inChan, outChan, false);
@@ -486,7 +488,7 @@ void HISSToolsConvolve::ProcessBlock(double** inputs, double** outputs, int nFra
     
     mILEDSender.Set(LEDStates);
     
-    mConvolver.process((const double **) inputs, outputs, (uint32_t) mCurrentIChans, (uint32_t) mCurrentOChans, (uintptr_t) nFrames);
+    mConvolver.process(inputs, outputs, (uint32_t) mCurrentIChans, (uint32_t) mCurrentOChans, (uintptr_t) nFrames);
     
     // Do Ramps
     
