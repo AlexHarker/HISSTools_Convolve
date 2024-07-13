@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>HISSToolsConvolve</string>
 	<key>CFBundleGetInfoString</key>
-	<string>HISSToolsConvolve v1.0.0  "Copyright 2018-2022 Alex Harker</string>
+	<string>HISSToolsConvolve v1.0.0  &quot;Copyright 2018-2022 Alex Harker</string>
 	<key>CFBundleIconFile</key>
 	<string>HISSToolsConvolve.icns</string>
 	<key>CFBundleIdentifier</key>
@@ -29,7 +29,7 @@
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.music</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.11.0</string>
+	<string>10.13.0</string>
 	<key>NSMainNibFile</key>
 	<string>HISSToolsConvolve-macOS-MainMenu</string>
 	<key>NSMicrophoneUsageDescription</key>
