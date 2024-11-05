@@ -138,10 +138,10 @@ private:
   
   // Parameters
   
-  double mTargetDryGain;
-  double mTargetWetGain;
-  double mLastDryGain;
-  double mLastWetGain;
+  double mTargetDryGain = 0.0;
+  double mTargetWetGain = 0.0;
+  double mLastDryGain = 0.0;
+  double mLastWetGain = 0.0;
   
   int mOutputSelect;
   int mCurrentIChans;
