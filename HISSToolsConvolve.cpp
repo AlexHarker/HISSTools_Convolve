@@ -400,7 +400,7 @@ void HISSToolsConvolve::LoadIRs()
         
         bool channelActive = inChan < mCurrentIChans && outChan < mCurrentOChans;
                 
-        if (!channelActive || !it->getFile(filePath, &chan, &mute, true))
+        if (!it->getFile(filePath, &chan, &mute, true))
             continue;
                 
         htl::in_audio_file file(mute ? "" : filePath.Get());
